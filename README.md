@@ -14,6 +14,8 @@ Pool address: **alephium-pool.nnslvp.io**
 
 # Quick Start
 
+**Start by downloading [Alephium Wallet](https://github.com/alephium/alephium-wallet/releases)**
+
 ## Our miner:
 
 1. Download last release and unzip files
