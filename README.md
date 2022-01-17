@@ -18,8 +18,9 @@ Pool address: **alephium-pool.nnslvp.io**
 
 1. Download last release and unzip files
 2. Update `address` to your wallet in **config.json**
-3. Run **nvidia_run.bat** or **amd_run.bat**
-4. **PROFIT!**
+3. (optional) Also you can change `workerName`   
+4. Run **nvidia_run.bat** or **amd_run.bat**
+5. **PROFIT!**
 
 ## Bzminer:
 
