@@ -6,7 +6,7 @@
 
 Payment once a day
 
-Telegram chat: https://t.me/+EwunWBmx5idjZWVi
+Telegram chat: https://t.me/alephium_pool
 Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 Pool address: **alephium-pool.nnslvp.io**
