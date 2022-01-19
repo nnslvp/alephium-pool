@@ -4,12 +4,12 @@
 
 **Fee: 0%**
 
-Payment once a day
+Payment once an hour, starts 500 minutes after the start of mining
 
 Telegram chat: https://t.me/alephium_pool
 Telegram bot with current balance: https://t.me/alephium_pool_bot
 
-Pool address: **alephium-pool.nnslvp.io**
+Pool address: **alephium-pool.nnslvp.io** Port: **20032**
 
 ### You can use [Official miner](https://github.com/yahorbukhta/alephium-pool/releases) or [BzMiner](https://github.com/bzminer/bzminer)
 
