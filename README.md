@@ -7,6 +7,7 @@
 Payment once an hour, starts 500 minutes after the start of mining
 
 Telegram chat: https://t.me/alephium_pool
+
 Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 Pool address: **alephium-pool.nnslvp.io** Port: **20032**
@@ -35,4 +36,4 @@ Pool address: **alephium-pool.nnslvp.io** Port: **20032**
 
 ## TODO:
 
-- Telegram bot with statistic.
+- Site with landing page
