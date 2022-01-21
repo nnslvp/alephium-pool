@@ -1,7 +1,5 @@
 # Alephium mining pool
 
-###### Beta testing
-
 **Fee: 0%**
 
 Payment once an hour, starts 500 minutes after the start of mining
