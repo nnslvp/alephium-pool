@@ -29,7 +29,7 @@ Pool address: **pool.alephium-pool.com** Port: **20032**
 5. **PROFIT!**
 
 ### HiveOS:
-- Installation URL: https://github.com/yahorbukhta/alephium-pool/releases/download/v0.2/alephium-pool-miner-hiveOS.tar.gz
+- Installation URL: https://github.com/yahorbukhta/alephium-pool/releases/download/v0.2/alephium-1.32.tar.gz
 - Hash algorithm: blake3-alph
 - Wallet and worker template: %WAL%
 - Pool URL: pool.alephium-pool.com:20032
