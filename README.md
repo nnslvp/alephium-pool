@@ -8,7 +8,7 @@ Telegram chat: https://t.me/alephium_pool
 
 Telegram bot with current balance: https://t.me/alephium_pool_bot
 
-Pool address: **alephium-pool.nnslvp.io** Port: **20032**
+Pool address: **pool.alephium-pool.com** Port: **20032**
 
 ### You can use [Official miner](https://github.com/yahorbukhta/alephium-pool/releases) or [BzMiner](https://github.com/bzminer/bzminer)
 
@@ -21,8 +21,9 @@ Pool address: **alephium-pool.nnslvp.io** Port: **20032**
 1. Download last release and unzip files
 2. Update `address` to your wallet in **config.json**
 3. (optional) Also you can change `workerName`   
-4. Run **nvidia_run.bat** or **amd_run.bat**
-5. **PROFIT!**
+4. Only for Linux: fix permissions of executable files (`chmod -x file_name`)   
+5. Run **nvidia_run** or **amd_run**
+6. **PROFIT!**
 
 ## Bzminer:
 
