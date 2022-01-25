@@ -28,7 +28,7 @@ Pool address: **pool.alephium-pool.com** Port: **20032**
 4. Run **nvidia_run** or **amd_run** (Linux: `sh nvidia_run` or `sh amd_run`)
 5. **PROFIT!**
 
-###HiveOS:
+### HiveOS:
 - Installation URL: https://github.com/yahorbukhta/alephium-pool/releases/download/v0.2/alephium-pool-miner-hiveOS.tar.gz
 - Hash algorithm: blake3-alph
 - Wallet and worker template: %WAL%
