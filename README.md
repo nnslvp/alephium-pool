@@ -29,7 +29,7 @@ Pool address: **pool.alephium-pool.com** Port: **20032**
 
 1. Download [last release of BzMiner](https://github.com/bzminer/bzminer/releases) and unzip files
 2. Update `address` to your wallet in **config.json**
-3. Update **alph** file to ``bzminer -a alph -w your_wallet_address -p stratum+tcp://alephium-pool.nnslvp.io:20032``
+3. Update **alph** file to ``bzminer -a alph -w your_wallet_address -p stratum+tcp://pool.alephium-pool.com:20032``
 4. Run **alph** file
 5. **PROFIT!**
 
