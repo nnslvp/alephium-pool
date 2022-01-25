@@ -21,21 +21,27 @@ Pool address: **pool.alephium-pool.com** Port: **20032**
 **Start by downloading [Alephium Wallet](https://github.com/alephium/alephium-wallet/releases)**
 
 ## Our miner:
-
+### Windows & Linux
 1. Download last release and unzip files
 2. Update `address` to your wallet in **config.json**
 3. (optional) Also you can change `workerName`   
 4. Run **nvidia_run** or **amd_run** (Linux: `sh nvidia_run` or `sh amd_run`)
 5. **PROFIT!**
 
+###HiveOS:
+- Installation URL: https://github.com/yahorbukhta/alephium-pool/releases/download/v0.2/alephium-pool-miner-hiveOS.tar.gz
+- Hash algorithm: blake3-alph
+- Wallet and worker template: %WAL%
+- Pool URL: pool.alephium-pool.com:20032
+- [How to install a custom miner on HiveOS](https://hiveon.com/getting_started-start_custom_miner/)
+
 ## Bzminer:
 
 1. Download [last release of BzMiner](https://github.com/bzminer/bzminer/releases) and unzip files
-2. Update `address` to your wallet in **config.json**
-3. Update **alph** file to ``bzminer -a alph -w your_wallet_address -p stratum+tcp://pool.alephium-pool.com:20032``
-4. Run **alph** file
-5. **PROFIT!**
+2. Update **alph** file to ``bzminer -a alph -w your_wallet_address -p stratum+tcp://pool.alephium-pool.com:20032``
+3. Run **alph** file
+4. **PROFIT!**
 
 ## TODO:
 
-- Site with landing page
+- Statistic service
