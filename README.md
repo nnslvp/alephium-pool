@@ -4,7 +4,9 @@
 
 Payment once an hour, starts 500 minutes after the start of mining
 
-Telegram chat: https://t.me/alephium_pool
+RUS Telegram chat: https://t.me/alephium_pool
+ENG Telegram chat: https://t.me/alephium_pool_eng
+Discord: https://discord.gg/ZXYU2NGx
 
 Telegram bot with current balance: https://t.me/alephium_pool_bot
 
