@@ -8,23 +8,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"
+            integrity="sha512-Meww2sXqNHxI1+5Dyh/9KAtvI9RZSA4c1K2k5iL02oiPO/RH3Q30L3M1albtqMg50u4gRTYdV4EXOQqXEI336A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 <div class="container">
     <div class="center_of_screen">
-        <div class="head_text">
-            <h1>Hi!, lets connect to Alephium pool!</h1>
+        <form id="wallet-form">
+            <input type="text" id="wallet-input" placeholder="Wallet">
+            <button type="submit" class="show_button">Show</button>
+        </form>
+        <div id="stats" class="hidden">
+            <p>Your balance: <b><span id="balance"></span></b></p>
+            <p>Your hashrate 1h/24h: <b><span id="my_hashrate_1h"></span></b> MH/s / <b><span
+                    id="my_hashrate_24h"></span></b> MH/s</p>
+            <p>Your payouts 1h/24h: <b><span id="my_payouts_1h"></span></b> / <b><span id="my_payouts_24h"></span></b>
+            </p>
+            <p>Min payout: <b>1 coin</b>. Payouts every <b>1 hour</b>. Pool fee: <b>0.5%</b></p>
         </div>
-        <p>Pool hashrate: <b><span id="pool_hashrate"></span></b></p>
-        <h3>How to start?</h3>
-        <p>Pool address: <b>pool.alephium-pool.com</b> Port: <b>20032</b> | <a
-                href="https://github.com/yahorbukhta/alephium-pool"><b>Instruction</b></a>
-        </p>
-        <p>Fee <b>0.5%</b></a></p>
-        <p>Statistics <a href="stats.html">Here</a> and <a href="https://t.me/alephium_pool_bot">Telegram bot</a></p>
-        <p>Community: <a href="https://t.me/alephium_pool">Telegram RUS</a> | <a href="https://t.me/alephium_pool_eng">Telegram
-            ENG</a> | <a href="https://discord.gg/ZXYU2NGx">Discord</a>
-        </p>
     </div>
 </div>
 </body>
@@ -50,5 +52,5 @@
 </noscript>
 <!-- /Yandex.Metrika counter -->
 
-<script src="main.js"></script>
+<script src="stats.js"></script>
 </html>

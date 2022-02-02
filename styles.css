@@ -38,3 +38,19 @@
         border-color: #9b4dca;
     }
 }
+
+.show_button {
+    width: 100%;
+}
+
+@media (max-width: 80.0rem) {
+    .center_of_screen {
+        width: 90%;
+    }
+}
+
+
+.hidden {
+    /*display: none;*/
+    opacity: 0;
+}
