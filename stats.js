@@ -34,6 +34,7 @@ function showMyBalance(myBalanceData) {
 
 
 function drawData(wallet) {
+    disableButton();
     Promise.all(
       [
           fetchMyHashrate(wallet),
@@ -51,12 +52,23 @@ function drawData(wallet) {
         showMyPayouts(myPayoutsData);
         showMyBalance(myBalanceData);
         showStats();
+        enableButton();
     });
 }
 
 function showStats() {
     var element = document.getElementById("stats");
     element.classList.remove("hidden");
+}
+
+function disableButton() {
+    const button = document.getElementById('show')
+    button.disabled = true
+}
+
+function enableButton() {
+    const button = document.getElementById('show')
+    button.disabled = false
 }
 
 function setWalletParam(wallet) {
