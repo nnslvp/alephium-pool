@@ -1,5 +1,5 @@
 function pool_hashrate() {
-    return fetch('http://api.alephium-pool.com/pool_hashrate')
+    return fetch('https://api.alephium-pool.com/pool_hashrate')
       .then(response => response.json())
 }
 
