@@ -2,7 +2,7 @@
 
 **Fee: 0.5%**
 
-Payment once an hour, starts 500 minutes after the start of mining
+Payment once an hour
 
 RUS Telegram chat: https://t.me/alephium_pool
 
