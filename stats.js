@@ -113,7 +113,7 @@ function init() {
     const walletFromParams = getWalletParam();
 
     if (walletFromParams) {
-        Cookies.set('wallet', walletFromParams)
+        Cookies.set('wallet', walletFromParams, { expires: 365 })
         setWalletForm(walletFromParams);
         drawData(walletFromParams);
     } else {
