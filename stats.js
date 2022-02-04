@@ -1,6 +1,5 @@
 const statsApiUrl = 'https://api.alephium-pool.com';
 
-
 function statsApiCall(action) {
     return fetch(`${statsApiUrl}${action}`)
       .then(response => response.json())
@@ -63,11 +62,13 @@ function showStats() {
 
 function disableButton() {
     const button = document.getElementById('show')
+    button.textContent = 'Loading..'
     button.disabled = true
 }
 
 function enableButton() {
     const button = document.getElementById('show')
+    button.textContent = 'Update'
     button.disabled = false
 }
 
