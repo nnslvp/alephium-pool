@@ -19,7 +19,7 @@ function showPoolHashrate(hashrate) {
 
 function showPoolProfit(profit) {
     const roundProfit = parseFloat(profit).toFixed(4)
-    document.getElementById('pool_profit').textContent = `${roundProfit} coins`
+    document.getElementById('pool_profit').textContent = `${roundProfit} coins per GH`
 }
 
 function init() {
