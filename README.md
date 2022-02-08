@@ -14,6 +14,7 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 ### Pool servers:
 
+* Region auto detection: **detect-my-region.alephium-pool.com:20032**
 * Europe/Russia: **eu1.alephium-pool.com:20032**
 * US: **us1.alephium-pool.com:20032**
 * Asia: **asia1.alephium-pool.com:20032**
@@ -45,7 +46,8 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 ## Bzminer:
 
 1. Download [last release of BzMiner](https://github.com/bzminer/bzminer/releases) and unzip files
-2. Update **alph** file to ``bzminer -a alph -w your_wallet_address -p stratum+tcp://eu1.alephium-pool.com:20032``
+2. Update **alph** file
+   to ``bzminer -a alph -w your_wallet_address -p stratum+tcp://detect-my-region.alephium-pool.com:20032``
 3. Run **alph** file
 4. **PROFIT!**
 
@@ -53,6 +55,6 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 1. Download [last release of T-Rex](https://github.com/trexminer/T-Rex/releases) and unzip files
 2. Update **alph** file
-   to ``t-rex.exe -a blake3 -o stratum+tcp://eu1.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0``
+   to ``t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0``
 3. Run **alph** file
 4. **PROFIT!**
