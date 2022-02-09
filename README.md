@@ -19,21 +19,12 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 * US: **us1.alephium-pool.com:20032**
 * Asia: **asia1.alephium-pool.com:20032**
 
-### You can use [Official miner](https://github.com/yahorbukhta/alephium-pool/releases) or [BzMiner](https://github.com/bzminer/bzminer) or [T-Rex](https://github.com/trexminer/T-Rex/releases)
+### You can use [BzMiner](https://github.com/bzminer/bzminer) or [T-Rex](https://github.com/trexminer/T-Rex/releases) or [Official miner](https://github.com/yahorbukhta/alephium-pool/releases)
 
 # Quick Start
 
 **Start by downloading [Alephium Wallet](https://github.com/alephium/alephium-wallet/releases)**
 
-## Our miner:
-
-### Windows & Linux
-
-1. Download last release and unzip files
-2. Update `address` to your wallet in **config.json**
-3. (optional) Also you can change `workerName`
-4. Run **nvidia_run** or **amd_run** (Linux: `sh nvidia_run` or `sh amd_run`)
-5. **PROFIT!**
 
 ### HiveOS:
 
@@ -58,3 +49,13 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
    to ``t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0``
 3. Run **alph** file
 4. **PROFIT!**
+
+## Our miner:
+
+### Windows & Linux
+
+1. Download last release and unzip files
+2. Update `address` to your wallet in **config.json**
+3. (optional) Also you can change `workerName`
+4. Run **nvidia_run** or **amd_run** (Linux: `sh nvidia_run` or `sh amd_run`)
+5. **PROFIT!**
