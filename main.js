@@ -14,7 +14,8 @@ function fetchPoolProfit() {
 }
 
 function showPoolHashrate(hashrate) {
-    document.getElementById('pool_hashrate').textContent = `${hashrate} MH/s`
+    const toHm = (h) => (parseFloat(h) / 1000000).toFixed(2)
+    document.getElementById('pool_hashrate').textContent = `${toHm(hashrate)} MH/s`
 }
 
 function showPoolProfit(profit) {
