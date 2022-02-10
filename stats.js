@@ -6,25 +6,37 @@ function statsApiCall(action) {
 }
 
 function fetchMyHashrate(wallet) {
-    return statsApiCall(`/my_hashrate?worker=${wallet}`)
+    return Promise.all(
+      [
+          statsApiCall(`/hashrate?worker=${wallet}&period=3600`),
+          statsApiCall(`/hashrate?worker=${wallet}&period=86400`),
+      ]
+    )
 }
 
 function fetchMyPayouts(wallet) {
-    return statsApiCall(`/payouts_info?worker=${wallet}`)
+    return Promise.all(
+      [
+          statsApiCall(`/payouts?worker=${wallet}&period=3600`),
+          statsApiCall(`/payouts?worker=${wallet}&period=86400`),
+      ]
+    )
 }
 
 function fetchMyBalance(wallet) {
     return statsApiCall(`/balance?worker=${wallet}`)
 }
 
-function showMyHashrate(myHashrateData) {
-    document.getElementById('my_hashrate_1h').textContent = myHashrateData.my_hashrate_1h
-    document.getElementById('my_hashrate_24h').textContent = myHashrateData.my_hashrate_24h
+function showMyHashrate({ day, hour }) {
+    const toHm = (h) => (parseFloat(h) / 1000000).toFixed(2)
+
+    document.getElementById('my_hashrate_1h').textContent = toHm(hour.hashrate)
+    document.getElementById('my_hashrate_24h').textContent = toHm(day.hashrate)
 }
 
-function showMyPayouts(myPayoutsData) {
-    document.getElementById('my_payouts_1h').textContent = parseFloat(myPayoutsData['1h'].amount).toFixed(8)
-    document.getElementById('my_payouts_24h').textContent = parseFloat(myPayoutsData['24h'].amount).toFixed(8)
+function showMyPayouts({ day, hour }) {
+    document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
+    document.getElementById('my_payouts_24h').textContent = parseFloat(day.amount).toFixed(8)
 }
 
 function showMyBalance(myBalanceData) {
@@ -42,14 +54,14 @@ function drawData(wallet) {
       ]
     ).then((
       [
-          myHashrateData,
-          myPayoutsData,
-          myBalanceData
+          [hashrate1hResponse, hashrate24hResponse],
+          [payouts1hResponse, payouts24hResponse],
+          myBalanceResponse
       ]
     ) => {
-        showMyHashrate(myHashrateData);
-        showMyPayouts(myPayoutsData);
-        showMyBalance(myBalanceData);
+        showMyHashrate({ hour: hashrate1hResponse, day: hashrate24hResponse });
+        showMyPayouts({ hour: payouts1hResponse.payouts, day: payouts24hResponse.payouts });
+        showMyBalance(myBalanceResponse);
         showStats();
         enableButton();
     });
