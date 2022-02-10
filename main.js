@@ -6,7 +6,7 @@ function statsApiCall(action) {
 }
 
 function fetchPoolHashrate() {
-    return statsApiCall('/pool_hashrate');
+    return statsApiCall(`/hashrate?period=3600`);
 }
 
 function fetchPoolProfit() {
@@ -31,12 +31,12 @@ function init() {
       ]
     ).then((
       [
-          poolHashrateData,
-          poolProfitData,
+          { hashrate },
+          { profit },
       ]
     ) => {
-        showPoolHashrate(poolHashrateData.pool_hashrate_1h)
-        showPoolProfit(poolProfitData.average_pool_profit)
+        showPoolHashrate(hashrate)
+        showPoolProfit(profit)
     });
 }
 
