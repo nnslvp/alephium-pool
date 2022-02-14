@@ -17,7 +17,7 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 * Region auto detection: **detect-my-region.alephium-pool.com:20032**
 * Europe/Russia: **eu1.alephium-pool.com:20032**
 * US: **us1.alephium-pool.com:20032**
-* Asia: **asia1.alephium-pool.com:20032**
+* Asia: **asia1.alephium-pool.com:20032** (SSL: **20033**)
 
 ### You can use [BzMiner](https://github.com/bzminer/bzminer) or [T-Rex](https://github.com/trexminer/T-Rex/releases) or [Official miner](https://github.com/yahorbukhta/alephium-pool/releases)
 
