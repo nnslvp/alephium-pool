@@ -1,3 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 50px 0;
+    box-sizing: border-box
+}
+
 .head_text h1 {
     overflow: hidden;
     border-right: .15em solid #9b4dca;
@@ -11,14 +20,6 @@
 .head_text {
     width: fit-content;
 }
-
-.center_of_screen {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 
 /* The typing effect */
 @keyframes typing {
