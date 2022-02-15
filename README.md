@@ -25,14 +25,31 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 **Start by downloading [Alephium Wallet](https://github.com/alephium/alephium-wallet/releases)**
 
+## HiveOS:
 
-### HiveOS:
+You can use: [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases), [BzMiner](https://github.com/bzminer/bzminer/releases) or [ T-Rex](https://github.com/trexminer/T-Rex/releases) for HiveOS.
 
+## Our miner:
 - Installation URL: https://github.com/yahorbukhta/alephium-pool/releases/download/v0.2/alephium-1.32.tar.gz
 - Hash algorithm: blake3-alph
 - Wallet and worker template: %WAL%
 - Pool URL: *Choose a host from Pool servers section*
 - [How to install a custom miner on HiveOS](https://hiveon.com/getting_started-start_custom_miner/)
+
+### Windows & Linux
+
+## lolMiner:
+
+1. Download [last release of lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases) and unzip files
+2. Update **alph** file, for example: **dual_mine_eth_aleph.bat**
+
+   ````
+   set "ALEPHPOOL=detect-my-region.alephium-pool.com:20032"
+   set "ALEPHWALLET=your_wallet"
+   ````
+   
+3. Run **alph** file, for example: **dual_mine_eth_aleph.bat**
+4. **PROFIT!**
 
 ## Bzminer:
 
@@ -51,8 +68,6 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 4. **PROFIT!**
 
 ## Our miner:
-
-### Windows & Linux
 
 1. Download last release and unzip files
 2. Update `address` to your wallet in **config.json**
