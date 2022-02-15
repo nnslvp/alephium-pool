@@ -19,7 +19,7 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 * US: **us1.alephium-pool.com:20032**
 * Asia: **asia1.alephium-pool.com:20032** (SSL: **20033**)
 
-### You can use [BzMiner](https://github.com/bzminer/bzminer) or [T-Rex](https://github.com/trexminer/T-Rex/releases) or [Official miner](https://github.com/yahorbukhta/alephium-pool/releases)
+### You can use [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases), [BzMiner](https://github.com/bzminer/bzminer),  [T-Rex](https://github.com/trexminer/T-Rex/releases) or [Official miner](https://github.com/yahorbukhta/alephium-pool/releases)
 
 # Quick Start
 
@@ -27,7 +27,7 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 ## HiveOS:
 
-You can use: [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases), [BzMiner](https://github.com/bzminer/bzminer/releases) or [ T-Rex](https://github.com/trexminer/T-Rex/releases) for HiveOS.
+You can use: [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases), [BzMiner](https://github.com/bzminer/bzminer/releases) or [T-Rex](https://github.com/trexminer/T-Rex/releases) for HiveOS.
 
 ## Our miner:
 - Installation URL: https://github.com/yahorbukhta/alephium-pool/releases/download/v0.2/alephium-1.32.tar.gz
