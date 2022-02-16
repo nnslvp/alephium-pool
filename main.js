@@ -5,6 +5,10 @@ function statsApiCall(action) {
       .then(response => response.json())
 }
 
+function fetchCurrencyInfo() {
+    return statsApiCall(`/rate`)
+}
+
 function fetchPoolHashrate() {
     return statsApiCall(`/hashrate?period=3600`);
 }
@@ -24,7 +28,15 @@ function showPoolHashrate(hashrate) {
 
 function showPoolProfit(profit) {
     const roundProfit = parseFloat(profit).toFixed(4)
-    document.getElementById('pool_profit').textContent = `${roundProfit} coins per GH`
+    document.getElementById('pool_profit').textContent = `${roundProfit}`
+}
+
+function showPoolProfitUSD(rate, profit) {
+    const floatProfit = parseFloat(profit);
+    const floatRate = parseFloat(rate);
+    const profitUSD = (floatProfit * floatRate).toFixed(4);
+
+    document.getElementById('pool_profit_usd').textContent = `${profitUSD}`
 }
 
 function showPool24hBlocks(blocksCount) {
@@ -57,6 +69,10 @@ function init() {
         showPoolProfit(profit);
         showPool24hBlocks(summary.blocks_24h);
         showPoolLatestBlockAt(summary.last_block_at);
+
+        fetchCurrencyInfo().then(
+          ({ rate }) => showPoolProfitUSD(profit, rate)
+        )
     });
 }
 
