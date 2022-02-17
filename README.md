@@ -8,7 +8,7 @@ RUS Telegram chat: https://t.me/alephium_pool
 
 ENG Telegram chat: https://t.me/alephium_pool_eng
 
-Discord: https://discord.gg/ZXYU2NGx
+Discord: https://discord.gg/PpUjpWSAfG
 
 Telegram bot with current balance: https://t.me/alephium_pool_bot
 
