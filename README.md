@@ -14,9 +14,9 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 ### Pool servers:
 
-* Region auto detection: **detect-my-region.alephium-pool.com:20032**
-* Europe/Russia: **eu1.alephium-pool.com:20032**
-* US: **us1.alephium-pool.com:20032**
+* Region auto detection: **detect-my-region.alephium-pool.com:20032** (SSL: **20033**)
+* Europe/Russia: **eu1.alephium-pool.com:20032** (SSL: **20033**)
+* US: **us1.alephium-pool.com:20032** (SSL: **20033**)
 * Asia: **asia1.alephium-pool.com:20032** (SSL: **20033**)
 
 # Quick Start
@@ -25,9 +25,12 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 ## HiveOS:
 
-You can use: [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases), [BzMiner](https://github.com/bzminer/bzminer/releases) or [T-Rex](https://github.com/trexminer/T-Rex/releases) for HiveOS.
+You can use: [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases)
+, [BzMiner](https://github.com/bzminer/bzminer/releases) or [T-Rex](https://github.com/trexminer/T-Rex/releases) for
+HiveOS.
 
 ## Our miner:
+
 - Installation URL: https://github.com/yahorbukhta/alephium-pool/releases/download/v0.2/alephium-1.32.tar.gz
 - Hash algorithm: blake3-alph
 - Wallet and worker template: %WAL%
@@ -45,7 +48,7 @@ You can use: [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases
    set "ALEPHPOOL=detect-my-region.alephium-pool.com:20032"
    set "ALEPHWALLET=your_wallet"
    ````
-   
+
 3. Run **alph** file, for example: **dual_mine_eth_aleph.bat**
 4. **PROFIT!**
 
