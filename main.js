@@ -52,27 +52,16 @@ function showPoolLatestBlockAt(date) {
 }
 
 function init() {
-    Promise.all(
-      [
-          fetchPoolHashrate(),
-          fetchPoolProfit(),
-          fetchPoolSummary()
-      ]
-    ).then((
-      [
-          { hashrate },
-          { profit },
-          summary,
-      ]
-    ) => {
-        showPoolHashrate(hashrate);
+    fetchPoolHashrate().then(({hashrate}) => showPoolHashrate(hashrate));
+    fetchPoolProfit().then(({profit}) => {
         showPoolProfit(profit);
+        fetchCurrencyInfo().then(
+            ({rate}) => showPoolProfitUSD(profit, rate)
+        )
+    });
+    fetchPoolSummary().then(summary => {
         showPool24hBlocks(summary.blocks_24h);
         showPoolLatestBlockAt(summary.last_block_at);
-
-        fetchCurrencyInfo().then(
-          ({ rate }) => showPoolProfitUSD(profit, rate)
-        )
     });
 }
 
