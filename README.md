@@ -1,6 +1,6 @@
 # Alephium mining pool
 
-**Fee: 0%**
+**Fee: 0.5%**
 
 Payment once an hour
 
