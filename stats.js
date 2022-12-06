@@ -27,12 +27,42 @@ function fetchMyBalance(wallet) {
     return statsApiCall(`/balance?worker=${wallet}`)
 }
 
-function showMyHashrate({ day, hour }) {
+function convertHm(hashRate, roundPlaces) {
+    const denominator = {
+        '1': [1, 'H'],
+        '6': [1000000, 'MH'],
+        '9': [1000000000, 'GH'],
+        '12': [1000000000000, 'TH']
+    }
+  
+    if(isNaN(hashRate)) {
+        return null;
+    } else {
+        const hashRateFactor = Math.log10(hashRate);
+        
+        const factor = (hashRateFactor / 12) >= 1 ? denominator['12'] : 
+        (hashRateFactor / 9) >= 1 ? denominator['9'] : 
+        (hashRateFactor / 6) >= 1 ? denominator['6'] : 
+        denominator['1'];
+       
+        const resultHashRateValue = Number((hashRate / factor[0]).toFixed(roundPlaces));
+        const resultHashRateMeasure = factor[1];
+      
+        return [resultHashRateValue, resultHashRateMeasure];
+    }
+  
+  }
+  
+  function showMyHashrate({ day, hour }) {
     const toHm = (h) => (parseFloat(h) / 1000000).toFixed(2)
-
-    document.getElementById('my_hashrate_1h').textContent = toHm(hour.hashrate)
-    document.getElementById('my_hashrate_24h').textContent = toHm(day.hashrate)
-}
+  
+    document.getElementById('my_hashrate_1h').textContent = convertHm(hour.hashrate, 2)[0]
+    document.getElementById('my_hashrate_1h_measure').textContent = convertHm(hour.hashrate, 2)[1]
+  
+    document.getElementById('my_hashrate_24h').textContent = convertHm(day.hashrate, 2)[0]
+    document.getElementById('my_hashrate_24h_measure').textContent = convertHm(day.hashrate, 2)[1]
+  
+  }
 
 function showMyPayouts({ day, hour }) {
     document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
