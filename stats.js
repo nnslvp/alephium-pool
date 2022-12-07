@@ -65,16 +65,9 @@ function shortenHm(hashRate, roundPlaces) {
   
   }
 
-  function amountUSD(myBalanceData, currencyRate) {
-    return (parseFloat(myBalanceData.ready_to_pay).toFixed(8) * currencyRate).toFixed(2)
-  }
-
-  function showMyPayouts({ day, hour }, currencyRate) {
+function showMyPayouts({ day, hour }) {
     document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
-    document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate)
-
     document.getElementById('my_payouts_24h').textContent = parseFloat(day.amount).toFixed(8)
-    document.getElementById('my_payouts_24h_usd').textContent = amountUSD(day.amount, currencyRate)
 }
 
 function balanceUSD(myBalanceData, currencyRate) {
