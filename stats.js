@@ -73,7 +73,11 @@ function shortenHm(hashRate, roundPlaces) {
   
   }
 
-function showMyPayouts({ day, hour }) {
+  function amountUSD(myBalanceData, currencyRate) {
+    return (parseFloat(myBalanceData.ready_to_pay).toFixed(8) * currencyRate).toFixed(2)
+  }
+
+  function showMyPayouts({ day, hour }, currencyRate) {
     document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
     document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate)
 
