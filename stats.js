@@ -33,7 +33,7 @@ function fetchMyBalance(wallet) {
 
 
 
-function convertHm(hashRate, roundPlaces) {
+function shortenHm(hashRate, roundPlaces) {
     const denominator = {
         '1': [1, 'H'],
         '6': [1000000, 'MH'],
@@ -54,7 +54,10 @@ function convertHm(hashRate, roundPlaces) {
         const resultHashRateValue = Number((hashRate / factor[0]).toFixed(roundPlaces))
         const resultHashRateMeasure = factor[1]
       
-        return [resultHashRateValue, resultHashRateMeasure]
+        return {
+            'hashrate': resultHashRateValue, 
+            'units': resultHashRateMeasure
+        }
     }
   
   }
