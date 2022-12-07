@@ -70,18 +70,22 @@ function convertHm(hashRate, roundPlaces) {
   
   }
 
-function showMyPayouts({ day, hour }) {
+  function amountUSD(myBalanceData, currencyRate) {
+    return (parseFloat(myBalanceData.ready_to_pay).toFixed(8) * currencyRate).toFixed(2)
+  }
+
+  function showMyPayouts({ day, hour }, currencyRate) {
     document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
+    document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate)
+
     document.getElementById('my_payouts_24h').textContent = parseFloat(day.amount).toFixed(8)
+    document.getElementById('my_payouts_24h_usd').textContent = amountUSD(day.amount, currencyRate)
 }
 
-function balanceUSD(myBalanceData, currencyRate) {
-    return (parseFloat(myBalanceData.ready_to_pay).toFixed(8) * currencyRate).toFixed(2)
-}
 
 function showMyBalance(myBalanceData, currencyRate) {
     document.getElementById('balance').textContent = parseFloat(myBalanceData.ready_to_pay).toFixed(8)
-    document.getElementById('balance_usd').textContent = balanceUSD(myBalanceData.ready_to_pay, currencyRate)
+    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.ready_to_pay, currencyRate)
 }
 
 
@@ -102,7 +106,7 @@ function drawData(wallet) {
       ]
     ) => {
         showMyHashrate({ hour: hashrate1hResponse, day: hashrate24hResponse });
-        showMyPayouts({ hour: payouts1hResponse.payouts, day: payouts24hResponse.payouts });
+        showMyPayouts({ hour: payouts1hResponse.payouts, day: payouts24hResponse.payouts }, currencyRate);
         showMyBalance(myBalanceResponse, currencyRate);
         showStats();
         enableButton();
