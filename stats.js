@@ -14,10 +14,6 @@ function fetchMyHashrate(wallet) {
     )
 }
 
-function fetchCurrencyInfo() {
-    return statsApiCall(`/rate`)
-}
-
 function fetchMyPayouts(wallet) {
     return Promise.all(
       [
@@ -33,7 +29,7 @@ function fetchMyBalance(wallet) {
 
 
 
-function shortenHm(hashRate, roundPlaces) {
+function convertHm(hashRate, roundPlaces) {
     const denominator = {
         '1': [1, 'H'],
         '6': [1000000, 'MH'],
@@ -44,20 +40,17 @@ function shortenHm(hashRate, roundPlaces) {
     if(isNaN(hashRate)) {
         return null;
     } else {
-        const hashRateFactor = Math.log10(hashRate)
+        const hashRateFactor = Math.log10(hashRate);
         
         const factor = (hashRateFactor / 12) >= 1 ? denominator['12'] : 
         (hashRateFactor / 9) >= 1 ? denominator['9'] : 
         (hashRateFactor / 6) >= 1 ? denominator['6'] : 
-        denominator['1']
+        denominator['1'];
        
-        const resultHashRateValue = Number((hashRate / factor[0]).toFixed(roundPlaces))
-        const resultHashRateMeasure = factor[1]
+        const resultHashRateValue = Number((hashRate / factor[0]).toFixed(roundPlaces));
+        const resultHashRateMeasure = factor[1];
       
-        return {
-            'hashrate': resultHashRateValue, 
-            'units': resultHashRateMeasure
-        }
+        return [resultHashRateValue, resultHashRateMeasure]
     }
   
   }
@@ -84,10 +77,13 @@ function shortenHm(hashRate, roundPlaces) {
     document.getElementById('my_payouts_24h_usd').textContent = amountUSD(day.amount, currencyRate)
 }
 
+function balanceUSD(myBalanceData, currencyRate) {
+    return (parseFloat(myBalanceData.ready_to_pay).toFixed(8) * currencyRate).toFixed(2)
+}
 
 function showMyBalance(myBalanceData, currencyRate) {
     document.getElementById('balance').textContent = parseFloat(myBalanceData.ready_to_pay).toFixed(8)
-    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.ready_to_pay, currencyRate)
+    document.getElementById('balance_usd').textContent = balanceUSD(myBalanceData.ready_to_pay, currencyRate)
 }
 
 
@@ -97,18 +93,17 @@ function drawData(wallet) {
       [
           fetchMyHashrate(wallet),
           fetchMyPayouts(wallet),
-          fetchMyBalance(wallet),
-          fetchCurrencyInfo()
+          fetchMyBalance(wallet)
       ]
     ).then((
       [
           [hashrate1hResponse, hashrate24hResponse],
           [payouts1hResponse, payouts24hResponse],
-          myBalanceResponse, currencyRate
+          myBalanceResponse
       ]
     ) => {
         showMyHashrate({ hour: hashrate1hResponse, day: hashrate24hResponse });
-        showMyPayouts({ hour: payouts1hResponse.payouts, day: payouts24hResponse.payouts }, currencyRate);
+        showMyPayouts({ hour: payouts1hResponse.payouts, day: payouts24hResponse.payouts });
         showMyBalance(myBalanceResponse, currencyRate);
         showStats();
         enableButton();
