@@ -38,7 +38,7 @@ function shortenHm(hashRate, roundPlaces) {
     if(isNaN(hashRate)) {
         return null;
     } else {
-        const hashRateFactor = Math.log10(hashRate)
+        const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0
         
         const factor = (hashRateFactor / 12) >= 1 ? denominator['12'] : 
         (hashRateFactor / 9) >= 1 ? denominator['9'] : 
