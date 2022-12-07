@@ -42,7 +42,7 @@ function shortenHm(hashRate, roundPlaces) {
     if(isNaN(hashRate)) {
         return null;
     } else {
-        const hashRateFactor = Math.log10(hashRate)
+        const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0
         
         const factor = (hashRateFactor / 12) >= 1 ? denominator['12'] : 
         (hashRateFactor / 9) >= 1 ? denominator['9'] : 
@@ -60,8 +60,6 @@ function shortenHm(hashRate, roundPlaces) {
 }
   
   function showMyHashrate({ day, hour }) {
-    const toHm = (h) => (parseFloat(h) / 1000000).toFixed(2)
-  
     document.getElementById('my_hashrate_1h').textContent = shortenHm(hour.hashrate, 2).hashrate
     document.getElementById('my_hashrate_1h_measure').textContent = shortenHm(hour.hashrate, 2).units
   
@@ -70,22 +68,22 @@ function shortenHm(hashRate, roundPlaces) {
   
   }
 
-function amountUSD(myBalanceData, currencyRate) {
-    return (parseFloat(myBalanceData.ready_to_pay).toFixed(8) * currencyRate).toFixed(2)
+function amountUSD(amountInAlph, currencyRate) {
+    return (parseFloat(amountInAlph).toFixed(8) * currencyRate).toFixed(2)
 }
 
   function showMyPayouts({ day, hour }, currencyRate) {
     document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
-    document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate)
+    document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate.rate)
 
     document.getElementById('my_payouts_24h').textContent = parseFloat(day.amount).toFixed(8)
-    document.getElementById('my_payouts_24h_usd').textContent = amountUSD(day.amount, currencyRate)
+    document.getElementById('my_payouts_24h_usd').textContent = amountUSD(day.amount, currencyRate.rate)
 }
 
 
 function showMyBalance(myBalanceData, currencyRate) {
     document.getElementById('balance').textContent = parseFloat(myBalanceData.ready_to_pay).toFixed(8)
-    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.ready_to_pay, currencyRate)
+    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.ready_to_pay, currencyRate.rate)
 }
 
 
