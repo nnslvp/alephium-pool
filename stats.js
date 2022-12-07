@@ -33,7 +33,7 @@ function fetchMyBalance(wallet) {
 
 
 
-function convertHm(hashRate, roundPlaces) {
+function shortenHm(hashRate, roundPlaces) {
     const denominator = {
         '1': [1, 'H'],
         '6': [1000000, 'MH'],
@@ -54,19 +54,21 @@ function convertHm(hashRate, roundPlaces) {
         const resultHashRateValue = Number((hashRate / factor[0]).toFixed(roundPlaces))
         const resultHashRateMeasure = factor[1]
       
-        return [resultHashRateValue, resultHashRateMeasure]
+        return {
+            'hashrate': resultHashRateValue, 
+            'units': resultHashRateMeasure
+        }
     }
   
   }
   
   function showMyHashrate({ day, hour }) {
-    const toHm = (h) => (parseFloat(h) / 1000000).toFixed(2)
   
-    document.getElementById('my_hashrate_1h').textContent = convertHm(hour.hashrate, 2)[0]
-    document.getElementById('my_hashrate_1h_measure').textContent = convertHm(hour.hashrate, 2)[1]
+    document.getElementById('my_hashrate_1h').textContent = shortenHm(hour.hashrate, 2).hashrate
+    document.getElementById('my_hashrate_1h_measure').textContent = shortenHm(hour.hashrate, 2).units
   
-    document.getElementById('my_hashrate_24h').textContent = convertHm(day.hashrate, 2)[0]
-    document.getElementById('my_hashrate_24h_measure').textContent = convertHm(day.hashrate, 2)[1]
+    document.getElementById('my_hashrate_24h').textContent = shortenHm(day.hashrate, 2).hashrate
+    document.getElementById('my_hashrate_24h_measure').textContent = shortenHm(day.hashrate, 2).units
   
   }
 
