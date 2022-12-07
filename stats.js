@@ -31,8 +31,6 @@ function fetchMyBalance(wallet) {
     return statsApiCall(`/balance?worker=${wallet}`)
 }
 
-
-
 function shortenHm(hashRate, roundPlaces) {
     const denominator = {
         '1': [1, 'H'],
@@ -59,23 +57,22 @@ function shortenHm(hashRate, roundPlaces) {
             'units': resultHashRateMeasure
         }
     }
-  
-  }
+}
   
   function showMyHashrate({ day, hour }) {
     const toHm = (h) => (parseFloat(h) / 1000000).toFixed(2)
   
-    document.getElementById('my_hashrate_1h').textContent = convertHm(hour.hashrate, 2)[0]
-    document.getElementById('my_hashrate_1h_measure').textContent = convertHm(hour.hashrate, 2)[1]
+    document.getElementById('my_hashrate_1h').textContent = shortenHm(hour.hashrate, 2).hashrate
+    document.getElementById('my_hashrate_1h_measure').textContent = shortenHm(hour.hashrate, 2).units
   
-    document.getElementById('my_hashrate_24h').textContent = convertHm(day.hashrate, 2)[0]
-    document.getElementById('my_hashrate_24h_measure').textContent = convertHm(day.hashrate, 2)[1]
+    document.getElementById('my_hashrate_24h').textContent = shortenHm(day.hashrate, 2).hashrate
+    document.getElementById('my_hashrate_24h_measure').textContent = shortenHm(day.hashrate, 2).units
   
   }
 
-  function amountUSD(myBalanceData, currencyRate) {
+function amountUSD(myBalanceData, currencyRate) {
     return (parseFloat(myBalanceData.ready_to_pay).toFixed(8) * currencyRate).toFixed(2)
-  }
+}
 
   function showMyPayouts({ day, hour }, currencyRate) {
     document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
