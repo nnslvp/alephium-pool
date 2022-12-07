@@ -29,7 +29,7 @@ function fetchMyBalance(wallet) {
 
 
 
-function convertHm(hashRate, roundPlaces) {
+function shortenHm(hashRate, roundPlaces) {
     const denominator = {
         '1': [1, 'H'],
         '6': [1000000, 'MH'],
