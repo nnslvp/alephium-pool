@@ -29,10 +29,10 @@ function fetchMyBalance(wallet) {
 
 function shortenHm(hashRate, roundPlaces) {
     const denominator = [
-        [1, 'H'],
-        [1000000, 'MH'],
+        [1000000000000, 'TH'],
         [1000000000, 'GH'],
-        [1000000000000, 'TH']
+        [1000000, 'MH'],
+        [1, 'H']
     ]
   
     if(isNaN(hashRate)) {
@@ -40,7 +40,7 @@ function shortenHm(hashRate, roundPlaces) {
     } else {
         const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0
         
-        const factor = denominator.find(el => hashRateFactor - Math.log10(el[0]) < 3)
+        const factor = denominator.find(el => hashRateFactor - Math.log10(el[0]) >= 0)
        
         const resultHashRateValue = Number((hashRate / factor[0]).toFixed(roundPlaces))
         const resultHashRateMeasure = factor[1]
