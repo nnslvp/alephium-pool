@@ -39,7 +39,7 @@ function showMyHashrate({ day, hour }) {
 }
 
 function amountUSD(amountInAlph, currencyRate) {
-    return (parseFloat(amountInAlph).toFixed(8) * currencyRate).toFixed(2)
+    return (parseFloat(amountInAlph) * currencyRate).toFixed(2)
 }
 
   function showMyPayouts({ day, hour }, currencyRate) {
