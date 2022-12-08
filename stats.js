@@ -40,10 +40,15 @@ function shortenHm(hashRate, roundPlaces) {
     } else {
         const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0
         
-        const factor = (hashRateFactor / 12) >= 1 ? denominator['12'] : 
-        (hashRateFactor / 9) >= 1 ? denominator['9'] : 
-        (hashRateFactor / 6) >= 1 ? denominator['6'] : 
-        denominator['1']
+        let factor = denominator['1'] 
+        
+        if (hashRateFactor / 12 >= 1) {
+            factor = denominator['12'] 
+        } else if (hashRateFactor / 9 >= 1) {
+            factor = denominator['9']
+        } else if (hashRateFactor / 6 >= 1) {
+            factor = denominator['6']
+        }
        
         const resultHashRateValue = Number((hashRate / factor[0]).toFixed(roundPlaces))
         const resultHashRateMeasure = factor[1]
