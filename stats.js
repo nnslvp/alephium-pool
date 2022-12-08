@@ -28,27 +28,19 @@ function fetchMyBalance(wallet) {
 }
 
 function shortenHm(hashRate, roundPlaces) {
-    const denominator = {
-        '1': [1, 'H'],
-        '6': [1000000, 'MH'],
-        '9': [1000000000, 'GH'],
-        '12': [1000000000000, 'TH']
-    }
+    const denominator = [
+        [1, 'H'],
+        [1000000, 'MH'],
+        [1000000000, 'GH'],
+        [1000000000000, 'TH']
+    ]
   
     if(isNaN(hashRate)) {
         return null;
     } else {
         const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0
         
-        let factor = denominator['1'] 
-        
-        if (hashRateFactor / 12 >= 1) {
-            factor = denominator['12'] 
-        } else if (hashRateFactor / 9 >= 1) {
-            factor = denominator['9']
-        } else if (hashRateFactor / 6 >= 1) {
-            factor = denominator['6']
-        }
+        const factor = denominator.find(el => hashRateFactor - Math.log10(el[0]) < 3)
        
         const resultHashRateValue = Number((hashRate / factor[0]).toFixed(roundPlaces))
         const resultHashRateMeasure = factor[1]
@@ -58,8 +50,7 @@ function shortenHm(hashRate, roundPlaces) {
             'units': resultHashRateMeasure
         }
     }
-  
-  }
+}
 
 function showMyHashrate({ day, hour }) {
     document.getElementById('my_hashrate_1h').textContent = shortenHm(hour.hashrate, 2).hashrate
