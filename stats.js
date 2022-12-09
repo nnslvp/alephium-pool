@@ -57,11 +57,14 @@ function shortenHm(hashRate, roundPlaces) {
 }
 
 function showMyHashrate({ day, hour }) {
-    document.getElementById('my_hashrate_1h').textContent = shortenHm(hour.hashrate, 2).hashrate
-    document.getElementById('my_hashrate_1h_measure').textContent = shortenHm(hour.hashrate, 2).units
+    const shortHourHashRate = shortenHm(hour.hashrate, 2)
+    const shortDayHashRate = shortenHm(day.hashrate, 2)
+    
+    document.getElementById('my_hashrate_1h').textContent = shortHourHashRate.hashrate
+    document.getElementById('my_hashrate_1h_measure').textContent = shortHourHashRate.units
   
-    document.getElementById('my_hashrate_24h').textContent = shortenHm(day.hashrate, 2).hashrate
-    document.getElementById('my_hashrate_24h_measure').textContent = shortenHm(day.hashrate, 2).units
+    document.getElementById('my_hashrate_24h').textContent = shortDayHashRate.hashrate
+    document.getElementById('my_hashrate_24h_measure').textContent = shortDayHashRate.units
 }
 
 function amountUSD(amountInAlph, currencyRate) {

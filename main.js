@@ -47,7 +47,8 @@ function shortenHm(hashRate, roundPlaces) {
 }
 
 function showPoolHashrate(hashrate) {
-    document.getElementById('pool_hashrate').textContent = `${shortenHm(hashrate, 2).hashrate} ${shortenHm(hashrate, 2).units}/s`
+    const shortPoolHashRate = shortenHm(hashrate, 2)
+    document.getElementById('pool_hashrate').textContent = `${shortPoolHashRate.hashrate} ${shortPoolHashRate.units}/s`
 }
 
 function showPoolProfit(profit) {
