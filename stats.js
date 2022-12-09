@@ -57,8 +57,8 @@ function shortenHm(hashRate, roundPlaces) {
 }
 
 function showMyHashrate({ day, hour }) {
-    document.getElementById('my_hashrate_1h').textContent = shortenHm(hour.hashrate, 2).hashrate
-    document.getElementById('my_hashrate_1h_measure').textContent = shortenHm(hour.hashrate, 2).units
+    document.getElementById('my_hashrate_1h').textContent = shortenHm(11111111111111111111111111111111111111111111111111, 2).hashrate
+    document.getElementById('my_hashrate_1h_measure').textContent = shortenHm(11111111111111111111111111111111111111111111111111, 2).units
   
     document.getElementById('my_hashrate_24h').textContent = shortenHm(day.hashrate, 2).hashrate
     document.getElementById('my_hashrate_24h_measure').textContent = shortenHm(day.hashrate, 2).units
