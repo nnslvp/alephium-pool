@@ -31,11 +31,40 @@ function fetchMyBalance(wallet) {
     return statsApiCall(`/balance?worker=${wallet}`)
 }
 
-function showMyHashrate({ day, hour }) {
-    const toHm = (h) => (parseFloat(h) / 1000000).toFixed(2)
+function shortenHm(hashRate, roundPlaces) {
+    const denominator = [
+        {d: 1000000000000, unit:'TH'},
+        {d:1000000000, unit:'GH'},
+        {d:1000000, unit:'MH'},
+        {d:1, unit:'H'}
+    ]
+  
+    if(isNaN(hashRate)) {
+        return null;
+    } else {
+        const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0
+        
+        const factor = denominator.find(el => hashRateFactor - Math.log10(el.d) >= 0)
+       
+        const resultHashRateValue = Number((hashRate / factor.d).toFixed(roundPlaces))
+        const resultHashRateMeasure = factor.unit
+      
+        return {
+            hashrate: resultHashRateValue, 
+            units: resultHashRateMeasure
+        }
+    }
+}
 
-    document.getElementById('my_hashrate_1h').textContent = toHm(hour.hashrate)
-    document.getElementById('my_hashrate_24h').textContent = toHm(day.hashrate)
+function showMyHashrate({ day, hour }) {
+    const shortHourHashRate = shortenHm(hour.hashrate, 2)
+    const shortDayHashRate = shortenHm(day.hashrate, 2)
+    
+    document.getElementById('my_hashrate_1h').textContent = shortHourHashRate.hashrate
+    document.getElementById('my_hashrate_1h_measure').textContent = shortHourHashRate.units
+  
+    document.getElementById('my_hashrate_24h').textContent = shortDayHashRate.hashrate
+    document.getElementById('my_hashrate_24h_measure').textContent = shortDayHashRate.units
 }
 
 function amountUSD(amountInAlph, currencyRate) {
