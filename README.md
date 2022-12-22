@@ -4,20 +4,16 @@
 
 Payment once an hour
 
-RUS Telegram chat: https://t.me/alephium_pool
-
-ENG Telegram chat: https://t.me/alephium_pool_eng
-
-Discord: https://discord.gg/PpUjpWSAfG
+Telegram community: https://t.me/alephium_pool
 
 Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 ### Pool servers:
 
-* Region auto detection: **detect-my-region.alephium-pool.com:20032** (SSL: **20033**)
+* Region auto detection: **detect-my-region.alephium-pool.com:20032**
 * Europe/Russia: **eu1.alephium-pool.com:20032** (SSL: **20033**)
-* US: **us1.alephium-pool.com:20032** (SSL: **20033**)
-* Asia: **asia1.alephium-pool.com:20032** (SSL: **20033**)
+* US: **us1.alephium-pool.com:20032**
+* Asia: **asia1.alephium-pool.com:20032**
 
 # Quick Start
 
@@ -28,14 +24,6 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 You can use: [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases)
 , [BzMiner](https://github.com/bzminer/bzminer/releases) or [T-Rex](https://github.com/trexminer/T-Rex/releases) for
 HiveOS.
-
-## Our miner:
-
-- Installation URL: https://github.com/yahorbukhta/alephium-pool/releases/download/v0.2/alephium-1.32.tar.gz
-- Hash algorithm: blake3-alph
-- Wallet and worker template: %WAL%
-- Pool URL: ``detect-my-region.alephium-pool.com:20032``
-- [How to install a custom miner on HiveOS](https://hiveon.com/getting_started-start_custom_miner/)
 
 ### Windows & Linux
 
@@ -67,11 +55,3 @@ HiveOS.
    to ``t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0``
 3. Run **alph** file
 4. **PROFIT!**
-
-## Our miner:
-
-1. Download last release and unzip files
-2. Update `address` to your wallet in **config.json**
-3. (optional) Also you can change `workerName`
-4. Run **nvidia_run** or **amd_run** (Linux: `sh nvidia_run` or `sh amd_run`)
-5. **PROFIT!**
