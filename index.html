@@ -37,6 +37,74 @@
         <p>Statistics <a href="stats.html"><b>Here</b></a> and <a href="https://t.me/alephium_pool_bot">Telegram bot</a>
         </p>
         <p>Pool statistics: <a href="pool-stats.html"><b>Here</b></a></p>
+        <p><b>Calculator</b></p>
+        <form name="calculator_form">
+            <div class="row">
+                <div class="column">
+                    <label for="hashrate_field">Hashrate</label>
+                    <input type="text" name="hashrate" id="hashrate_field" value="100">
+                </div>
+                <div class="column">
+                    <label for="power_consumption_field">Power consumption</label>
+                    <input type="text" name="power_consumption" id="power_consumption_field" value="0">
+                </div>
+                <div class="column">
+                    <label for="pool_fee_field">Pool fee</label>
+                    <input type="text" name="pool_fee" id="pool_fee_field" value="0">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="currency_field">Currency</label>
+                    <select name = "currency" id="currency_field">
+                        <option value="USD" selected>USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="RUB">RUB</option>
+                    </select>
+                </div>
+                <div class="column">
+                    <label for="electricity_costs_field">Electricity costs</label>
+                    <input type="text" name = "electricity_costs" id="electricity_costs_field" value="0.1">
+                </div>
+                <div class="column">
+                    <input class="calculator_button" type="submit" value="Calculate">
+                </div>
+            </div>
+          </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>PERIOD</th>
+                    <th>EST. REWARD</th>
+                    <th>EST. INCOME</th>
+                    <th>COSTS</th>
+                    <th>EST. PROFIT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Last 1 hour</b></td>
+                    <td id="last_1h_reward"></td>
+                    <td id="last_1h_income"></td>
+                    <td id="last_1h_costs"></td>
+                    <td id="last_1h_profit"></td>
+                </tr>
+                <tr>
+                    <td><b>Last 24 hour</b></td>
+                    <td id="last_24h_reward"></td>
+                    <td id="last_24h_income"></td>
+                    <td id="last_24h_costs"></td>
+                    <td id="last_24h_profit"></td>
+                </tr>
+                <tr>
+                    <td><b>Last 7 days</b></td>
+                    <td id="last_7d_reward"></td>
+                    <td id="last_7d_income"></td>
+                    <td id="last_7d_costs"></td>
+                    <td id="last_7d_profit"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>
@@ -63,4 +131,5 @@
 <!-- /Yandex.Metrika counter -->
 
 <script src="main.js"></script>
+<script src="calculator.js"></script>
 </html>

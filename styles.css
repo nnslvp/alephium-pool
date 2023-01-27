@@ -56,3 +56,8 @@
     /*display: none;*/
     opacity: 0;
 }
+
+.calculator_button {
+    width: 100%;
+    margin-top: 30px;
+}
