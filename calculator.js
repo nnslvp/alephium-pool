@@ -47,14 +47,10 @@ function addRow(reward, income, costs, profit, currency_value, element_reward_id
     addValue(profit, element_profit_id, currency_value);
 }
 
-const calculator_form = document.forms.calculator_form;
-
-calculator_form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
+function generateTable(calculator_form) {
     const hashrate_value = calculator_form.hashrate.value;
     const power_consumption_value = calculator_form.power_consumption.value;
-    const currency_value = calculator_form.currency.value;
+    const currency_value = "USD";
     const electricity_costs_value = calculator_form.electricity_costs.value;
 
     fetchPoolProfit().then(({profit}) => {
@@ -97,4 +93,17 @@ calculator_form.addEventListener("submit", function (event) {
                  '7d_profit')
             })
     })
+}
+
+const calculator_form = document.forms.calculator_form;
+
+calculator_form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    generateTable(calculator_form);
 });
+
+function init(calculator_form) {
+    generateTable(calculator_form);
+}
+
+init(calculator_form);
