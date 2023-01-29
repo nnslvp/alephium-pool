@@ -2,7 +2,7 @@ const ApiUrl = 'https://api.alephium-pool.com';
 
 function statsApiCall(action) {
     return fetch(`${ApiUrl}${action}`)
-      .then(response => response.json())
+        .then(response => response.json())
 }
 
 function fetchPoolProfit() {
@@ -14,9 +14,7 @@ function fetchRate() {
 }
 
 function getPoolProfitUSD(rate, profit) {
-    const floatProfit = parseFloat(profit);
-    const floatRate = parseFloat(rate);
-    return profitUSD = (floatProfit * floatRate).toFixed(4);
+    return profitUSD = profit * rate
 }
 
 function perHour(value) {
@@ -31,12 +29,12 @@ function perWeek(value) {
     return (value * 7)
 }
 
-function addValue(value, element_id, currency_value = null){
+function addValue(value, element_id, currency_value = null) {
     const costs = ['1h_costs', '24h_costs', '7d_costs']
     if (costs.includes(element_id)) {
         document.getElementById(element_id).textContent = `- ${parseFloat(value).toFixed(4)}` + ` ${currency_value}`
-    }else {
-        document.getElementById(element_id).textContent = `${parseFloat(value).toFixed(4)}` + ` ${currency_value}`    
+    } else {
+        document.getElementById(element_id).textContent = `${parseFloat(value).toFixed(4)}` + ` ${currency_value}`
     }
 }
 
@@ -53,45 +51,45 @@ function generateTable(calculator_form) {
     const currency_value = "USD";
     const electricity_costs_value = calculator_form.electricity_costs.value;
 
-    fetchPoolProfit().then(({profit}) => {
-        fetchRate().then(
-            ({rate}) => {
-                reward = profit * hashrate_value;
-                let income = getPoolProfitUSD(rate, reward)
+    Promise.all([fetchRate(), fetchPoolProfit()]).then(values => {
+        rate = values[0].rate
+        profit = values[1].profit
 
-                addRow(
-                 perHour(reward),
-                 perHour(income),
-                 costsPerTime(power_consumption_value, electricity_costs_value),
-                 perHour(income) - costsPerTime(power_consumption_value, electricity_costs_value),
-                 currency_value,
-                 '1h_reward',
-                 '1h_income',
-                 '1h_costs', 
-                 '1h_profit')
+        let reward = profit * hashrate_value;
+        let income = getPoolProfitUSD(rate, reward)
 
-                addRow(
-                 reward,
-                 income, 
-                 costsPerTime(power_consumption_value,electricity_costs_value, 24),
-                 income - costsPerTime(power_consumption_value, electricity_costs_value, 24),
-                 currency_value, 
-                 '24h_reward', 
-                 '24h_income', 
-                 '24h_costs', 
-                 '24h_profit')
+    addRow(
+        perHour(reward),
+        perHour(income),
+        costsPerTime(power_consumption_value, electricity_costs_value),
+        perHour(income) - costsPerTime(power_consumption_value, electricity_costs_value),
+        currency_value,
+        '1h_reward',
+        '1h_income',
+        '1h_costs',
+        '1h_profit')
 
-                addRow(
-                 perWeek(reward), 
-                 perWeek(income), 
-                 costsPerTime(power_consumption_value, electricity_costs_value, 168),
-                 perWeek(income) - costsPerTime(power_consumption_value, electricity_costs_value, 168),
-                 currency_value, 
-                 '7d_reward', 
-                 '7d_income', 
-                 '7d_costs', 
-                 '7d_profit')
-            })
+    addRow(
+        reward,
+        income,
+        costsPerTime(power_consumption_value, electricity_costs_value, 24),
+        income - costsPerTime(power_consumption_value, electricity_costs_value, 24),
+        currency_value,
+        '24h_reward',
+        '24h_income',
+        '24h_costs',
+        '24h_profit')
+
+    addRow(
+        perWeek(reward),
+        perWeek(income),
+        costsPerTime(power_consumption_value, electricity_costs_value, 168),
+        perWeek(income) - costsPerTime(power_consumption_value, electricity_costs_value, 168),
+        currency_value,
+        '7d_reward',
+        '7d_income',
+        '7d_costs',
+        '7d_profit')
     })
 }
 
