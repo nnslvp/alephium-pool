@@ -98,6 +98,7 @@ calculatorForm.addEventListener("submit", function (event) {
 
 function init(calculatorForm) {
     generateTable(calculatorForm);
+    document.getElementById("calculator_button").disabled = false;
 }
 
 init(calculatorForm);
