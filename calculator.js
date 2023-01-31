@@ -18,7 +18,7 @@ function getPoolProfitUSD(rate, profit) {
 }
 
 function perHour(value) {
-    return (value / 24)
+    return (value / 24);
 }
 
 function costsPerTime(powerConsumption, electricityCosts, multiplier = 1) {
@@ -26,7 +26,7 @@ function costsPerTime(powerConsumption, electricityCosts, multiplier = 1) {
 }
 
 function perWeek(value) {
-    return (value * 7)
+    return (value * 7);
 }
 
 function addCell(td) {
@@ -39,8 +39,8 @@ function addValue(tr, value, currencyValue = '', sign = '') {
 
 function addRow(tbody, period, reward, income, costs, profit, currencyValue) {
     let td = tbody.insertRow();
-    let tr_period = td.insertCell();
-    tr_period.innerHTML = period;
+    let trPeriod = td.insertCell();
+    trPeriod.innerHTML = period;
     addValue(addCell(td), reward, 'ALPH');
     addValue(addCell(td), income, currencyValue);
     addValue(addCell(td), costs, currencyValue, '-');
@@ -58,7 +58,7 @@ function generateTable(calculatorForm) {
 
     Promise.all([fetchRate(), fetchPoolProfit()]).then(function([object1, object2]) {
         let reward = object2.profit * hashrateValue;
-        let income = getPoolProfitUSD(object1.rate, reward)
+        let income = getPoolProfitUSD(object1.rate, reward);
 
         addRow(
             tbody,
