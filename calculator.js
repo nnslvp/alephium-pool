@@ -29,38 +29,19 @@ function perWeek(value) {
     return (value * 7)
 }
 
-function generateHTML() {
-    let tbody = document.getElementsByTagName('tbody')[0];
-    generateRow(tbody, '1 hour', ['1h_reward', '1h_income', '1h_costs', '1h_profit'])
-    generateRow(tbody, '24 hours', ['24h_reward', '24h_income', '24h_costs', '24h_profit'])
-    generateRow(tbody, '7 days', ['7d_reward', '7d_income', '7d_costs', '7d_profit'])
+function addValue(td, value, currency_value = '', sign = '') {
+    let tr = td.insertCell();
+    tr.innerHTML = `${sign}` + ` ${parseFloat(value).toFixed(4)}` + ` ${currency_value}`
 }
 
-function generateRow(tbody, period, elements_id) {
+function addRow(tbody, period, reward, income, costs, profit, currency_value) {
     let td = tbody.insertRow();
     let tr_period = td.insertCell();
-    let text = document.createTextNode(period);
-    tr_period.appendChild(text);
-    for (let i = 0; i < 4; i++) {   
-        let tr_value = td.insertCell();
-        tr_value.setAttribute('id', elements_id.shift());
-    }
-}
-
-function addValue(value, element_id, currency_value = null) {
-    const costs = ['1h_costs', '24h_costs', '7d_costs']
-    if (costs.includes(element_id)) {
-        document.getElementById(element_id).textContent = `- ${parseFloat(value).toFixed(4)}` + ` ${currency_value}`
-    } else {
-        document.getElementById(element_id).textContent = `${parseFloat(value).toFixed(4)}` + ` ${currency_value}`
-    }
-}
-
-function addRow(reward, income, costs, profit, currency_value, element_reward_id, element_income_id, element_costs_id, element_profit_id) {
-    addValue(reward, element_reward_id, 'ALPH');
-    addValue(income, element_income_id, currency_value);
-    addValue(costs, element_costs_id, currency_value);
-    addValue(profit, element_profit_id, currency_value);
+    tr_period.innerHTML = period;
+    addValue(td, reward, 'ALPH');
+    addValue(td, income, currency_value);
+    addValue(td, costs, currency_value, '-');
+    addValue(td, profit, currency_value);
 }
 
 function generateTable(calculator_form) {
@@ -69,42 +50,39 @@ function generateTable(calculator_form) {
     const currency_value = "USD";
     const electricity_costs_value = calculator_form.electricity_costs.value;
 
+    let tbody = document.getElementsByTagName('tbody')[0];
+    tbody.innerHTML = "";
+
     Promise.all([fetchRate(), fetchPoolProfit()]).then(function([object1, object2]) {
         let reward = object2.profit * hashrate_value;
         let income = getPoolProfitUSD(object1.rate, reward)
 
         addRow(
+            tbody,
+            '1 hour',
             perHour(reward),
             perHour(income),
             costsPerTime(power_consumption_value, electricity_costs_value),
             perHour(income) - costsPerTime(power_consumption_value, electricity_costs_value),
-            currency_value,
-            '1h_reward',
-            '1h_income',
-            '1h_costs',
-            '1h_profit')
+            currency_value)
 
         addRow(
+            tbody,
+            '24 hours',
             reward,
             income,
             costsPerTime(power_consumption_value, electricity_costs_value, 24),
             income - costsPerTime(power_consumption_value, electricity_costs_value, 24),
-            currency_value,
-            '24h_reward',
-            '24h_income',
-            '24h_costs',
-            '24h_profit')
+            currency_value)
 
         addRow(
+            tbody,
+            '7 days',
             perWeek(reward),
             perWeek(income),
             costsPerTime(power_consumption_value, electricity_costs_value, 168),
             perWeek(income) - costsPerTime(power_consumption_value, electricity_costs_value, 168),
-            currency_value,
-            '7d_reward',
-            '7d_income',
-            '7d_costs',
-            '7d_profit')
+            currency_value)
     })
 }
 
@@ -119,5 +97,4 @@ function init(calculator_form) {
     generateTable(calculator_form);
 }
 
-generateHTML();
 init(calculator_form);
