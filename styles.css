@@ -56,3 +56,17 @@
     /*display: none;*/
     opacity: 0;
 }
+
+.calculator_button {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.calculator_table {
+    min-width: 70rem;
+}
+
+.disabled {
+    background-color: '#606c76';
+    border: '#606c76';
+}

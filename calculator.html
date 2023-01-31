@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alephium mining calculator</title>
+    <meta name="description" content="Alephium mining pool with best profit.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <form name="calculator_form">
+                <div class="row">
+                    <div class="column">
+                        <label for="hashrate_field">Hashrate (GH/s)</label>
+                        <input type="text" name="hashrate" id="hashrate_field" value="1">
+                    </div>
+                    <div class="column">
+                        <label for="power_consumption_field">Power consumption (W)</label>
+                        <input type="text" name="power_consumption" id="power_consumption_field" value="0">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <label for="electricity_costs_field">Electricity costs (USD/kWh)</label>
+                        <input type="text" name = "electricity_costs" id="electricity_costs_field" value="0.1">
+                    </div>
+                    <div class="column">
+                        <input class="calculator_button" id="calculator_button" type="submit" value="Calculate">
+                    </div>
+                </div>
+              </form>
+            <table class="calculator_table">
+                <thead>
+                    <tr>
+                        <th>PERIOD</th>
+                        <th>EST. REWARD</th>
+                        <th>EST. INCOME</th>
+                        <th>ELECTRICITY COSTS</th>
+                        <th>EST. PROFIT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="calculator.js"></script>
