@@ -48,6 +48,7 @@ function addRow(tbody, period, reward, income, costs, profit, currencyValue) {
 }
 
 function generateTable(calculatorForm) {
+    document.getElementById("calculator_button").disabled = true;
     const hashrateValue = calculatorForm.hashrate.value;
     const powerConsumptionValue = calculatorForm.power_consumption.value;
     const currencyValue = "USD";
@@ -87,6 +88,7 @@ function generateTable(calculatorForm) {
             perWeek(income) - costsPerTime(powerConsumptionValue, electricityCostsValue, 168),
             currencyValue)
     })
+    document.getElementById("calculator_button").disabled = false;
 }
 
 const calculatorForm = document.forms.calculator_form;
@@ -98,7 +100,6 @@ calculatorForm.addEventListener("submit", function (event) {
 
 function init(calculatorForm) {
     generateTable(calculatorForm);
-    document.getElementById("calculator_button").disabled = false;
 }
 
 init(calculatorForm);
