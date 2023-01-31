@@ -48,16 +48,18 @@ function addRow(tbody, period, reward, income, costs, profit, currencyValue) {
 }
 
 function generateTable(calculatorForm) {
-    document.getElementById("calculator_button").disabled = true;
+    let button = document.getElementById("calculator_button");
+    button.disabled = true;
+    button.classList.add("disabled");
     const hashrateValue = calculatorForm.hashrate.value;
     const powerConsumptionValue = calculatorForm.power_consumption.value;
     const currencyValue = "USD";
     const electricityCostsValue = calculatorForm.electricity_costs.value;
 
-    let tbody = document.getElementsByTagName('tbody')[0];
-    tbody.innerHTML = "";
-
     Promise.all([fetchRate(), fetchPoolProfit()]).then(function([object1, object2]) {
+        let tbody = document.getElementsByTagName('tbody')[0];
+        tbody.innerHTML = "";
+    
         let reward = object2.profit * hashrateValue;
         let income = getPoolProfitUSD(object1.rate, reward);
 
@@ -88,7 +90,8 @@ function generateTable(calculatorForm) {
             perWeek(income) - costsPerTime(powerConsumptionValue, electricityCostsValue, 168),
             currencyValue)
     })
-    document.getElementById("calculator_button").disabled = false;
+    button.disabled = false;
+    button.classList.remove("disabled");
 }
 
 const calculatorForm = document.forms.calculator_form;

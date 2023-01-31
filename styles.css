@@ -63,5 +63,10 @@
 }
 
 table {
-    min-height: 30rem;
+    min-width: 70rem;
+}
+
+.disabled {
+    background-color: '#606c76';
+    border: '#606c76';
 }
