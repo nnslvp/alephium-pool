@@ -89,7 +89,7 @@ function generateTable(calculatorForm) {
     })
 }
 
-const calculatorForm = document.forms.calculatorForm;
+const calculatorForm = document.forms.calculator_form;
 
 calculatorForm.addEventListener("submit", function (event) {
     event.preventDefault();
