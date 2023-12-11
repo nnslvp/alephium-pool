@@ -1,10 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TT2FBGZQ');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8">
-    <title>Alephium pool stats</title>
+    <title>Alephium Pool Statistics and Charts - Monitor Mining Performance</title>
+    <link rel="icon" href="/images/icon.ico">
+    <meta name="description" content="Explore Alephium pool statistics and charts. Monitor your mining performance and track key metrics in real-time.">
+    <meta name="keywords" content="Alephium Pool, Statistics, Charts, Mining Performance, Metrics">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Stats</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css"
           integrity="sha512-xiunq9hpKsIcz42zt0o2vCo34xV0j6Ny8hgEylN3XBglZDtTZ2nwnqF/Z/TTCc18sGdvCjbFInNd++6q3J0N6g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -12,6 +29,12 @@
     <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.46/darkreader.min.js"></script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TT2FBGZQ"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 <h2 style="text-align: center">Workers</h2>
 <div id="chart_workers">
 </div>
@@ -26,25 +49,4 @@
 
 </body>
 <script src="pool-stats.js"></script>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-        m[i] = m[i] || function () {
-            (m[i].a = m[i].a || []).push(arguments)
-        };
-        m[i].l = 1 * new Date();
-        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-    ym(87265877, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true
-    });
-</script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/87265877" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript>
-<!-- /Yandex.Metrika counter -->
 </html>
