@@ -1,5 +1,7 @@
 # Alephium mining pool
 
+Site: https://alephium-pool.com
+
 **Fee: 0.5%**
 
 Payment once an hour
@@ -7,6 +9,8 @@ Payment once an hour
 Telegram community: https://t.me/alephium_pool
 
 Telegram bot with current balance: https://t.me/alephium_pool_bot
+
+Web statistics: https://alephium-pool.com/stats.html
 
 ### Pool servers:
 
@@ -20,13 +24,18 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 
 **Start by downloading [Alephium Wallet](https://github.com/alephium/alephium-wallet/releases)**
 
-## HiveOS:
+## Miners:
 
-You can use: [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases)
-, [BzMiner](https://github.com/bzminer/bzminer/releases) or [T-Rex](https://github.com/trexminer/T-Rex/releases) for
-HiveOS.
+You can use: 
+- [SRBMiner](https://github.com/doktor83/SRBMiner-Multi/releases)
+- [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases)
+- [BzMiner](https://github.com/bzminer/bzminer/releases)
+- [T-Rex](https://github.com/trexminer/T-Rex/releases)
+- [Rigel](https://github.com/rigelminer/rigel/releases)
+- [WildRig Multi](https://github.com/andru-kun/wildrig-multi/releases)
+- About other solutions you can ask in telegram community: https://t.me/alephium_pool
 
-### Windows & Linux
+### Windows examples:
 
 ## lolMiner:
 
@@ -54,5 +63,13 @@ HiveOS.
 1. Download [last release of T-Rex](https://github.com/trexminer/T-Rex/releases) and unzip files
 2. Update **alph** file
    to ``t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0``
+3. Run **alph** file
+4. **PROFIT!**
+
+## SRBMiner:
+
+1. Download [last release of SRBMiner](https://github.com/doktor83/SRBMiner-Multi/releases) and unzip files
+2. Update **alph** file
+   to ``SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool detect-my-region.alephium-pool.com:20032 --wallet your_wallet_address``
 3. Run **alph** file
 4. **PROFIT!**
