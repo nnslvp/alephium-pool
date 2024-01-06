@@ -11,7 +11,8 @@ Telegram bot with current balance: https://t.me/alephium_pool_bot
 ### Pool servers:
 
 * Region auto detection: **detect-my-region.alephium-pool.com:20032**
-* Europe/Russia: **eu1.alephium-pool.com:20032** (SSL: **20033**)
+* Europe: **eu1.alephium-pool.com:20032** (SSL: **20033**)
+* Russia: **ru1.alephium-pool.com:20032** (SSL: **20033**)
 * US: **us1.alephium-pool.com:20032**
 * Asia: **asia1.alephium-pool.com:20032**
 
