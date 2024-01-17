@@ -4,8 +4,6 @@ Site: https://alephium-pool.com
 
 **Fee: 0.5%**
 
-Payment once an hour
-
 Telegram community: https://t.me/alephium_pool
 
 Telegram bot with current balance: https://t.me/alephium_pool_bot
