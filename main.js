@@ -9,10 +9,6 @@ function fetchCurrencyInfo() {
     return statsApiCall(`/rate`)
 }
 
-function fetchPoolHashrate() {
-    return statsApiCall(`/hashrate?period=3600`);
-}
-
 function fetchPoolProfit() {
     return statsApiCall('/profit');
 }
@@ -28,19 +24,19 @@ function shortenHm(hashRate, roundPlaces) {
         {d:1000000, unit:'MH'},
         {d:1, unit:'H'}
     ]
-  
+
     if(isNaN(hashRate)) {
         return null;
     } else {
         const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0
-        
+
         const factor = denominator.find(el => hashRateFactor - Math.log10(el.d) >= 0)
-       
+
         const resultHashRateValue = Number((hashRate / factor.d).toFixed(roundPlaces))
         const resultHashRateMeasure = factor.unit
-      
+
         return {
-            hashrate: resultHashRateValue, 
+            hashrate: resultHashRateValue,
             units: resultHashRateMeasure
         }
     }
@@ -77,7 +73,6 @@ function showPoolLatestBlockAt(date) {
 }
 
 function init() {
-    fetchPoolHashrate().then(({hashrate}) => showPoolHashrate(hashrate));
     fetchPoolProfit().then(({profit}) => {
         showPoolProfit(profit);
         fetchCurrencyInfo().then(
@@ -85,6 +80,7 @@ function init() {
         )
     });
     fetchPoolSummary().then(summary => {
+        showPoolHashrate(summary.pool_hashrate_1h, summary.hashrate_units)
         showPool24hBlocks(summary.blocks_24h);
         showPoolLatestBlockAt(summary.last_block_at);
     });

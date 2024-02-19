@@ -77,7 +77,7 @@ function Init() {
     statsApiCall().then(response => {
         const poolStats = response.pool_stats;
 
-        drawChart(poolStats, "workers");
+        drawChart(poolStats, "wallets");
         drawChart(poolStats, "shares_difficulty");
 
         const calculateHashrate = (item) => ((item["shares_difficulty"] * 16.0 * (2 ** 30)) / 86400) / 1000000;

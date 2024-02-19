@@ -2,15 +2,15 @@ const statsApiUrl = 'https://api.alephium-pool.com';
 
 function statsApiCall(action) {
     return fetch(`${statsApiUrl}${action}`)
-      .then(response => response.json())
+        .then(response => response.json())
 }
 
 function fetchMyHashrate(wallet) {
     return Promise.all(
-      [
-          statsApiCall(`/hashrate?worker=${wallet}&period=3600`),
-          statsApiCall(`/hashrate?worker=${wallet}&period=86400`),
-      ]
+        [
+            statsApiCall(`/workers?wallet=${wallet}&period=3600`),
+            statsApiCall(`/workers?wallet=${wallet}&period=86400`),
+        ]
     )
 }
 
@@ -20,49 +20,49 @@ function fetchCurrencyInfo() {
 
 function fetchMyPayouts(wallet) {
     return Promise.all(
-      [
-          statsApiCall(`/payouts?worker=${wallet}&period=3600`),
-          statsApiCall(`/payouts?worker=${wallet}&period=86400`),
-      ]
+        [
+            statsApiCall(`/payouts?wallet=${wallet}&period=3600`),
+            statsApiCall(`/payouts?wallet=${wallet}&period=86400`),
+        ]
     )
 }
 
 function fetchMyBalance(wallet) {
-    return statsApiCall(`/balance?worker=${wallet}`)
+    return statsApiCall(`/balance?wallet=${wallet}`)
 }
 
 function shortenHm(hashRate, roundPlaces) {
     const denominator = [
-        {d: 1000000000000, unit:'TH'},
-        {d:1000000000, unit:'GH'},
-        {d:1000000, unit:'MH'},
-        {d:1, unit:'H'}
+        {d: 1000000000000, unit: 'TH'},
+        {d: 1000000000, unit: 'GH'},
+        {d: 1000000, unit: 'MH'},
+        {d: 1, unit: 'H'}
     ]
-  
-    if(isNaN(hashRate)) {
+
+    if (isNaN(hashRate)) {
         return null;
     } else {
         const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0
-        
+
         const factor = denominator.find(el => hashRateFactor - Math.log10(el.d) >= 0)
-       
+
         const resultHashRateValue = Number((hashRate / factor.d).toFixed(roundPlaces))
         const resultHashRateMeasure = factor.unit
-      
+
         return {
-            hashrate: resultHashRateValue, 
+            hashrate: resultHashRateValue,
             units: resultHashRateMeasure
         }
     }
 }
 
-function showMyHashrate({ day, hour }) {
+function showMyHashrate({day, hour}) {
     const shortHourHashRate = shortenHm(hour.hashrate, 2)
     const shortDayHashRate = shortenHm(day.hashrate, 2)
-    
+
     document.getElementById('my_hashrate_1h').textContent = shortHourHashRate.hashrate
     document.getElementById('my_hashrate_1h_measure').textContent = shortHourHashRate.units
-  
+
     document.getElementById('my_hashrate_24h').textContent = shortDayHashRate.hashrate
     document.getElementById('my_hashrate_24h_measure').textContent = shortDayHashRate.units
 }
@@ -71,7 +71,7 @@ function amountUSD(amountInAlph, currencyRate) {
     return (parseFloat(amountInAlph) * currencyRate).toFixed(2)
 }
 
-  function showMyPayouts({ day, hour }, currencyRate) {
+function showMyPayouts({day, hour}, currencyRate) {
     document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
     document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate.rate)
 
@@ -89,21 +89,40 @@ function showMyBalance(myBalanceData, currencyRate) {
 function drawData(wallet) {
     disableButton();
     Promise.all(
-      [
-          fetchMyHashrate(wallet),
-          fetchMyPayouts(wallet),
-          fetchMyBalance(wallet),
-          fetchCurrencyInfo()
-      ]
+        [
+            fetchMyHashrate(wallet),
+            fetchMyPayouts(wallet),
+            fetchMyBalance(wallet),
+            fetchCurrencyInfo()
+        ]
     ).then((
-      [
-          [hashrate1hResponse, hashrate24hResponse],
-          [payouts1hResponse, payouts24hResponse],
-          myBalanceResponse, currencyRate
-      ]
+        [
+            [hashrate1hResponse, hashrate24hResponse],
+            [payouts1hResponse, payouts24hResponse],
+            myBalanceResponse, currencyRate
+        ]
     ) => {
-        showMyHashrate({ hour: hashrate1hResponse, day: hashrate24hResponse });
-        showMyPayouts({ hour: payouts1hResponse.payouts, day: payouts24hResponse.payouts }, currencyRate);
+        const hashrate1h = hashrate1hResponse.workers.reduce((accumulator, v) => {
+            return accumulator + parseFloat(v.hashrate)
+        }, 0);
+
+        const hashrate24h = hashrate24hResponse.workers.reduce((accumulator, v) => {
+            return accumulator + parseFloat(v.hashrate)
+        }, 0);
+
+        const payouts1h = payouts1hResponse.payouts.reduce((accumulator, v) => {
+            return accumulator + parseFloat(v.amount)
+        }, 0);
+
+        const payouts24h = payouts24hResponse.payouts.reduce((accumulator, v) => {
+            return accumulator + parseFloat(v.amount)
+        }, 0);
+
+        showMyHashrate({
+            hour: {hashrate: hashrate1h, units: hashrate1hResponse.units},
+            day: {hashrate: hashrate24h, units: hashrate1hResponse.units}
+        });
+        showMyPayouts({hour: {amount: payouts1h}, day: {amount: payouts24h}}, currencyRate);
         showMyBalance(myBalanceResponse, currencyRate);
         showStats();
         enableButton();
@@ -169,7 +188,7 @@ function init() {
     const walletFromParams = getWalletParam();
 
     if (walletFromParams) {
-        Cookies.set('wallet', walletFromParams, { expires: 365 })
+        Cookies.set('wallet', walletFromParams, {expires: 365})
         setWalletForm(walletFromParams);
         drawData(walletFromParams);
     } else {
