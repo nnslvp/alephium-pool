@@ -20,7 +20,8 @@
     <meta charset="UTF-8">
     <title>Alephium Wallet Address Statistics - Track Your Mining Performance</title>
     <link rel="icon" href="/images/icon.ico">
-    <meta name="description" content="View Alephium wallet address statistics and track your mining performance. Monitor earnings, hashrate, and more in real-time.">
+    <meta name="description"
+          content="View Alephium wallet address statistics and track your mining performance. Monitor earnings, hashrate, and more in real-time.">
     <meta name="keywords" content="Alephium Wallet Address, Statistics, Mining Performance, Earnings, Hashrate">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
@@ -46,11 +47,28 @@
         </form>
         <div id="stats" class="hidden">
             <p>Your balance: <b><span id="balance"></span></b> ~ <span id="balance_usd"></span> USD</p>
-            <p>Your hashrate 1h/24h: <b><span id="my_hashrate_1h"></span></b> <span id="my_hashrate_1h_measure"></span>/s / <b><span
-                id="my_hashrate_24h"></span></b> <span id="my_hashrate_24h_measure"></span>/s</p>
-            <p>Your payouts 1h/24h: <b><span id="my_payouts_1h"></span></b> ~ <span id="my_payouts_1h_usd"></span> USD / <b><span id="my_payouts_24h"></span></b> ~ <span id="my_payouts_24h_usd"></span> USD
+            <p>Your hashrate 1h/24h: <b><span id="my_hashrate_1h"></span></b> <span id="my_hashrate_1h_measure"></span>/s
+                / <b><span
+                        id="my_hashrate_24h"></span></b> <span id="my_hashrate_24h_measure"></span>/s</p>
+            <p>Your payouts 1h/24h: <b><span id="my_payouts_1h"></span></b> ~ <span id="my_payouts_1h_usd"></span> USD /
+                <b><span id="my_payouts_24h"></span></b> ~ <span id="my_payouts_24h_usd"></span> USD
             </p>
             <p>Min payout: <b>0.3 coin</b>. Payouts every <b>30 minutes</b>. Pool fee: <b>0.5%</b></p>
+            <div id="workers-stats">
+                <table id="workers-table">
+                    <thead>
+                    <tr>
+                        <th>Worker</th>
+                        <th>Hashrate 1h/24h</th>
+                        <th>Valid Shares 1h/24h</th>
+                        <th>Invalid Shares 1h/24h</th>
+                        <th>Last Share At</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
