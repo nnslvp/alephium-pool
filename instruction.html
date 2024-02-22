@@ -14,6 +14,10 @@
       box-sizing: border-box;
     }
 
+    p {
+      margin: 0;
+    }
+
     button.button {
       border: none;
       background-color: transparent;
@@ -26,6 +30,14 @@
       color: #9b4dca;
       text-decoration: none;
     }
+
+    body {
+      background-image: url('./images/a.jpg');
+      background-position: top;
+      background-size: contain;
+      background-repeat: repeat;
+    }
+
 
     .wrapper {
       color: #606c76;
@@ -244,6 +256,63 @@
     .button-copy.copied .tooltiptext {
       animation: fadeInFadeOutTooltip 1s ease-in-out forwards;
     }
+
+
+    ul.list-servers {
+      list-style: none;
+      margin: 1.75rem 0;
+      padding-left: 1rem;
+    }
+
+    ul.list-servers>li {
+      background: white;
+      border-radius: 0 0.5rem 0.5rem 0.5rem;
+      box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+      margin-top: 1rem;
+      min-height: 3rem;
+      padding: 1rem 1rem 1rem 3rem;
+      position: relative;
+    }
+
+    ul.list-servers>li::before,
+    ul.list-servers>li::after {
+      border-radius: 1rem 1rem 0 1rem;
+      text-align: center;
+      font-size: 50px;
+      height: 4rem;
+      left: -1rem;
+      position: absolute;
+      top: -1rem;
+      width: 3rem;
+    }
+
+    ul.list-servers>li:nth-child(1)::before {
+      content: '🌏';
+      /* Эмодзи Земли для первого элемента */
+    }
+
+    ul.list-servers>li:nth-child(2)::before {
+      content: '🇪🇺';
+      /* Флаг Евросоюза для второго элемента */
+    }
+
+    ul.list-servers>li:nth-child(3)::before {
+      content: '🇷🇺';
+    }
+
+    ul.list-servers>li:nth-child(4)::before {
+      content: '🇺🇸';
+    }
+
+    ul.list-servers>li:nth-child(5)::before {
+      content: '🇸🇬';
+    }
+
+
+
+    ul.list-servers>li+li {
+      margin-top: 2rem;
+    }
   </style>
 </head>
 
@@ -277,12 +346,30 @@
         </div>
         <div>
           <h3>Pool servers:</h3>
-          <ul>
-            <li>🌏 Region auto detection: <b>detect-my-region.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇪🇺 Europe: <b>eu1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇷🇺 Russia: <b>ru1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇺🇸 US: <b>us1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇸🇬 Asia: <b>asia1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
+          <ul class="list-servers">
+            <li>
+              Region auto detection
+              <p><b>detect-my-region.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</p>
+
+            </li>
+            <li>Europe
+              <p><b>eu1.alephium-pool.com:20032</b> (SSL: <b>20033</b>) </p>
+            </li>
+            <li>
+              Russia
+              <p><b>ru1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</p>
+            </li>
+            <li>
+              US
+              <p><b>us1.alephium-pool.com:20032</b>
+                (SSL: <b>20033</b>)</p>
+            </li>
+            <li>
+              Asia
+              <p>
+                <b>asia1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
+              </p>
+            </li>
           </ul>
         </div>
       </div>
