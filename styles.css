@@ -46,6 +46,10 @@
 }
 
 /* style for instruction.html */
+.header-guide {
+	padding-top: 1.25rem;
+}
+
 .container-guide {
 	max-width: 75rem;
 	margin: 0 auto;

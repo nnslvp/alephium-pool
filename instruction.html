@@ -13,7 +13,7 @@
 
 <body>
   <div class="wrapper">
-    <section>
+    <header class="header-guide">
       <div class="container-guide">
         <h2>Alephium mining pool</h2>
         <p>
@@ -36,178 +36,166 @@
         <div>
           <h3>Pool servers:</h3>
           <ul class="list-servers">
-            <li>
-              Region auto detection
-              <b>detect-my-region.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
-            </li>
-            <li>Europe
-              <b>eu1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
-            </li>
-            <li>
-              Russia
-              <b>ru1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
-            </li>
-            <li>
-              US
-              <b>us1.alephium-pool.com:20032</b>
-              (SSL: <b>20033</b>)
-            </li>
-            <li>
-              Asia
-              <b>asia1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
-            </li>
+            <li>🌎 Region auto detection: <b>detect-my-region.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
+            <li>🇪🇺 Europe: <b>eu1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
+            <li>🇷🇺 Russia: <b>ru1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
+            <li>🇺🇸 US: <b>us1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
+            <li>🇸🇬 Asia: <b>asia1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
           </ul>
         </div>
       </div>
-    </section>
-    <article>
-      <div class="container-guide">
-        <h1>Quick Start</h1>
-        <p><strong>Start by downloading <a href="https://github.com/alephium/alephium-wallet/releases">Alephium
-              Wallet</a></strong></p>
-        <section>
-          <h2>Miners</h2>
-          <div class="miners-list">
-            <p>You can use:</p>
-            <ul>
-              <li>
-                <a href="https://github.com/doktor83/SRBMiner-Multi/releases">SRBMiner</a>
-              </li>
-              <li>
-                <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">lolMiner</a>
-              </li>
-              <li>
-                <a href="https://github.com/bzminer/bzminer/releases">BzMiner</a>
-              </li>
-              <li>
-                <a href="https://github.com/trexminer/T-Rex/releases">T-Rex</a>
-              </li>
-              <li>
-                <a href="https://github.com/rigelminer/rigel/releases">Rigel</a>
-              </li>
-              <li>
-                <a href="https://github.com/andru-kun/wildrig-multi/releases">WildRig Multi</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <p>About other solutions you can ask in <a href="https://t.me/alephium_pool"> telegram community:</a></p>
-          </div>
-        </section>
-        <section>
-          <h2>Windows examples</h2>
-
+    </header>
+    <main>
+      <article>
+        <div class="container-guide">
+          <h1>Quick Start</h1>
+          <p><strong>Start by downloading <a href="https://github.com/alephium/alephium-wallet/releases">Alephium
+                Wallet</a></strong></p>
           <section>
-            <h3>lolMiner</h3>
-            <ol>
-              <li>
-                Download
-                <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">
-                  last release of lolMiner</a>
-                and unzip files
-              </li>
-              <li>
-                Update <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong>
-                <div class="code-wrapper">
-                  <button class="button button-clear  button-copy ">
-                    <i class="icon icon-copy"></i>
-                    <span class="tooltiptext">
-                      Copied!</span>
-                  </button>
-                  <pre class="code-container">
-                  <code>
-                    set "ALEPHPOOL=detect-my-region.alephium-pool.com:20032"
-                    set "ALEPHWALLET=your_wallet"</code>
-                </pre>
-                </div>
-              </li>
-              <li>
-                Run <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong>
-              </li>
-              <li>
-                <strong class="profit">PROFIT! 🚀</strong>
-              </li>
-            </ol>
+            <h2>Miners</h2>
+            <div class="miners-list">
+              <p>You can use:</p>
+              <ul>
+                <li>
+                  <a href="https://github.com/doktor83/SRBMiner-Multi/releases">SRBMiner</a>
+                </li>
+                <li>
+                  <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">lolMiner</a>
+                </li>
+                <li>
+                  <a href="https://github.com/bzminer/bzminer/releases">BzMiner</a>
+                </li>
+                <li>
+                  <a href="https://github.com/trexminer/T-Rex/releases">T-Rex</a>
+                </li>
+                <li>
+                  <a href="https://github.com/rigelminer/rigel/releases">Rigel</a>
+                </li>
+                <li>
+                  <a href="https://github.com/andru-kun/wildrig-multi/releases">WildRig Multi</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p>About other solutions you can ask in <a href="https://t.me/alephium_pool"> telegram community:</a></p>
+            </div>
           </section>
-
-
           <section>
-            <h2>Bzminer:</h2>
-            <ol>
-              <li>Download <a href="https://github.com/bzminer/bzminer/releases">last release of BzMiner</a> and unzip
-                files</li>
-              <li>Update <strong>alph</strong> file
-                to
-                <div class="code-wrapper">
-                  <button class="button button-clear  button-copy">
-                    <i class="icon-copy"></i>
-                    <span class="tooltiptext">
-                      Copied!</span>
-                  </button>
-                  <pre class="code-container">
-                    <code>bzminer -a alph -w your_wallet_address -p stratum+tcp://detect-my-region.alephium-pool.com:20032</code>
-                  </pre>
-                </div>
-              </li>
-              <li>Run <strong>alph</strong> file</li>
-              <li><strong class="profit">PROFIT! 🚀</strong></li>
-            </ol>
-          </section>
+            <h2>Windows examples</h2>
 
-          <section>
-            <h2>T-Rex:</h2>
-            <ol>
-              <li>Download <a href="https://github.com/trexminer/T-Rex/releases">last release of T-Rex</a> and unzip
-                files
-              </li>
-              <li>Update <strong>alph</strong> file
-                to
-                <div class="code-wrapper">
-                  <button class="button button-clear  button-copy">
-                    <i class="icon-copy"></i>
-                    <span class="tooltiptext">
-                      Copied!</span>
-                  </button>
-                  <pre class="code-container">
-                  <code>t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0</code>
-                </pre>
-                </div>
-              </li>
-              <li>Run <strong>alph</strong> file</li>
-              <li>
-                <strong class="profit">PROFIT! 🚀</strong>
-              </li>
-            </ol>
-          </section>
+            <section>
+              <h3>lolMiner</h3>
+              <ol>
+                <li>
+                  Download
+                  <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">
+                    last release of lolMiner</a>
+                  and unzip files
+                </li>
+                <li>
+                  Update <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong>
+                  <div class="code-wrapper">
+                    <button class="button button-clear  button-copy ">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                    <pre class="code-container">
+                            <code>
+                              set "ALEPHPOOL=detect-my-region.alephium-pool.com:20032"
+                              set "ALEPHWALLET=your_wallet"</code>
+                          </pre>
+                  </div>
+                </li>
+                <li>
+                  Run <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong>
+                </li>
+                <li>
+                  <strong class="profit">PROFIT! 🚀</strong>
+                </li>
+              </ol>
+            </section>
 
-          <section>
-            <h2>SRBMiner:</h2>
-            <ol>
-              <li>Download <a href="https://github.com/doktor83/SRBMiner-Multi/releases">last release of SRBMiner</a>
-                and
-                unzip
-                files</li>
-              <li>Update <strong>alph</strong> file
-                to
-                <div class="code-wrapper">
-                  <button class="button button-clear  button-copy">
-                    <i class="icon-copy"></i>
-                    <span class="tooltiptext">
-                      Copied!</span>
-                  </button>
-                  <pre class="code-container">
-                  <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool detect-my-region.alephium-pool.com:20032 --wallet your_wallet_address</code>
-                </pre>
-                </div>
-              </li>
-              <li>Run <strong>alph</strong> file</li>
-              <li><strong class="profit">PROFIT! 🚀</strong></li>
-            </ol>
-          </section>
 
-        </section>
-      </div>
-    </article>
+            <section>
+              <h2>Bzminer:</h2>
+              <ol>
+                <li>Download <a href="https://github.com/bzminer/bzminer/releases">last release of BzMiner</a> and unzip
+                  files</li>
+                <li>Update <strong>alph</strong> file
+                  to
+                  <div class="code-wrapper">
+                    <button class="button button-clear  button-copy">
+                      <i class="icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                    <pre class="code-container">
+                              <code>bzminer -a alph -w your_wallet_address -p stratum+tcp://detect-my-region.alephium-pool.com:20032</code>
+                            </pre>
+                  </div>
+                </li>
+                <li>Run <strong>alph</strong> file</li>
+                <li><strong class="profit">PROFIT! 🚀</strong></li>
+              </ol>
+            </section>
+
+            <section>
+              <h2>T-Rex:</h2>
+              <ol>
+                <li>Download <a href="https://github.com/trexminer/T-Rex/releases">last release of T-Rex</a> and unzip
+                  files
+                </li>
+                <li>Update <strong>alph</strong> file
+                  to
+                  <div class="code-wrapper">
+                    <button class="button button-clear  button-copy">
+                      <i class="icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                    <pre class="code-container">
+                            <code>t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0</code>
+                          </pre>
+                  </div>
+                </li>
+                <li>Run <strong>alph</strong> file</li>
+                <li>
+                  <strong class="profit">PROFIT! 🚀</strong>
+                </li>
+              </ol>
+            </section>
+
+            <section>
+              <h2>SRBMiner:</h2>
+              <ol>
+                <li>Download <a href="https://github.com/doktor83/SRBMiner-Multi/releases">last release of SRBMiner</a>
+                  and
+                  unzip
+                  files</li>
+                <li>Update <strong>alph</strong> file
+                  to
+                  <div class="code-wrapper">
+                    <button class="button button-clear  button-copy">
+                      <i class="icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                    <pre class="code-container">
+                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool detect-my-region.alephium-pool.com:20032 --wallet your_wallet_address</code>
+                          </pre>
+                  </div>
+                </li>
+                <li>Run <strong>alph</strong> file</li>
+                <li><strong class="profit">PROFIT! 🚀</strong></li>
+              </ol>
+            </section>
+
+          </section>
+        </div>
+      </article>
+    </main>
+
     <footer class="footer">
       <div class="container-guide">
         <div class="footer__inner">
