@@ -12,11 +12,11 @@ Web statistics: https://alephium-pool.com/stats.html
 
 ### Pool servers:
 
-- Region auto detection: **detect-my-region.alephium-pool.com:20032**
-- Europe: **eu1.alephium-pool.com:20032** (SSL: **20033**)
-- Russia: **ru1.alephium-pool.com:20032** (SSL: **20033**)
-- US: **us1.alephium-pool.com:20032**
-- Asia: **asia1.alephium-pool.com:20032**
+* Region auto detection: **detect-my-region.alephium-pool.com:20032**
+* Europe: **eu1.alephium-pool.com:20032** (SSL: **20033**)
+* Russia: **ru1.alephium-pool.com:20032** (SSL: **20033**)
+* US: **us1.alephium-pool.com:20032**
+* Asia: **asia1.alephium-pool.com:20032**
 
 # Quick Start
 
@@ -24,8 +24,7 @@ Web statistics: https://alephium-pool.com/stats.html
 
 ## Miners:
 
-You can use:
-
+You can use: 
 - [SRBMiner](https://github.com/doktor83/SRBMiner-Multi/releases)
 - [lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases)
 - [BzMiner](https://github.com/bzminer/bzminer/releases)
@@ -41,10 +40,10 @@ You can use:
 1. Download [last release of lolMiner](https://github.com/Lolliedieb/lolMiner-releases/releases) and unzip files
 2. Update **alph** file, for example: **dual_mine_eth_aleph.bat**
 
-   ```
+   ````
    set "ALEPHPOOL=detect-my-region.alephium-pool.com:20032"
    set "ALEPHWALLET=your_wallet"
-   ```
+   ````
 
 3. Run **alph** file, for example: **dual_mine_eth_aleph.bat**
 4. **PROFIT!**
@@ -53,7 +52,7 @@ You can use:
 
 1. Download [last release of BzMiner](https://github.com/bzminer/bzminer/releases) and unzip files
 2. Update **alph** file
-   to `bzminer -a alph -w your_wallet_address -p stratum+tcp://detect-my-region.alephium-pool.com:20032`
+   to ``bzminer -a alph -w your_wallet_address -p stratum+tcp://detect-my-region.alephium-pool.com:20032``
 3. Run **alph** file
 4. **PROFIT!**
 
@@ -61,7 +60,7 @@ You can use:
 
 1. Download [last release of T-Rex](https://github.com/trexminer/T-Rex/releases) and unzip files
 2. Update **alph** file
-   to `t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0`
+   to ``t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0``
 3. Run **alph** file
 4. **PROFIT!**
 
@@ -69,6 +68,6 @@ You can use:
 
 1. Download [last release of SRBMiner](https://github.com/doktor83/SRBMiner-Multi/releases) and unzip files
 2. Update **alph** file
-   to `SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool detect-my-region.alephium-pool.com:20032 --wallet your_wallet_address`
+   to ``SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool detect-my-region.alephium-pool.com:20032 --wallet your_wallet_address``
 3. Run **alph** file
 4. **PROFIT!**
