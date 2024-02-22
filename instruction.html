@@ -6,320 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alephium Mining Pool - Guide</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-  <!-- <link rel="stylesheet" href="styles.css"> -->
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    button.button {
-      border: none;
-      background-color: transparent;
-      font-family: inherit;
-      padding: 0;
-      cursor: pointer;
-    }
-
-    a {
-      color: #9b4dca;
-      text-decoration: none;
-    }
-
-    body {
-      background-image: url('./images/a.jpg');
-      background-position: top;
-      background-size: contain;
-      background-repeat: repeat;
-    }
-
-
-    .wrapper {
-      color: #606c76;
-      font-family: 'Helvetica Neue', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      letter-spacing: .01em;
-      line-height: 1.6
-    }
-
-    .container {
-      max-width: 54rem;
-      margin: 0 auto;
-      padding: 0 .3125rem;
-    }
-
-    a {
-      color: #6C16F2;
-      transition: all 0.3s ease-in-out;
-      position: relative;
-    }
-
-    a:hover {
-      color: #79ea86;
-    }
-
-    a::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      border-radius: 2px;
-      background-color: #79ea86;
-      bottom: 0;
-      left: 0;
-      transform-origin: right;
-      transform: scaleX(0);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    a:hover::before {
-      transform-origin: left;
-      transform: scaleX(1);
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    .code-container {
-      position: relative;
-      background-color: #f9f9f9;
-      border: 1px solid #ffffff;
-      border-left: 3px solid #1AB3EB;
-      color: #6C16F2;
-      page-break-inside: avoid;
-      font-family: monospace;
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 1.25rem 0 1.25rem 0;
-      max-width: 100%;
-      display: block;
-      padding: 10px 20px;
-      border-radius: 4px;
-    }
-
-    .code-container code {
-      background-color: inherit;
-      max-width: 100%;
-      overflow: auto;
-      display: block;
-      padding: 0;
-      margin: 0;
-      white-space: pre-line;
-      word-wrap: break-word;
-    }
-
-    .icon-copy {
-      cursor: pointer;
-      display: block;
-      width: 1rem;
-      height: 1rem;
-      background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' height='16' fill='%236C16F2' viewBox='0 0 16 16' version='1.1' width='16'%3E%3Cpath d='M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z'%3E%3C/path%3E%3Cpath d='M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z'%3E%3C/path%3E%3C/svg%3E");
-      background-size: cover;
-    }
-
-    .button-copy {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-    }
-
-    .miners-list {
-      position: relative;
-    }
-
-    .miners-list a::before {
-      all: initial;
-    }
-
-
-    .miners-list ul {
-      width: 50%;
-      position: relative;
-    }
-
-    .miners-list ul li {
-      position: relative;
-      left: 0;
-      color: #fce4ec;
-      list-style: none;
-      margin: 4px 0;
-      border-left: 2px solid #1AB3EB;
-      transition: 0.5s;
-      cursor: pointer;
-    }
-
-    .miners-list ul li:hover {
-      left: 10px;
-    }
-
-    .miners-list ul li a {
-      position: relative;
-      padding: 8px;
-      padding-left: 12px;
-      display: block;
-      z-index: 1;
-      transition: 0.5s;
-    }
-
-    .miners-list ul li:hover a {
-      color: #ffffff;
-    }
-
-    .miners-list ul li:before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #6C16F2;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: 0.5s;
-    }
-
-    .miners-list ul li:hover:before {
-      transform: scaleX(1);
-    }
-
-    .profit {
-      color: #79ea86;
-    }
-
-    .footer {
-      padding: 1.875rem;
-    }
-
-    .footer .container {
-      text-align: center;
-    }
-
-    .footer__inner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: .625rem;
-    }
-
-    .logo-image {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-
-    @keyframes fadeInFadeOutTooltip {
-      0% {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      100% {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    .tooltiptext {
-      visibility: hidden;
-      background-color: #555;
-      color: #fff;
-      text-align: center;
-      padding: .3125rem;
-      border-radius: .375rem;
-
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      margin-left: -3.75rem;
-    }
-
-    .tooltiptext::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -0.3125rem;
-      border-width: .3125rem;
-      border-style: solid;
-      border-color: #555 transparent transparent transparent;
-    }
-
-    .button-copy.copied .tooltiptext {
-      animation: fadeInFadeOutTooltip 1s ease-in-out forwards;
-    }
-
-
-    ul.list-servers {
-      list-style: none;
-      margin: 1.75rem 0;
-      padding-left: 1rem;
-    }
-
-    ul.list-servers>li {
-      background: white;
-      border-radius: 0 0.5rem 0.5rem 0.5rem;
-      box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
-      margin-top: 1rem;
-      min-height: 3rem;
-      padding: 1rem 1rem 1rem 3rem;
-      position: relative;
-    }
-
-    ul.list-servers>li::before,
-    ul.list-servers>li::after {
-      border-radius: 1rem 1rem 0 1rem;
-      text-align: center;
-      font-size: 50px;
-      height: 4rem;
-      left: -1rem;
-      position: absolute;
-      top: -1rem;
-      width: 3rem;
-    }
-
-    ul.list-servers>li:nth-child(1)::before {
-      content: '🌏';
-      /* Эмодзи Земли для первого элемента */
-    }
-
-    ul.list-servers>li:nth-child(2)::before {
-      content: '🇪🇺';
-      /* Флаг Евросоюза для второго элемента */
-    }
-
-    ul.list-servers>li:nth-child(3)::before {
-      content: '🇷🇺';
-    }
-
-    ul.list-servers>li:nth-child(4)::before {
-      content: '🇺🇸';
-    }
-
-    ul.list-servers>li:nth-child(5)::before {
-      content: '🇸🇬';
-    }
-
-
-
-    ul.list-servers>li+li {
-      margin-top: 2rem;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <div class="wrapper">
     <section>
-      <div class="container">
+      <div class="container-guide">
         <h2>Alephium mining pool</h2>
         <p>
           🌐 Site: <a href="https://alephium-pool.com">https://alephium-pool.com</a>
@@ -328,19 +23,13 @@
           <h3 class="profit">💵 Fee: 0.5%</h3>
           <ul>
             <li>
-              <p>
-                <a href="https://t.me/alephium_pool">📲 Telegram community</a>
-              </p>
+              <a href="https://t.me/alephium_pool">📲 Telegram community</a>
             </li>
             <li>
-              <p>
-                <a href="https://t.me/alephium_pool_bot">🤖 Telegram bot with current balance</a>
-              </p>
+              <a href="https://t.me/alephium_pool_bot">🤖 Telegram bot with current balance</a>
             </li>
             <li>
-              <p>
-                <a href="https://alephium-pool.com/stats.html">📊 Web statistics</a>
-              </p>
+              <a href="https://alephium-pool.com/stats.html">📊 Web statistics</a>
             </li>
           </ul>
         </div>
@@ -349,37 +38,33 @@
           <ul class="list-servers">
             <li>
               Region auto detection
-              <p><b>detect-my-region.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</p>
-
+              <b>detect-my-region.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
             </li>
             <li>Europe
-              <p><b>eu1.alephium-pool.com:20032</b> (SSL: <b>20033</b>) </p>
+              <b>eu1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
             </li>
             <li>
               Russia
-              <p><b>ru1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</p>
+              <b>ru1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
             </li>
             <li>
               US
-              <p><b>us1.alephium-pool.com:20032</b>
-                (SSL: <b>20033</b>)</p>
+              <b>us1.alephium-pool.com:20032</b>
+              (SSL: <b>20033</b>)
             </li>
             <li>
               Asia
-              <p>
-                <b>asia1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
-              </p>
+              <b>asia1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)
             </li>
           </ul>
         </div>
       </div>
     </section>
     <article>
-      <div class="container">
+      <div class="container-guide">
         <h1>Quick Start</h1>
         <p><strong>Start by downloading <a href="https://github.com/alephium/alephium-wallet/releases">Alephium
               Wallet</a></strong></p>
-
         <section>
           <h2>Miners</h2>
           <div class="miners-list">
@@ -416,30 +101,28 @@
             <h3>lolMiner</h3>
             <ol>
               <li>
-                <p>Download
-                  <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">
-                    last release of lolMiner</a>
-                  and unzip files
-                </p>
+                Download
+                <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">
+                  last release of lolMiner</a>
+                and unzip files
               </li>
               <li>
-                <p>Update <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong></p>
-                <div class="code-container">
-                  <button class="button button-copy">
+                Update <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong>
+                <div class="code-wrapper">
+                  <button class="button button-clear  button-copy ">
                     <i class="icon icon-copy"></i>
                     <span class="tooltiptext">
                       Copied!</span>
                   </button>
-                  <pre>
+                  <pre class="code-container">
                   <code>
                     set "ALEPHPOOL=detect-my-region.alephium-pool.com:20032"
                     set "ALEPHWALLET=your_wallet"</code>
                 </pre>
                 </div>
-
               </li>
               <li>
-                <p>Run <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong></p>
+                Run <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong>
               </li>
               <li>
                 <strong class="profit">PROFIT! 🚀</strong>
@@ -455,11 +138,13 @@
                 files</li>
               <li>Update <strong>alph</strong> file
                 to
-                <div class="code-container">
-                  <button class="button  button-copy">
+                <div class="code-wrapper">
+                  <button class="button button-clear  button-copy">
                     <i class="icon-copy"></i>
+                    <span class="tooltiptext">
+                      Copied!</span>
                   </button>
-                  <pre>
+                  <pre class="code-container">
                     <code>bzminer -a alph -w your_wallet_address -p stratum+tcp://detect-my-region.alephium-pool.com:20032</code>
                   </pre>
                 </div>
@@ -477,11 +162,13 @@
               </li>
               <li>Update <strong>alph</strong> file
                 to
-                <div class="code-container">
-                  <button class="button  button-copy">
+                <div class="code-wrapper">
+                  <button class="button button-clear  button-copy">
                     <i class="icon-copy"></i>
+                    <span class="tooltiptext">
+                      Copied!</span>
                   </button>
-                  <pre>
+                  <pre class="code-container">
                   <code>t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0</code>
                 </pre>
                 </div>
@@ -502,11 +189,13 @@
                 files</li>
               <li>Update <strong>alph</strong> file
                 to
-                <div class="code-container">
-                  <button class="button  button-copy">
+                <div class="code-wrapper">
+                  <button class="button button-clear  button-copy">
                     <i class="icon-copy"></i>
+                    <span class="tooltiptext">
+                      Copied!</span>
                   </button>
-                  <pre>
+                  <pre class="code-container">
                   <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool detect-my-region.alephium-pool.com:20032 --wallet your_wallet_address</code>
                 </pre>
                 </div>
@@ -520,7 +209,7 @@
       </div>
     </article>
     <footer class="footer">
-      <div class="container">
+      <div class="container-guide">
         <div class="footer__inner">
           <img class="logo-image" src="/images/icon.ico">
           <a href="https://alephium-pool.com">Alephium Mining Pool</a>
@@ -531,12 +220,11 @@
 </body>
 <script>
   const copyButtons = document.querySelectorAll('.button-copy')
-
   copyButtons.forEach(btn => {
     btn.addEventListener('click', event => {
       const { currentTarget } = event
       const copyText = btn
-        .closest('.code-container')
+        .closest('.code-wrapper')
         .querySelector('code').textContent
       try {
         navigator.clipboard.writeText(copyText)
