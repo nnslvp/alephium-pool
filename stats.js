@@ -106,6 +106,16 @@ function showMyBalance(myBalanceData, currencyRate) {
     document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.ready_to_pay, currencyRate.rate)
 }
 
+function showPayoutsTable(payouts) {
+    const tableBody = document.getElementById('payouts-table').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Очистка таблицы
+
+    payouts.forEach(payout => {
+        const row = tableBody.insertRow();
+        row.insertCell(0).textContent = parseFloat(payout.amount).toFixed(8);
+        row.insertCell(1).textContent = new Date(parseInt(payout.timestamp)).toLocaleString();
+    });
+}
 
 function drawData(wallet) {
     disableButton();
@@ -145,6 +155,7 @@ function drawData(wallet) {
         });
         showWorkersTable(hashrate1hResponse.workers, hashrate24hResponse.workers);
         showMyPayouts({hour: {amount: payouts1h}, day: {amount: payouts24h}}, currencyRate);
+        showPayoutsTable(payouts24hResponse.payouts)
         showMyBalance(myBalanceResponse, currencyRate);
         showStats();
         enableButton();
@@ -202,8 +213,28 @@ function assignFormListener() {
     } else {
         form.addEventListener("submit", processForm);
     }
+
+    document.getElementById('workers-tab').addEventListener('click', (e) => switchTab(e, 'workers'));
+    document.getElementById('payouts-tab').addEventListener('click', (e) => switchTab(e, 'payouts'));
 }
 
+
+function switchTab(event, tabId) {
+	// Получаем все элементы табов и убираем класс 'active'
+	document.querySelectorAll('.tab').forEach(tab => {
+		tab.classList.remove('active')
+	})
+
+	document.querySelectorAll('.tab-links .button').forEach(tab => {
+		tab.classList.remove('button-outline')
+		tab.classList.add('button-clear')
+	})
+
+	// Добавляем класс 'active' к текущему табу и его содержимому
+	document.getElementById(tabId).classList.add('active')
+	event.currentTarget.classList.add('button-outline')
+	event.currentTarget.classList.remove('button-clear')
+}
 function init() {
     assignFormListener();
 
