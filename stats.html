@@ -32,64 +32,24 @@
             integrity="sha512-Meww2sXqNHxI1+5Dyh/9KAtvI9RZSA4c1K2k5iL02oiPO/RH3Q30L3M1albtqMg50u4gRTYdV4EXOQqXEI336A=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
-        /* Стили для ссылок табов */
-        .tab-links {
-            list-style-type: none;
-            padding: 0;
-        }
+    .container {
+      height: 100vh;
+    }
 
-        .tab-links li {
-            display: inline-block;
-            margin-right: 10px;
-        }
+    .center_of_screen {
+      width: 800px;
+      height: 100%;
+    }
 
-        .tab-links a {
-            text-decoration: none;
-            padding: 5px 15px;
-            display: inline-block;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            color: #333;
-        }
+    /* Скрытие неактивных табов */
+    .tab {
+      display: none;
+    }
 
-        .tab-links li.active a {
-            background-color: #007bff;
-            color: white;
-        }
-
-        /* Скрытие неактивных табов */
-        .tab {
-            display: none;
-        }
-
-        /* Отображение активного таба */
-        .tab.active {
-            display: block;
-        }
-
-        /* Стилизация таблиц */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
+    /* Отображение активного таба */
+    .tab.active {
+      display: block;
+    }
     </style>
 </head>
 <body>
@@ -115,11 +75,11 @@
             </p>
             <p>Min payout: <b>0.3 coin</b>. Payouts every <b>30 minutes</b>. Pool fee: <b>0.5%</b></p>
 
-            <div class="tabs">
-                <ul class="tab-links">
-                    <li class="active" id="workers-tab"><a href="#">Workers</a></li>
-                    <li id="payouts-tab"><a href="#">Payouts</a></li>
-                </ul>
+        <div class="tabs">
+          <div class="tab-links">
+            <button class="button button-outline" id="workers-tab">Workers</button>
+            <button class="button button-clear" id="payouts-tab">Payouts</button>
+          </div>
 
                 <div class="tab-content">
                     <div id="workers" class="tab active">

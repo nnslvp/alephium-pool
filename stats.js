@@ -220,24 +220,21 @@ function assignFormListener() {
 
 
 function switchTab(event, tabId) {
-    // Предотвратить перезагрузку страницы
-    event.preventDefault();
+	// Получаем все элементы табов и убираем класс 'active'
+	document.querySelectorAll('.tab').forEach(tab => {
+		tab.classList.remove('active')
+	})
 
-    // Получаем все элементы табов и убираем класс 'active'
-    document.querySelectorAll('.tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
+	document.querySelectorAll('.tab-links .button').forEach(tab => {
+		tab.classList.remove('button-outline')
+		tab.classList.add('button-clear')
+	})
 
-    // Убираем класс 'active' у всех ссылок табов
-    document.querySelectorAll('.tab-links li').forEach(tab => {
-        tab.classList.remove('active');
-    });
-
-    // Добавляем класс 'active' к текущему табу и его содержимому
-    document.getElementById(tabId).classList.add('active');
-    document.querySelector(`#${tabId}-tab`).classList.add('active');
+	// Добавляем класс 'active' к текущему табу и его содержимому
+	document.getElementById(tabId).classList.add('active')
+	event.currentTarget.classList.add('button-outline')
+	event.currentTarget.classList.remove('button-clear')
 }
-
 function init() {
     assignFormListener();
 
