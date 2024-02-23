@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /stats.html
+Disallow: /pool-stats.html
+
+Sitemap: https://alephium-pool.com/sitemap.xml
