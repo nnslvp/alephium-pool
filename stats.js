@@ -68,159 +68,193 @@ function showMyHashrate({day, hour}) {
 }
 
 function showWorkersTable(workersHour, workersDay) {
-    const tableBody = document.getElementById('workers-table').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Очистить текущие строки таблицы
+	const tableBody = document
+		.getElementById('workers-table')
+		.getElementsByTagName('tbody')[0]
+	tableBody.innerHTML = ''
 
-    // Предполагается, что workersHour и workersDay содержат одинаковые наборы воркеров
-    workersHour.forEach(workerHour => {
-        const workerDay = workersDay.find(w => w.worker === workerHour.worker) || {};
+	workersHour.forEach(workerHour => {
+		const workerDay = workersDay.find(w => w.worker === workerHour.worker) || {}
 
-        const row = tableBody.insertRow();
-        const shortHashRateHour = shortenHm(workerHour.hashrate, 2);
-        const shortHashRateDay = workerDay.hashrate ? shortenHm(workerDay.hashrate, 2) : {hashrate: 'N/A', units: ''};
+		const row = tableBody.insertRow()
+		const shortHashRateHour = shortenHm(workerHour.hashrate, 2)
+		const shortHashRateDay = workerDay.hashrate
+			? shortenHm(workerDay.hashrate, 2)
+			: { hashrate: 'N/A', units: '' }
 
-        row.insertCell(0).textContent = workerHour.worker;
-        row.insertCell(1).textContent = `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
-        row.insertCell(2).textContent = `${workerHour.shares_count} / ${workerDay.shares_count || 'N/A'}`;
-        row.insertCell(3).textContent = `${workerHour.invalid_shares_count} / ${workerDay.invalid_shares_count || 'N/A'}`;
-        row.insertCell(4).textContent = new Date(workerHour.last_share_at).toLocaleString(); // Форматирование даты для последнего часа
-    });
+		row.insertCell(0).textContent = workerHour.worker
+		row.insertCell(
+			1
+		).textContent = `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`
+		row.insertCell(2).textContent = `${workerHour.shares_count} / ${
+			workerDay.shares_count || 'N/A'
+		}`
+		row.insertCell(3).textContent = `${workerHour.invalid_shares_count} / ${
+			workerDay.invalid_shares_count || 'N/A'
+		}`
+		row.insertCell(4).textContent = new Date(
+			workerHour.last_share_at
+		).toLocaleString() // Форматирование даты для последнего часа
+	})
 }
-
 
 function amountUSD(amountInAlph, currencyRate) {
-    return (parseFloat(amountInAlph) * currencyRate).toFixed(2)
+	return (parseFloat(amountInAlph) * currencyRate).toFixed(2)
 }
 
-function showMyPayouts({day, hour}, currencyRate) {
-    document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
-    document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate.rate)
+function showMyPayouts({ day, hour }, currencyRate) {
+	document.getElementById('my_payouts_1h').textContent = parseFloat(
+		hour.amount
+	).toFixed(8)
+	document.getElementById('my_payouts_1h_usd').textContent = amountUSD(
+		hour.amount,
+		currencyRate.rate
+	)
 
-    document.getElementById('my_payouts_24h').textContent = parseFloat(day.amount).toFixed(8)
-    document.getElementById('my_payouts_24h_usd').textContent = amountUSD(day.amount, currencyRate.rate)
+	document.getElementById('my_payouts_24h').textContent = parseFloat(
+		day.amount
+	).toFixed(8)
+	document.getElementById('my_payouts_24h_usd').textContent = amountUSD(
+		day.amount,
+		currencyRate.rate
+	)
 }
-
 
 function showMyBalance(myBalanceData, currencyRate) {
-    document.getElementById('balance').textContent = parseFloat(myBalanceData.ready_to_pay).toFixed(8)
-    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.ready_to_pay, currencyRate.rate)
+	document.getElementById('balance').textContent = parseFloat(
+		myBalanceData.ready_to_pay
+	).toFixed(8)
+	document.getElementById('balance_usd').textContent = amountUSD(
+		myBalanceData.ready_to_pay,
+		currencyRate.rate
+	)
 }
 
 function showPayoutsTable(payouts) {
-    const tableBody = document.getElementById('payouts-table').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Очистка таблицы
+	const tableBody = document
+		.getElementById('payouts-table')
+		.getElementsByTagName('tbody')[0]
+	tableBody.innerHTML = '' // Очистка таблицы
 
-    payouts.forEach(payout => {
-        const row = tableBody.insertRow();
-        row.insertCell(0).textContent = parseFloat(payout.amount).toFixed(8);
-        row.insertCell(1).textContent = new Date(parseInt(payout.timestamp)).toLocaleString();
-    });
+	payouts.forEach(payout => {
+		const row = tableBody.insertRow()
+		row.insertCell(0).textContent = parseFloat(payout.amount).toFixed(8)
+		row.insertCell(1).textContent = new Date(
+			parseInt(payout.timestamp)
+		).toLocaleString()
+	})
 }
 
 function drawData(wallet) {
-    disableButton();
-    Promise.all(
-        [
-            fetchMyHashrate(wallet),
-            fetchMyPayouts(wallet),
-            fetchMyBalance(wallet),
-            fetchCurrencyInfo()
-        ]
-    ).then((
-        [
-            [hashrate1hResponse, hashrate24hResponse],
-            [payouts1hResponse, payouts24hResponse],
-            myBalanceResponse, currencyRate
-        ]
-    ) => {
-        const hashrate1h = hashrate1hResponse.workers.reduce((accumulator, v) => {
-            return accumulator + parseFloat(v.hashrate)
-        }, 0);
+	disableButton()
+	Promise.all([
+		fetchMyHashrate(wallet),
+		fetchMyPayouts(wallet),
+		fetchMyBalance(wallet),
+		fetchCurrencyInfo(),
+	]).then(
+		([
+			[hashrate1hResponse, hashrate24hResponse],
+			[payouts1hResponse, payouts24hResponse],
+			myBalanceResponse,
+			currencyRate,
+		]) => {
+			const hashrate1h = hashrate1hResponse.workers.reduce((accumulator, v) => {
+				return accumulator + parseFloat(v.hashrate)
+			}, 0)
 
-        const hashrate24h = hashrate24hResponse.workers.reduce((accumulator, v) => {
-            return accumulator + parseFloat(v.hashrate)
-        }, 0);
+			const hashrate24h = hashrate24hResponse.workers.reduce(
+				(accumulator, v) => {
+					return accumulator + parseFloat(v.hashrate)
+				},
+				0
+			)
 
-        const payouts1h = payouts1hResponse.payouts.reduce((accumulator, v) => {
-            return accumulator + parseFloat(v.amount)
-        }, 0);
+			const payouts1h = payouts1hResponse.payouts.reduce((accumulator, v) => {
+				return accumulator + parseFloat(v.amount)
+			}, 0)
 
-        const payouts24h = payouts24hResponse.payouts.reduce((accumulator, v) => {
-            return accumulator + parseFloat(v.amount)
-        }, 0);
+			const payouts24h = payouts24hResponse.payouts.reduce((accumulator, v) => {
+				return accumulator + parseFloat(v.amount)
+			}, 0)
 
-        showMyHashrate({
-            hour: {hashrate: hashrate1h, units: hashrate1hResponse.units},
-            day: {hashrate: hashrate24h, units: hashrate1hResponse.units}
-        });
-        showWorkersTable(hashrate1hResponse.workers, hashrate24hResponse.workers);
-        showMyPayouts({hour: {amount: payouts1h}, day: {amount: payouts24h}}, currencyRate);
-        showPayoutsTable(payouts24hResponse.payouts)
-        showMyBalance(myBalanceResponse, currencyRate);
-        showStats();
-        enableButton();
-    });
+			showMyHashrate({
+				hour: { hashrate: hashrate1h, units: hashrate1hResponse.units },
+				day: { hashrate: hashrate24h, units: hashrate1hResponse.units },
+			})
+			showWorkersTable(hashrate1hResponse.workers, hashrate24hResponse.workers)
+			showMyPayouts(
+				{ hour: { amount: payouts1h }, day: { amount: payouts24h } },
+				currencyRate
+			)
+			showPayoutsTable(payouts24hResponse.payouts)
+			showMyBalance(myBalanceResponse, currencyRate)
+			showStats()
+			enableButton()
+		}
+	)
 }
 
 function showStats() {
-    var element = document.getElementById("stats");
-    element.classList.remove("hidden");
+	var element = document.getElementById('stats')
+	element.classList.remove('hidden')
 }
 
 function disableButton() {
-    const button = document.getElementById('show')
-    button.textContent = 'Loading..'
-    button.disabled = true
+	const button = document.getElementById('show')
+	button.textContent = 'Loading..'
+	button.disabled = true
 }
 
 function enableButton() {
-    const button = document.getElementById('show')
-    button.textContent = 'Update'
-    button.disabled = false
+	const button = document.getElementById('show')
+	button.textContent = 'Update'
+	button.disabled = false
 }
 
 function setWalletParam(wallet) {
-    const urlParams = new URLSearchParams(window.location.search);
+	const urlParams = new URLSearchParams(window.location.search)
 
-    urlParams.set('wallet', wallet);
+	urlParams.set('wallet', wallet)
 
-    window.location.search = urlParams;
+	window.location.search = urlParams
 }
 
 function getWalletParam() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    return urlParams.get('wallet').trim();
+	const queryString = window.location.search
+	const urlParams = new URLSearchParams(queryString)
+	return urlParams.get('wallet').trim()
 }
 
 function setWalletForm(wallet) {
-    const walletInput = document.getElementById('wallet-input');
-    walletInput.value = wallet;
+	const walletInput = document.getElementById('wallet-input')
+	walletInput.value = wallet
 }
 
 function assignFormListener() {
-    function processForm(e) {
-        if (e.preventDefault) e.preventDefault();
-        const walletInput = document.getElementById('wallet-input');
-        if (walletInput.value)
-            setWalletParam(walletInput.value)
-        return false;
-    }
+	function processForm(e) {
+		if (e.preventDefault) e.preventDefault()
+		const walletInput = document.getElementById('wallet-input')
+		if (walletInput.value) setWalletParam(walletInput.value)
+		return false
+	}
 
-    const form = document.getElementById('wallet-form');
-    if (form.attachEvent) {
-        form.attachEvent("submit", processForm);
-    } else {
-        form.addEventListener("submit", processForm);
-    }
+	const form = document.getElementById('wallet-form')
+	if (form.attachEvent) {
+		form.attachEvent('submit', processForm)
+	} else {
+		form.addEventListener('submit', processForm)
+	}
 
-    document.getElementById('workers-tab').addEventListener('click', (e) => switchTab(e, 'workers'));
-    document.getElementById('payouts-tab').addEventListener('click', (e) => switchTab(e, 'payouts'));
+	document
+		.getElementById('workers-tab')
+		.addEventListener('click', e => switchTab(e, 'workers'))
+	document
+		.getElementById('payouts-tab')
+		.addEventListener('click', e => switchTab(e, 'payouts'))
 }
 
-
 function switchTab(event, tabId) {
-	// Получаем все элементы табов и убираем класс 'active'
 	document.querySelectorAll('.tab').forEach(tab => {
 		tab.classList.remove('active')
 	})
@@ -230,7 +264,6 @@ function switchTab(event, tabId) {
 		tab.classList.add('button-clear')
 	})
 
-	// Добавляем класс 'active' к текущему табу и его содержимому
 	document.getElementById(tabId).classList.add('active')
 	event.currentTarget.classList.add('button-outline')
 	event.currentTarget.classList.remove('button-clear')

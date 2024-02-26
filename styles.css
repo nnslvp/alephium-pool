@@ -21,6 +21,30 @@
     width: fit-content;
 }
 
+
+  .stats-page .container {
+      height: 100vh;
+    }
+
+  .stats-page .center_of_screen {
+      width: 800px;
+      height: 100%;
+    }
+
+    /* Скрытие неактивных табов */
+   .stats-page .tab {
+      display: none;
+    }
+
+    /* Отображение активного таба */
+   .stats-page .tab.active {
+      display: block;
+    }
+    
+    .stats-page table{
+      display: table;
+    }
+
 /* The typing effect */
 @keyframes typing {
     from {
