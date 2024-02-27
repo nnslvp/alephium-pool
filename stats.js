@@ -69,7 +69,7 @@ function showMyHashrate({day, hour}) {
 
 function showWorkersTable(workersHour, workersDay) {
     const tableBody = document.getElementById('workers-table').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = '' 
+    tableBody.innerHTML = '';
 
     
     workersHour.forEach(workerHour => {
@@ -110,7 +110,7 @@ function showMyBalance(myBalanceData, currencyRate) {
 
 function showPayoutsTable(payouts) {
     const tableBody = document.getElementById('payouts-table').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = '' 
+    tableBody.innerHTML = '';
 
     payouts.forEach(payout => {
         const row = tableBody.insertRow();
