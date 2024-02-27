@@ -69,9 +69,9 @@ function showMyHashrate({day, hour}) {
 
 function showWorkersTable(workersHour, workersDay) {
     const tableBody = document.getElementById('workers-table').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Очистить текущие строки таблицы
+    tableBody.innerHTML = '' 
 
-    // Предполагается, что workersHour и workersDay содержат одинаковые наборы воркеров
+    
     workersHour.forEach(workerHour => {
         const workerDay = workersDay.find(w => w.worker === workerHour.worker) || {};
 
@@ -83,7 +83,9 @@ function showWorkersTable(workersHour, workersDay) {
         row.insertCell(1).textContent = `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
         row.insertCell(2).textContent = `${workerHour.shares_count} / ${workerDay.shares_count || 'N/A'}`;
         row.insertCell(3).textContent = `${workerHour.invalid_shares_count} / ${workerDay.invalid_shares_count || 'N/A'}`;
-        row.insertCell(4).textContent = new Date(workerHour.last_share_at).toLocaleString(); // Форматирование даты для последнего часа
+        row.insertCell(4).textContent = new Date(
+					workerHour.last_share_at
+				).toLocaleString() 
     });
 }
 
@@ -108,7 +110,7 @@ function showMyBalance(myBalanceData, currencyRate) {
 
 function showPayoutsTable(payouts) {
     const tableBody = document.getElementById('payouts-table').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Очистка таблицы
+    tableBody.innerHTML = '' 
 
     payouts.forEach(payout => {
         const row = tableBody.insertRow();
@@ -220,7 +222,6 @@ function assignFormListener() {
 
 
 function switchTab(event, tabId) {
-	// Получаем все элементы табов и убираем класс 'active'
 	document.querySelectorAll('.tab').forEach(tab => {
 		tab.classList.remove('active')
 	})
@@ -230,7 +231,6 @@ function switchTab(event, tabId) {
 		tab.classList.add('button-clear')
 	})
 
-	// Добавляем класс 'active' к текущему табу и его содержимому
 	document.getElementById(tabId).classList.add('active')
 	event.currentTarget.classList.add('button-outline')
 	event.currentTarget.classList.remove('button-clear')
