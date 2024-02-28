@@ -108,14 +108,17 @@ function testServer(server) {
     ws.onopen = () => {
       const endTime = new Date().getTime()
       const timeTaken = endTime - startTime
-      serversPing.push({ name: server.name, ping: timeTaken })
-      updatePing(server.name,timeTaken)
+       const nameServer =
+					server.name === 'Region auto detection'
+						? 'RegionAutoDetection'
+						: server.name
+      serversPing.push({ name: nameServer, ping: timeTaken })
+      updatePing(nameServer, timeTaken)
       ws.close()
       resolve()
     }
 
     ws.onerror = () => {
-      console.log(`${server.name} не смог установить соединение`)
       resolve()
     }
   })
@@ -129,7 +132,7 @@ async function testServers(servers) {
 }
 
 function addStyleFasterServer(server) {
-  const id = `ping-${server.name.replaceAll(' ', '')}`
+  const id = `ping-${server.name}`
   const pingCell = document.getElementById(id)
   if (pingCell) {
     pingCell.classList.add('faster')
@@ -144,7 +147,7 @@ function updatePing(serverName, pingValue) {
 	if (!serverName || !pingValue) {
 		return
 	}
-	const id = `ping-${serverName.replaceAll(' ', '')}`
+	const id = `ping-${serverName}`
 	const pingCell = document.getElementById(id)
 
 	if (pingCell) {
