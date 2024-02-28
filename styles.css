@@ -184,6 +184,14 @@
 	animation: fadeInFadeOutTooltip 1s ease-in-out forwards;
 }
 
+.table-servers .ping{
+    width: 100px;
+  }
+
+.faster{
+    color: #79ea86;
+  }
+
 @media (max-width: 80.0rem) {
     .center_of_screen {
         width: 90%;
@@ -228,6 +236,9 @@
     .calculator_button {
         width: 100%;
         margin-top: 10px;
+    }
+    .table-servers .ping{
+    width: 60px;
     }
  }
 
