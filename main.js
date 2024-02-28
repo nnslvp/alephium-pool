@@ -109,6 +109,7 @@ function testServer(server) {
       const endTime = new Date().getTime()
       const timeTaken = endTime - startTime
       serversPing.push({ name: server.name, ping: timeTaken })
+      updatePing(server.name,timeTaken)
       ws.close()
       resolve()
     }
@@ -140,20 +141,21 @@ function getFasterServer(servers) {
 }
 
 function updatePing(serverName, pingValue) {
-  if (!serverName || !pingValue) {
-    return
-  }
-  const id = `ping-${serverName.replaceAll(' ', '')}`
-  const pingCell = document.getElementById(id)
-  if (pingCell) {
-    pingCell.textContent = `${pingValue} ms`
-  }
+	if (!serverName || !pingValue) {
+		return
+	}
+	const id = `ping-${serverName.replaceAll(' ', '')}`
+	const pingCell = document.getElementById(id)
+
+	if (pingCell) {
+		pingCell.textContent = `${pingValue} ms`
+		pingCell.classList.add('fade-in-animation')
+	}
 }
 
-function renderServersPing() {
-  serversPing.forEach(({ name, ping }) => updatePing(name, ping))
-  const fasterServer = getFasterServer(serversPing)
-  addStyleFasterServer(fasterServer)
+function renderAndStyleServerFaster() {
+	const fasterServer = getFasterServer(serversPing)
+	addStyleFasterServer(fasterServer)
 }
 
 
@@ -161,5 +163,5 @@ init();
 
 (async () => {
 	await testServers(servers)
-	renderServersPing()
+	renderAndStyleServerFaster()
 })()

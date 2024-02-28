@@ -33,7 +33,6 @@ copyButtons.forEach(btn => {
 		}
 	})
 })
-
 function testServer(server) {
 	return new Promise((resolve, reject) => {
 		const startTime = new Date().getTime()
@@ -43,6 +42,7 @@ function testServer(server) {
 			const endTime = new Date().getTime()
 			const timeTaken = endTime - startTime
 			serversPing.push({ name: server.name, ping: timeTaken })
+			updatePing(server.name, timeTaken)
 			ws.close()
 			resolve()
 		}
@@ -79,18 +79,20 @@ function updatePing(serverName, pingValue) {
 	}
 	const id = `ping-${serverName.replaceAll(' ', '')}`
 	const pingCell = document.getElementById(id)
+
 	if (pingCell) {
 		pingCell.textContent = `${pingValue} ms`
-	}
+		pingCell.classList.add('fade-in-animation')
+	} 
 }
 
-function renderServersPing() {
-	serversPing.forEach(({ name, ping }) => updatePing(name, ping))
+function renderAndStyleServerFaster() {
 	const fasterServer = getFasterServer(serversPing)
 	addStyleFasterServer(fasterServer)
 }
 
+
 (async () => {
 	await testServers(servers)
-	renderServersPing()
+	renderAndStyleServerFaster()
 })()
