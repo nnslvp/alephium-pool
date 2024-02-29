@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+
+
+</style>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript>
@@ -63,7 +67,19 @@
             <th>Address</th>
             <th>Port</th>
             <th>SSL Port</th>
-            <th>Ping</th>
+            <th>
+              <div class="th-ping">
+                Ping
+                <icon class="icon icon-tooltip">
+                  <span class="tooltip">
+                    This ping is approximate but accurate enough for comparing servers with each other. For obtaining the exact
+                    ping,
+                    use
+                    the ping command in your system.
+                  </span>
+                </icon>
+              </div>   
+            </th>
           </tr>
         </thead>
           <tbody>
@@ -119,7 +135,6 @@
         </p>
         <p>Pool statistics: <a href="pool-stats.html"><b>Here</b></a></p>
         <p><a href="calculator.html"><b>Calculator</b></a></p>
-
     </div>
 </div>
 </body>

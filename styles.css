@@ -45,6 +45,64 @@
     width: 100%;
 }
 
+.icon-tooltip{
+ position: relative;
+}
+
+.tooltip {
+    display: inline-block;
+    position:absolute;
+    padding: .625rem;
+    width:18.75rem;
+    top:50%;
+    left:100%;
+    margin-left:10px;
+        transform: translate(-103%, -111%);
+    color:#EEEEEE;
+    background-color:#444444;
+    font-weight:normal;
+    font-size:13px;
+    border-radius:.5rem;
+    z-index:99999999;
+    box-shadow:0 .0625rem .5rem rgba(0,0,0,0.5);
+    visibility:hidden; opacity:0; transition:opacity 0.8s;
+}
+
+.icon-tooltip:hover .tooltip {
+    visibility:visible; opacity:1;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    border: 10px solid #444444;
+    border-color: transparent #444444 transparent transparent;
+    right: 0;
+    bottom: 0;
+    transform: translate(-21%,80%) rotate(-90deg);
+}
+
+.th-ping{
+  display: flex;
+    align-items: center;
+    gap: .3125rem;
+}
+
+.icon{
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-tooltip{
+  cursor: help;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' data-name='Layer 1' viewBox='0 0 32 32'%3E%3Cpath fill='%237dccfc' d='M16 1a15 15 0 1 0 15 15A15 15 0 0 0 16 1Zm2 22a2 2 0 0 1-4 0v-7a2 2 0 0 1 4 0Zm-2-10.81A2.19 2.19 0 1 1 18.19 10 2.19 2.19 0 0 1 16 12.19Z'/%3E%3C/svg%3E");
+}
+   
+
 
 /* style for instruction.html */
 .header-instruction {
@@ -117,6 +175,38 @@
 	height: 1.25rem;
 }
 
+.tooltiptext {
+	font-size: 0.625rem;
+	line-height: 1.8rem;
+	background-color: #555;
+	visibility: hidden;
+	color: #fff;
+	text-align: center;
+	padding: 0.3125rem;
+	border-radius: 0.375rem;
+
+	position: absolute;
+	z-index: 1;
+	bottom: 90%;
+	left: 50%;
+	margin-left: -3.75rem;
+}
+
+.tooltiptext::after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -0.3125rem;
+	border-width: 0.3125rem;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+}
+
+.button-copy.copied .tooltiptext {
+	animation: fadeInFadeOutTooltip 1s ease-in-out forwards;
+}
+
  .stats-page .container {
       height: 100vh;
     }
@@ -161,8 +251,7 @@
 
    .table-servers  tr:has(.faster){
       background-color: rgb(121, 234, 134,0.1);
-    }
-    
+    } 
  @keyframes fadeIn {
   from {
     opacity: 0;
@@ -188,37 +277,6 @@
 	}
 }
 
-.tooltiptext {
-	font-size: 0.625rem;
-	line-height: 1.8rem;
-	background-color: #555;
-	visibility: hidden;
-	color: #fff;
-	text-align: center;
-	padding: 0.3125rem;
-	border-radius: 0.375rem;
-
-	position: absolute;
-	z-index: 1;
-	bottom: 90%;
-	left: 50%;
-	margin-left: -3.75rem;
-}
-
-.tooltiptext::after {
-	content: '';
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	margin-left: -0.3125rem;
-	border-width: 0.3125rem;
-	border-style: solid;
-	border-color: #555 transparent transparent transparent;
-}
-
-.button-copy.copied .tooltiptext {
-	animation: fadeInFadeOutTooltip 1s ease-in-out forwards;
-}
 
 @media (max-width: 80.0rem) {
     .center_of_screen {
