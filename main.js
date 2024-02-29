@@ -88,7 +88,7 @@ function init() {
 
 const servers = [
   {
-    name: 'Region auto detection',
+    name: 'RegionAutoDetection',
     host: 'detect-my-region.alephium-pool.com',
     port: 3030,
   },
@@ -102,38 +102,43 @@ const serversPing = []
 
 function testServer(server) {
   return new Promise((resolve, reject) => {
-    const startTime = new Date().getTime()
     const ws = new WebSocket(`ws://${server.host}:${server.port}`)
+    const startTime = new Date().getTime()
 
     ws.onopen = () => {
       const endTime = new Date().getTime()
       const timeTaken = endTime - startTime
-       const nameServer =
-					server.name === 'Region auto detection'
-						? 'RegionAutoDetection'
-						: server.name
-      serversPing.push({ name: nameServer, ping: timeTaken })
-      updatePing(nameServer, timeTaken)
       ws.close()
-      resolve()
+      resolve(timeTaken)
     }
 
     ws.onerror = () => {
-      resolve()
+      reject()
     }
   })
 }
 
-async function testServers(servers) {
-  for (let index = 0; index < servers.length; index++) {
-    await testServer(servers[index])
-    await new Promise(resolve => setTimeout(resolve, 500))
-  }
+function testServers(servers) {
+	servers
+		.reduce((chain, server) => {
+			return chain
+				.then(() => testServer(server))
+				.then(timeTaken => {
+          serversPing.push({ name: server.name, ping: timeTaken })
+					updatePing(server.name, timeTaken)
+        })
+        .then(() => new Promise(resolve => setTimeout(resolve, 500))) 
+		}, Promise.resolve()) 
+		.then(() => {
+			renderAndStyleServerFaster()
+		})
+		.catch(error => {
+			
+		})
 }
 
 function addStyleFasterServer(server) {
-  const id = `ping-${server.name}`
-  const pingCell = document.getElementById(id)
+  const pingCell = document.getElementById(`ping-${server}`)
   if (pingCell) {
     pingCell.classList.add('faster')
   }
@@ -147,8 +152,7 @@ function updatePing(serverName, pingValue) {
 	if (!serverName || !pingValue) {
 		return
 	}
-	const id = `ping-${serverName}`
-	const pingCell = document.getElementById(id)
+	const pingCell = document.getElementById(`ping-${serverName}`)
 
 	if (pingCell) {
 		pingCell.textContent = `${pingValue} ms`
@@ -161,10 +165,6 @@ function renderAndStyleServerFaster() {
 	addStyleFasterServer(fasterServer)
 }
 
-
 init();
 
-(async () => {
-	await testServers(servers)
-	renderAndStyleServerFaster()
-})()
+testServers(servers)
