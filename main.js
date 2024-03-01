@@ -136,13 +136,6 @@ function showPings(servers) {
     });
 }
 
-function addStyleFasterServer(server) {
-  const pingCell = document.getElementById(`ping-${server}`);
-  if (pingCell) {
-    pingCell.classList.add('faster');
-  }
-}
-
 function updatePing(serverName, pingValue) {
   if (!serverName || !pingValue) {
     return;
@@ -159,7 +152,10 @@ function renderAndStyleServerFaster(servers) {
   const fasterServer = servers.reduce((prev, curr) =>
     prev.ping < curr.ping ? prev : curr
   );
-  addStyleFasterServer(fasterServer.name);
+  const pingCell = document.getElementById(`ping-${fasterServer.name}`);
+  if (pingCell) {
+    pingCell.classList.add('faster');
+  }
 }
 
 init();
