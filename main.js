@@ -122,7 +122,7 @@ function testServer(server) {
 
 function showPings(servers) {
   servers
-    .reduce((chain, server,i) => {
+    .reduce((chain, server, i) => {
       return chain
         .then(() => testServer(server))
         .then((timeTaken) => {
