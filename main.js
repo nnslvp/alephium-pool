@@ -87,35 +87,35 @@ function init() {
 }
 
 const servers = [
-  {
-    name: 'RegionAutoDetection',
-    host: 'detect-my-region.alephium-pool.com',
-    port: 3030,
-  },
-  { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3030 },
-  { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3030 },
-  { name: 'US', host: 'us1.alephium-pool.com', port: 3030 },
-  { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3030 },
+	{
+		name: 'RegionAutoDetection',
+		host: 'detect-my-region.alephium-pool.com',
+		port: 3030,
+	},
+	{ name: 'Europe', host: 'eu1.alephium-pool.com', port: 3030 },
+	{ name: 'Russia', host: 'ru1.alephium-pool.com', port: 3030 },
+	{ name: 'US', host: 'us1.alephium-pool.com', port: 3030 },
+	{ name: 'Asia', host: 'asia1.alephium-pool.com', port: 3030 },
 ]
 
 const serversPing = []
 
 function testServer(server) {
-  return new Promise((resolve, reject) => {
-    const ws = new WebSocket(`ws://${server.host}:${server.port}`)
-    const startTime = new Date().getTime()
+	return new Promise((resolve, reject) => {
+		const ws = new WebSocket(`ws://${server.host}:${server.port}`)
+		const startTime = new Date().getTime()
 
-    ws.onopen = () => {
-      const endTime = new Date().getTime()
-      const timeTaken = endTime - startTime
-      ws.close()
-      resolve(timeTaken)
-    }
+		ws.onopen = () => {
+			const endTime = new Date().getTime()
+			const timeTaken = endTime - startTime
+			ws.close()
+			resolve(timeTaken)
+		}
 
-    ws.onerror = () => {
-      reject()
-    }
-  })
+		ws.onerror = () => {
+			reject(new Error('Connection error'))
+		}
+	})
 }
 
 function testServers(servers) {
@@ -124,28 +124,27 @@ function testServers(servers) {
 			return chain
 				.then(() => testServer(server))
 				.then(timeTaken => {
-          serversPing.push({ name: server.name, ping: timeTaken })
+					serversPing.push({ name: server.name, ping: timeTaken })
 					updatePing(server.name, timeTaken)
-        })
-        .then(() => new Promise(resolve => setTimeout(resolve, 500))) 
-		}, Promise.resolve()) 
+				})
+				.then(() => new Promise(resolve => setTimeout(resolve, 500)))
+		}, Promise.resolve())
 		.then(() => {
 			renderAndStyleServerFaster()
 		})
 		.catch(error => {
-			
 		})
 }
 
 function addStyleFasterServer(server) {
-  const pingCell = document.getElementById(`ping-${server}`)
-  if (pingCell) {
-    pingCell.classList.add('faster')
-  }
+	const pingCell = document.getElementById(`ping-${server}`)
+	if (pingCell) {
+		pingCell.classList.add('faster')
+	}
 }
 
 function getFasterServer(servers) {
-  return servers.reduce((prev, curr) => (prev.ping < curr.ping ? prev : curr))
+	return servers.reduce((prev, curr) => (prev.ping < curr.ping ? prev : curr))
 }
 
 function updatePing(serverName, pingValue) {
@@ -162,7 +161,7 @@ function updatePing(serverName, pingValue) {
 
 function renderAndStyleServerFaster() {
 	const fasterServer = getFasterServer(serversPing)
-	addStyleFasterServer(fasterServer)
+	addStyleFasterServer(fasterServer.name)
 }
 
 init();
