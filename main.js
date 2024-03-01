@@ -87,6 +87,7 @@ function init() {
     showPool24hBlocks(summary.blocks_24h);
     showPoolLatestBlockAt(summary.last_block_at);
   });
+  showPings(servers);
 }
 
 const servers = [
@@ -100,8 +101,6 @@ const servers = [
   { name: 'US', host: 'us1.alephium-pool.com', port: 3030 },
   { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3030 },
 ];
-
-const serversPing = [];
 
 function testServer(server) {
   return new Promise((resolve, reject) => {
@@ -121,19 +120,19 @@ function testServer(server) {
   });
 }
 
-function testServers(servers) {
+function showPings(servers) {
   servers
-    .reduce((chain, server) => {
+    .reduce((chain, server,i) => {
       return chain
         .then(() => testServer(server))
         .then((timeTaken) => {
-          serversPing.push({ name: server.name, ping: timeTaken });
+          servers[i].ping = timeTaken;
           updatePing(server.name, timeTaken);
         })
         .then(() => new Promise((resolve) => setTimeout(resolve, 500)));
     }, Promise.resolve())
     .then(() => {
-      renderAndStyleServerFaster();
+      renderAndStyleServerFaster(servers);
     });
 }
 
@@ -142,10 +141,6 @@ function addStyleFasterServer(server) {
   if (pingCell) {
     pingCell.classList.add('faster');
   }
-}
-
-function getFasterServer(servers) {
-  return servers.reduce((prev, curr) => (prev.ping < curr.ping ? prev : curr));
 }
 
 function updatePing(serverName, pingValue) {
@@ -160,11 +155,11 @@ function updatePing(serverName, pingValue) {
   }
 }
 
-function renderAndStyleServerFaster() {
-  const fasterServer = getFasterServer(serversPing);
+function renderAndStyleServerFaster(servers) {
+  const fasterServer = servers.reduce((prev, curr) =>
+    prev.ping < curr.ping ? prev : curr
+  );
   addStyleFasterServer(fasterServer.name);
 }
 
 init();
-
-testServers(servers);
