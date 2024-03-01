@@ -134,8 +134,7 @@ function testServers(servers) {
     }, Promise.resolve())
     .then(() => {
       renderAndStyleServerFaster();
-    })
-    .catch((error) => {});
+    });
 }
 
 function addStyleFasterServer(server) {
