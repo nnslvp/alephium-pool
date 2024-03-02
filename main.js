@@ -87,20 +87,8 @@ function init() {
     showPool24hBlocks(summary.blocks_24h);
     showPoolLatestBlockAt(summary.last_block_at);
   });
-  showPings(servers);
+  showPings();
 }
-
-const servers = [
-  {
-    name: 'RegionAutoDetection',
-    host: 'detect-my-region.alephium-pool.com',
-    port: 3030,
-  },
-  { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3030 },
-  { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3030 },
-  { name: 'US', host: 'us1.alephium-pool.com', port: 3030 },
-  { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3030 },
-];
 
 function testServer(server) {
   return new Promise((resolve, reject) => {
@@ -120,7 +108,14 @@ function testServer(server) {
   });
 }
 
-function showPings(servers) {
+function showPings() {
+  const servers = [
+    { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3030 },
+    { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3030 },
+    { name: 'US', host: 'us1.alephium-pool.com', port: 3030 },
+    { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3030 },
+  ];
+
   servers
     .reduce((chain, server, i) => {
       return chain
