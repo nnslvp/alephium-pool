@@ -56,19 +56,82 @@
         <h3>How to start?</h3>
         <p><a href="./instruction.html"><b>Instruction</b></a></p>
         <p>Locations:</p>
-        <ul>
-            <li>🌐 Region auto detection: <b>detect-my-region.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇪🇺 Europe: <b>eu1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇷🇺 Russia: <b>ru1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇺🇸 US: <b>us1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇸🇬 Asia: <b>asia1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-        </ul>
+        <table class="table-servers">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Address</th>
+              <th>Port</th>
+              <th>SSL Port</th>
+              <th>
+                <div class="th-ping">
+                  Ping
+                  <icon class="icon icon-tooltip">
+                    <span class="tooltip">
+                      This ping is approximate but accurate enough for comparing servers with each other. For obtaining the
+                      exact
+                      ping,
+                      use
+                      the ping command in your system.
+                    </span>
+                  </icon>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🌎 Region auto detection</td>
+              <td>detect-my-region.alephium-pool.com</td>
+              <td>20032</td>
+              <td>20033</td>
+              <td class="ping">
+                <span id="ping-RegionAutoDetection"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>🇪🇺 Europe</td>
+              <td>eu1.alephium-pool.com</td>
+              <td>20032</td>
+              <td>20033</td>
+              <td class="ping">
+                <span id="ping-Europe"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>🇷🇺 Russia</td>
+              <td>ru1.alephium-pool.com</td>
+              <td>20032</td>
+              <td>20033</td>
+              <td class="ping">
+                <span id="ping-Russia"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>🇺🇸 US</td>
+              <td>us1.alephium-pool.com</td>
+              <td>20032</td>
+              <td>20033</td>
+              <td class="ping">
+                <span id="ping-US"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>🇸🇬 Asia</td>
+              <td>asia1.alephium-pool.com</td>
+              <td>20032</td>
+              <td>20033</td>
+              <td class="ping">
+                <span id="ping-Asia"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <p>Fee <b>0.5%</b></a></p>
         <p>Mining statistic: <a href="stats.html"><b>Web</b></a> and <a href="https://t.me/alephium_pool_bot"><b>Telegram bot</b></a>
         </p>
         <p>Pool statistics: <a href="pool-stats.html"><b>Here</b></a></p>
         <p><a href="calculator.html"><b>Calculator</b></a></p>
-
     </div>
 </div>
 </body>
