@@ -141,7 +141,8 @@
 
 .button-copy {
   position: relative;
-  padding: 0.625rem;
+  padding: 0;
+  margin: 0;
 }
 
 .code-wrapper .button-copy {
@@ -183,7 +184,7 @@
 }
 
 .tooltiptext {
-  font-size: 0.625rem;
+  font-size: 10px;
   line-height: 1.8rem;
   background-color: #555;
   visibility: hidden;
@@ -195,7 +196,7 @@
   position: absolute;
   z-index: 1;
   bottom: 90%;
-  left: 75%;
+  left: 36%;
   margin-left: -3.75rem;
 }
 
@@ -211,7 +212,7 @@
 }
 
 .button-copy.copied .tooltiptext {
-  animation: fadeInFadeOutTooltip 1s ease-in-out forwards;
+  animation: fadeInFadeOutTooltip 1.5s ease-in-out forwards;
 }
 
 .stats-page .container {
