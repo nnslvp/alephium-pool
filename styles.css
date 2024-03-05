@@ -144,7 +144,7 @@
   padding: 0.625rem;
 }
 
-.instruction-page .button-copy {
+.code-wrapper .button-copy {
   position: absolute;
   right: 10px;
   top: 0px;
