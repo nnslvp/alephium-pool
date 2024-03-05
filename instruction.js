@@ -1,13 +1,22 @@
 function testServer(server) {
   return new Promise((resolve, reject) => {
-    const ws = new WebSocket(`ws://${server.host}:${server.port}`);
-    const startTime = new Date().getTime();
+    const ws = new WebSocket(`wss://${server.host}:${server.port}`);
+    let startTime = new Date().getTime();
 
     ws.onopen = () => {
-      const endTime = new Date().getTime();
-      const timeTaken = endTime - startTime;
-      ws.close();
-      resolve(timeTaken);
+      ws.send('1');
+      startTime = new Date().getTime();
+    };
+    ws.onmessage = (e) => {
+      if (e.data === '0') {
+        const endTime = new Date().getTime();
+        const timeTaken = endTime - startTime;
+        ws.close();
+        resolve(timeTaken);
+      } else {
+        ws.close();
+        reject(new Error('Incorrect server response'));
+      }
     };
 
     ws.onerror = () => {
@@ -18,15 +27,10 @@ function testServer(server) {
 
 function showPings() {
   const servers = [
-    {
-      name: 'RegionAutoDetection',
-      host: 'detect-my-region.alephium-pool.com',
-      port: 3030,
-    },
-    { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3030 },
-    { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3030 },
-    { name: 'US', host: 'us1.alephium-pool.com', port: 3030 },
-    { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3030 },
+    { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3031 },
+    { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3031 },
+    { name: 'US', host: 'us1.alephium-pool.com', port: 3031 },
+    { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3031 },
   ];
 
   servers
