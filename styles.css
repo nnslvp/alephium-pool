@@ -140,7 +140,11 @@
 }
 
 .button-copy {
+  position: relative;
   padding: 0.625rem;
+}
+
+.instruction-page .button-copy {
   position: absolute;
   right: 10px;
   top: 0px;
@@ -191,7 +195,7 @@
   position: absolute;
   z-index: 1;
   bottom: 90%;
-  left: 50%;
+  left: 75%;
   margin-left: -3.75rem;
 }
 
@@ -199,7 +203,7 @@
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 80%;
   margin-left: -0.3125rem;
   border-width: 0.3125rem;
   border-style: solid;
