@@ -162,7 +162,6 @@ function renderAndStyleServerFaster(servers) {
   }
 }
 
-
 const copyButtons = document.querySelectorAll('.button-copy');
 
 copyButtons.forEach((btn) => {
@@ -171,7 +170,7 @@ copyButtons.forEach((btn) => {
     const row = btn.closest('tr');
     const host = row.querySelector('.host').textContent;
     let port = '';
-    let protocol = ''
+    let protocol = '';
     const isCopyPortSSL = currentTarget.classList.contains(
       'button-copy-port-ssl'
     );
