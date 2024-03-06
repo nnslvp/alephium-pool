@@ -115,7 +115,7 @@ function showPayoutsTable(payouts) {
     payouts.forEach(payout => {
         const row = tableBody.insertRow();
         row.insertCell(0).textContent = parseFloat(payout.amount).toFixed(8);
-        row.insertCell(1).textContent = new Date(parseInt(payout.timestamp)).toLocaleString();
+        row.insertCell(1).textContent = new Date(payout.timestamp).toLocaleString();
     });
 }
 
