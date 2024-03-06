@@ -140,6 +140,7 @@
 }
 
 .button-copy {
+  height: initial;
   position: relative;
   padding: 0;
   margin: 0;
@@ -195,7 +196,7 @@
 
   position: absolute;
   z-index: 1;
-  bottom: 90%;
+  bottom: 150%;
   left: 36%;
   margin-left: -3.75rem;
 }
