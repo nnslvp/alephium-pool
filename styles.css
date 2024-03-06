@@ -140,7 +140,13 @@
 }
 
 .button-copy {
-  padding: 0.625rem;
+  height: initial;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.code-wrapper .button-copy {
   position: absolute;
   right: 10px;
   top: 0px;
@@ -179,7 +185,7 @@
 }
 
 .tooltiptext {
-  font-size: 0.625rem;
+  font-size: 10px;
   line-height: 1.8rem;
   background-color: #555;
   visibility: hidden;
@@ -190,8 +196,8 @@
 
   position: absolute;
   z-index: 1;
-  bottom: 90%;
-  left: 50%;
+  bottom: 150%;
+  left: 36%;
   margin-left: -3.75rem;
 }
 
@@ -199,7 +205,7 @@
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 80%;
   margin-left: -0.3125rem;
   border-width: 0.3125rem;
   border-style: solid;
@@ -207,7 +213,7 @@
 }
 
 .button-copy.copied .tooltiptext {
-  animation: fadeInFadeOutTooltip 1s ease-in-out forwards;
+  animation: fadeInFadeOutTooltip 1.5s ease-in-out forwards;
 }
 
 .stats-page .container {

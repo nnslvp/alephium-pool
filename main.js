@@ -162,4 +162,36 @@ function renderAndStyleServerFaster(servers) {
   }
 }
 
+const copyButtons = document.querySelectorAll('.button-copy');
+
+copyButtons.forEach((btn) => {
+  btn.addEventListener('click', (event) => {
+    const { currentTarget } = event;
+    const row = btn.closest('tr');
+    const host = row.querySelector('.host').textContent;
+    let port = '';
+    let protocol = '';
+    const isCopyPortSSL = currentTarget.classList.contains(
+      'button-copy-port-ssl'
+    );
+
+    if (isCopyPortSSL) {
+      port = row.querySelector('.port-ssl').textContent;
+      protocol = 'ssl://';
+    } else {
+      port = row.querySelector('.port').textContent;
+      protocol = 'tcp://';
+    }
+
+    const copyText = `${protocol}${host}:${port}`;
+    try {
+      navigator.clipboard.writeText(copyText);
+      currentTarget.classList.add('copied');
+      setTimeout(() => {
+        currentTarget.classList.remove('copied');
+      }, 1000);
+    } catch (err) {}
+  });
+});
+
 init();

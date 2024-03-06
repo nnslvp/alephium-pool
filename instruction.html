@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="instruction-page">
   <div class="wrapper">
     <header class="header-instruction">
       <div class="container-instruction">
@@ -31,13 +31,149 @@
         </div>
         <div>
           <h3>Pool servers:</h3>
-          <ul class="list-servers">
-            <li>🌎 Region auto detection: <b>detect-my-region.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇪🇺 Europe: <b>eu1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇷🇺 Russia: <b>ru1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇺🇸 US: <b>us1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-            <li>🇸🇬 Asia: <b>asia1.alephium-pool.com:20032</b> (SSL: <b>20033</b>)</li>
-          </ul>
+            <table class="table-servers">
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Address</th>
+                  <th>Port</th>
+                  <th>SSL Port</th>
+                  <th>
+                    <div class="th-ping">
+                      Ping
+                      <icon class="icon icon-tooltip">
+                        <span class="tooltip">
+                          This ping is approximate but accurate enough for comparing servers with each other. For obtaining the
+                          exact
+                          ping,
+                          use
+                          the ping command in your system.
+                        </span>
+                      </icon>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>🌎 Region auto detection</td>
+                  <td class="host">detect-my-region.alephium-pool.com</td>
+                  <td>
+                    <span class="port">20032</span>
+                    <button class="button button-clear  button-copy">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td>
+                    <span class="port-ssl">20033</span>
+                    <button class="button button-clear  button-copy button-copy-port-ssl">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td class="ping">
+                    <span id="ping-RegionAutoDetection"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>🇪🇺 Europe</td>
+                  <td class="host">eu1.alephium-pool.com</td>
+                  <td>
+                    <span class="port">20032</span>
+                    <button class="button button-clear  button-copy">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td>
+                    <span class="port-ssl">20033</span>
+                    <button class="button button-clear  button-copy button-copy-port-ssl">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td class="ping">
+                    <span id="ping-Europe"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>🇷🇺 Russia</td>
+                  <td>
+                    <span class="host">ru1.alephium-pool.com</span>
+                  </td>
+                  <td>
+                    <span class="port">20032</span>
+                    <button class="button button-clear  button-copy">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td>
+                    <span class="port-ssl">20033</span>
+                    <button class="button button-clear  button-copy button-copy-port-ssl">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td class="ping">
+                    <span id="ping-Russia"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>🇺🇸 US</td>
+                  <td class="host">us1.alephium-pool.com</td>
+                  <td>
+                    <span class="port">20032</span>
+                    <button class="button button-clear  button-copy">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td>
+                    <span class="port-ssl">20033</span>
+                    <button class="button button-clear  button-copy button-copy-port-ssl">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td class="ping">
+                    <span id="ping-US"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>🇸🇬 Asia</td>
+                  <td class="host">asia1.alephium-pool.com</td>
+                  <td>
+                    <span class="port">20032</span>
+                    <button class="button button-clear  button-copy">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td>
+                    <span class="port-ssl">20033</span>
+                    <button class="button button-clear  button-copy button-copy-port-ssl">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                  </td>
+                  <td class="ping">
+                    <span id="ping-Asia"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
         </div>
       </div>
     </header>
