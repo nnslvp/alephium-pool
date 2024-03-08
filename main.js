@@ -133,7 +133,8 @@ function showPings() {
           servers[i].ping = timeTaken;
           updatePing(server.name, timeTaken);
         })
-        .then(() => new Promise((resolve) => setTimeout(resolve, 500)));
+        .then(() => new Promise((resolve) => setTimeout(resolve, 500)))
+        .catch(err => console.error(err));
     }, Promise.resolve())
     .then(() => {
       renderAndStyleServerFaster(servers);
