@@ -71,24 +71,21 @@ function showWorkersTable(workersHour, workersDay) {
     const tableBody = document.getElementById('workers-table').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
 
-    
+
     workersHour.forEach(workerHour => {
         const workerDay = workersDay.find(w => w.worker === workerHour.worker) || {};
 
         const row = tableBody.insertRow();
-        const shortHashRateHour = shortenHm(workerHour.hashrate, 2);
+        const shortHashRateHour = workerHour.hashrate ? shortenHm(workerHour.hashrate, 2) : {hashrate: 'N/A', units: ''};
         const shortHashRateDay = workerDay.hashrate ? shortenHm(workerDay.hashrate, 2) : {hashrate: 'N/A', units: ''};
 
-        row.insertCell(0).textContent = workerHour.worker;
+        row.insertCell(0).textContent = workerHour.worker || 'N/A';
         row.insertCell(1).textContent = `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
-        row.insertCell(2).textContent = `${workerHour.shares_count} / ${workerDay.shares_count || 'N/A'}`;
-        row.insertCell(3).textContent = `${workerHour.invalid_shares_count} / ${workerDay.invalid_shares_count || 'N/A'}`;
-        row.insertCell(4).textContent = new Date(
-					workerHour.last_share_at
-				).toLocaleString() 
+        row.insertCell(2).textContent = `${workerHour.shares_count} / ${workerDay.shares_count}`;
+        row.insertCell(3).textContent = `${workerHour.invalid_shares_count} / ${workerDay.invalid_shares_count}`;
+        row.insertCell(4).textContent = workerHour.last_share_at ? new Date(workerHour.last_share_at).toLocaleString() : 'N/A';
     });
 }
-
 
 function amountUSD(amountInAlph, currencyRate) {
     return (parseFloat(amountInAlph) * currencyRate).toFixed(2)
