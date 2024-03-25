@@ -154,9 +154,19 @@ function updatePing(serverName, pingValue) {
 }
 
 function renderAndStyleServerFaster(servers) {
-  const fasterServer = servers.reduce((prev, curr) =>
-    prev.ping < curr.ping ? prev : curr
-  );
+  const isAllServersNotHavePing = servers.every(({ ping }) => !ping);
+
+  if (isAllServersNotHavePing) {
+    return;
+  }
+
+  const fasterServer = servers.reduce((prev, curr) => {
+    const prevValue = prev.ping ?? Infinity;
+    const currValue = curr.ping ?? Infinity;
+
+    return prevValue < currValue ? prev : curr;
+  });
+
   const pingCell = document.getElementById(`ping-${fasterServer.name}`);
   if (pingCell) {
     pingCell.classList.add('faster');
