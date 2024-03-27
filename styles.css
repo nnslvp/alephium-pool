@@ -321,7 +321,7 @@
   }
 
   .container {
-    padding: 0px 20px 0px 20px;
+    padding: 20px 20px 0px 20px;
   }
 
   form {
@@ -357,4 +357,10 @@
 .disabled {
   background-color: '#606c76';
   border: '#606c76';
+}
+
+@media (max-width: 26.5625rem) {
+  .tab-links .button {
+    padding: 0rem 2rem;
+  }
 }
