@@ -31,6 +31,10 @@ function fetchMyBalance(wallet) {
     return statsApiCall(`/balance?wallet=${wallet}`)
 }
 
+function fetchMyEvents(wallet) {
+    return statsApiCall(`/events?wallet=${wallet}`)
+}
+
 function shortenHm(hashRate, roundPlaces) {
     const denominator = [
         {d: 1000000000000, unit: 'TH'},
@@ -71,7 +75,6 @@ function showWorkersTable(workersHour, workersDay) {
     const tableBody = document.getElementById('workers-table').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
 
-
     workersHour.forEach(workerHour => {
         const workerDay = workersDay.find(w => w.worker === workerHour.worker) || {};
 
@@ -82,7 +85,6 @@ function showWorkersTable(workersHour, workersDay) {
         row.insertCell(0).textContent = workerHour.worker || 'N/A';
         row.insertCell(1).textContent = `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
         row.insertCell(2).textContent = `${workerHour.shares_count} / ${workerDay.shares_count}`;
-        row.insertCell(3).textContent = `${workerHour.invalid_shares_count} / ${workerDay.invalid_shares_count}`;
         row.insertCell(4).textContent = workerHour.last_share_at ? new Date(workerHour.last_share_at).toLocaleString() : 'N/A';
     });
 }
@@ -116,6 +118,19 @@ function showPayoutsTable(payouts) {
     });
 }
 
+function showEventsTable(events) {
+    const tableBody = document.getElementById('events-table').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = '';
+    
+    events.forEach((event) => {
+      const row = tableBody.insertRow();
+      row.insertCell(0).textContent = event.worker ?? 'N/A';
+      row.insertCell(1).textContent = event.message;
+      row.insertCell(2).textContent = event.count;
+      row.insertCell(3).textContent = new Date(event.latest).toLocaleString();
+    });
+}
+
 function drawData(wallet) {
     disableButton();
     Promise.all(
@@ -123,13 +138,14 @@ function drawData(wallet) {
             fetchMyHashrate(wallet),
             fetchMyPayouts(wallet),
             fetchMyBalance(wallet),
+            fetchMyEvents(wallet),
             fetchCurrencyInfo()
         ]
     ).then((
         [
             [hashrate1hResponse, hashrate24hResponse],
             [payouts1hResponse, payouts24hResponse],
-            myBalanceResponse, currencyRate
+            myBalanceResponse, myEventsResponse, currencyRate, 
         ]
     ) => {
         const hashrate1h = hashrate1hResponse.workers.reduce((accumulator, v) => {
@@ -156,6 +172,7 @@ function drawData(wallet) {
         showMyPayouts({hour: {amount: payouts1h}, day: {amount: payouts24h}}, currencyRate);
         showPayoutsTable(payouts24hResponse.payouts)
         showMyBalance(myBalanceResponse, currencyRate);
+        showEventsTable(myEventsResponse.events);
         showStats();
         enableButton();
     });
@@ -215,6 +232,7 @@ function assignFormListener() {
 
     document.getElementById('workers-tab').addEventListener('click', (e) => switchTab(e, 'workers'));
     document.getElementById('payouts-tab').addEventListener('click', (e) => switchTab(e, 'payouts'));
+    document.getElementById('events-tab').addEventListener('click', (e) => switchTab(e, 'events'));
 }
 
 

@@ -59,6 +59,7 @@
           <div class="tab-links">
             <button class="button button-outline" id="workers-tab">Workers</button>
             <button class="button button-clear" id="payouts-tab">Payouts 24h</button>
+            <button class="button button-clear" id="events-tab">Events</button>
           </div>
 
                 <div class="tab-content">
@@ -69,7 +70,6 @@
                                 <th>Worker</th>
                                 <th>Hashrate 1h/24h</th>
                                 <th>Valid Shares 1h/24h</th>
-                                <th>Invalid Shares 1h/24h</th>
                                 <th>Last Share At</th>
                             </tr>
                             </thead>
@@ -83,6 +83,20 @@
                             <tr>
                                 <th>Amount</th>
                                 <th>Timestamp</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="events" class="tab">
+                        <table id="events-table">
+                            <thead>
+                            <tr>
+                                <th>Worker</th>
+                                <th>Message</th>
+                                <th>Count</th>
+                                <th>Latest</th>
                             </tr>
                             </thead>
                             <tbody>
