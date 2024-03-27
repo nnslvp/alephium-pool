@@ -30,6 +30,7 @@ function fetchMyPayouts(wallet) {
 function fetchMyBalance(wallet) {
     return statsApiCall(`/balance?wallet=${wallet}`)
 }
+
 function fetchMyEvents(wallet) {
     return statsApiCall(`/events?wallet=${wallet}`)
 }
@@ -144,7 +145,7 @@ function drawData(wallet) {
         [
             [hashrate1hResponse, hashrate24hResponse],
             [payouts1hResponse, payouts24hResponse],
-            myBalanceResponse,myEventsResponse,currencyRate, 
+            myBalanceResponse, myEventsResponse, currencyRate, 
         ]
     ) => {
         const hashrate1h = hashrate1hResponse.workers.reduce((accumulator, v) => {
