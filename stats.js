@@ -85,7 +85,7 @@ function showWorkersTable(workersHour, workersDay) {
         row.insertCell(0).textContent = workerHour.worker || 'N/A';
         row.insertCell(1).textContent = `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
         row.insertCell(2).textContent = `${workerHour.shares_count} / ${workerDay.shares_count}`;
-        row.insertCell(4).textContent = workerHour.last_share_at ? new Date(workerHour.last_share_at).toLocaleString() : 'N/A';
+        row.insertCell(3).textContent = workerHour.last_share_at ? new Date(workerHour.last_share_at).toLocaleString() : 'N/A';
     });
 }
 
