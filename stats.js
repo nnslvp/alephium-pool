@@ -71,23 +71,24 @@ function showMyHashrate({day, hour}) {
     document.getElementById('my_hashrate_24h_measure').textContent = shortDayHashRate.units
 }
 
-function showWorkersTable(workersHour, workersDay) {
+function showWorkersTable(workersDay, workersHour) {
     const tableBody = document.getElementById('workers-table').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
 
-    workersHour.forEach(workerHour => {
-        const workerDay = workersDay.find(w => w.worker === workerHour.worker) || {};
+    workersDay.forEach((workerDay) => {
+        const workerHour = workersHour.find((w) => w.worker === workerDay.worker) || {};
 
         const row = tableBody.insertRow();
-        const shortHashRateHour = workerHour.hashrate ? shortenHm(workerHour.hashrate, 2) : {hashrate: 'N/A', units: ''};
-        const shortHashRateDay = workerDay.hashrate ? shortenHm(workerDay.hashrate, 2) : {hashrate: 'N/A', units: ''};
+        const shortHashRateHour = workerHour.hashrate ? shortenHm(workerHour.hashrate, 2) : { hashrate: 'N/A', units: '' };
+        const shortHashRateDay = workerDay.hashrate ? shortenHm(workerDay.hashrate, 2) : { hashrate: 'N/A', units: '' };
 
-        row.insertCell(0).textContent = workerHour.worker || 'N/A';
+        row.insertCell(0).textContent = workerDay.worker || 'N/A';
         row.insertCell(1).textContent = `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
         row.insertCell(2).textContent = `${workerHour.shares_count} / ${workerDay.shares_count}`;
-        row.insertCell(3).textContent = workerHour.last_share_at ? new Date(workerHour.last_share_at).toLocaleString() : 'N/A';
+        row.insertCell(3).textContent = workerDay.last_share_at ? new Date(workerDay.last_share_at).toLocaleString() : 'N/A';
     });
 }
+
 
 function amountUSD(amountInAlph, currencyRate) {
     return (parseFloat(amountInAlph) * currencyRate).toFixed(2)
