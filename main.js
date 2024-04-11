@@ -12,8 +12,12 @@ function fetchPoolProfit() {
   return statsApiCall('/profit');
 }
 
-function fetchPoolSummary() {
-  return statsApiCall('/summary');
+function fetchPoolHashRate() {
+  return statsApiCall('/hashrate');
+}
+
+function fetchPoolBlocks(period = 3600) {
+  return statsApiCall(`/blocks?period=${period}`);
 }
 
 function shortenHm(hashRate, roundPlaces) {
@@ -82,11 +86,16 @@ function init() {
     showPoolProfit(profit);
     fetchCurrencyInfo().then(({ rate }) => showPoolProfitUSD(profit, rate));
   });
-  fetchPoolSummary().then((summary) => {
-    showPoolHashrate(summary.pool_hashrate_1h, summary.hashrate_units);
-    showPool24hBlocks(summary.blocks_24h);
-    showPoolLatestBlockAt(summary.last_block_at);
+  
+  fetchPoolHashRate().then(({ hashrate }) => {
+    showPoolHashrate(hashrate.hashrate);
   });
+
+  fetchPoolBlocks(86400).then(({ last_block_at, count }) => {
+    showPoolLatestBlockAt(last_block_at);
+    showPool24hBlocks(count);
+  });
+
   showPings();
 }
 
