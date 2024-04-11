@@ -15,7 +15,8 @@ function fetchPoolProfit() {
 function fetchPoolHashRate() {
   return statsApiCall('/hashrate');
 }
-function fetchPoolBlocks(period = '3600') {
+
+function fetchPoolBlocks(period = 3600) {
   return statsApiCall(`/blocks?period=${period}`);
 }
 
@@ -87,10 +88,10 @@ function init() {
   });
   
   fetchPoolHashRate().then(({ hashrate }) => {
-    showPoolHashrate(hashrate?.hashrate);
+    showPoolHashrate(hashrate.hashrate);
   });
 
-  fetchPoolBlocks('86400').then(({ last_block_at, count }) => {
+  fetchPoolBlocks(86400).then(({ last_block_at, count }) => {
     showPoolLatestBlockAt(last_block_at);
     showPool24hBlocks(count);
   });
