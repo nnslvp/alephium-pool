@@ -48,7 +48,7 @@ function shortenHm(hashRate, roundPlaces) {
   }
 }
 
-function showPoolHashrate({hashrate}) {
+function showPoolHashrate(hashrate) {
   const shortPoolHashRate = shortenHm(hashrate, 2);
   document.getElementById(
     'pool_hashrate'
@@ -90,9 +90,15 @@ function init() {
   //   showPool24hBlocks(summary.blocks_24h);
   //   showPoolLatestBlockAt(summary.last_block_at);
   // });
-  fetchPoolHashRate().then(({hashrate}) => {
-    showPoolHashrate(hashrate);
-  })
+
+  fetchPoolHashRate().then(({ hashrate }) => {
+    showPoolHashrate(hashrate?.hashrate);
+  });
+
+  fetchPoolBlocks().then(({ last_block_at }) => {
+    showPoolLatestBlockAt(last_block_at);
+  });
+
   showPings();
 }
 
