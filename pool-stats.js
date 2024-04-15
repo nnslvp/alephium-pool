@@ -1,13 +1,7 @@
 function statsApiCall() {
-    return fetch('https://api.alephium-pool.com/pool_stats')
-      .then(response => response.json())
-}
-
-function groupBy(xs, key) {
-    return xs.reduce(function (rv, x) {
-        (rv[x[key]] = rv[x[key]] || []).push(x);
-        return rv;
-    }, {});
+  return fetch('https://api.alephium-pool.com/pool_history').then((response) =>
+    response.json()
+  );
 }
 
 const defaultParams = {
@@ -39,27 +33,15 @@ const defaultParams = {
     }
 };
 
-
 function chartData(data, field, valueFormatter) {
-    let groups = groupBy(data, "pool");
-
-    return Object.entries(groups).map(([regionName, groupData]) => {
-        const data = groupData.map(e => {
-            const createElement = (value) => [new Date(e["date"]).getTime(), value];
-
-            if (valueFormatter) {
-                const formattedValue = valueFormatter(e);
-                return createElement(Math.round(formattedValue));
-            } else {
-                return createElement(Math.round(e[field]));
-            }
-        });
-
-        return {
-            name: regionName,
-            data
-        };
-    })
+  return [
+    {
+      data: data.map((e) => {
+        const value = valueFormatter ? valueFormatter(e) : e[field];
+        return [new Date(e.day).getTime(), Math.round(value)];
+      }),
+    },
+  ];
 }
 
 function drawChart(data, field, valueFormatter) {
@@ -74,15 +56,17 @@ function drawChart(data, field, valueFormatter) {
 }
 
 function Init() {
-    statsApiCall().then(response => {
-        const poolStats = response.pool_stats;
+  statsApiCall().then((response) => {
+    const poolHistory = response.pool_history;
 
-        drawChart(poolStats, "wallets");
-        drawChart(poolStats, "shares_difficulty");
+    drawChart(poolHistory, 'unique_wallets');
+    drawChart(poolHistory, 'sum_difficulty');
 
-        const calculateHashrate = (item) => ((item["shares_difficulty"] * 16.0 * (2 ** 30)) / 86400) / 1000000;
-        drawChart(poolStats, "hash_rate", calculateHashrate);
-    })
+    const calculateHashrate = (item) =>
+      (item['sum_difficulty'] * 16.0 * 2 ** 30) / 86400 / 1000000;
+
+    drawChart(poolHistory, 'hash_rate', calculateHashrate);
+  });
 }
 
 DarkReader.enable({
