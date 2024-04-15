@@ -104,8 +104,8 @@ function showMyPayouts({day, hour}, currencyRate) {
 
 
 function showMyBalance(myBalanceData, currencyRate) {
-    document.getElementById('balance').textContent = parseFloat(myBalanceData.ready_to_pay).toFixed(8)
-    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.ready_to_pay, currencyRate.rate)
+    document.getElementById('balance').textContent = parseFloat(myBalanceData.amount).toFixed(8)
+    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.amount, currencyRate.rate)
 }
 
 function showPayoutsTable(payouts) {
