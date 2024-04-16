@@ -96,16 +96,16 @@ function amountUSD(amountInAlph, currencyRate) {
 
 function showMyPayouts({day, hour}, currencyRate) {
     document.getElementById('my_payouts_1h').textContent = parseFloat(hour.amount).toFixed(8)
-    document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate.rate)
+    document.getElementById('my_payouts_1h_usd').textContent = amountUSD(hour.amount, currencyRate)
 
     document.getElementById('my_payouts_24h').textContent = parseFloat(day.amount).toFixed(8)
-    document.getElementById('my_payouts_24h_usd').textContent = amountUSD(day.amount, currencyRate.rate)
+    document.getElementById('my_payouts_24h_usd').textContent = amountUSD(day.amount, currencyRate)
 }
 
 
 function showMyBalance(myBalanceData, currencyRate) {
     document.getElementById('balance').textContent = parseFloat(myBalanceData.amount).toFixed(8)
-    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.amount, currencyRate.rate)
+    document.getElementById('balance_usd').textContent = amountUSD(myBalanceData.amount, currencyRate)
 }
 
 function showPayoutsTable(payouts) {
@@ -124,11 +124,11 @@ function showEventsTable(events) {
     tableBody.innerHTML = '';
 
     events.forEach((event) => {
-      const row = tableBody.insertRow();
-      row.insertCell(0).textContent = event.worker ?? 'N/A';
-      row.insertCell(1).textContent = event.message;
-      row.insertCell(2).textContent = event.count;
-      row.insertCell(3).textContent = new Date(event.latest).toLocaleString();
+        const row = tableBody.insertRow();
+        row.insertCell(0).textContent = event.worker ?? 'N/A';
+        row.insertCell(1).textContent = event.message;
+        row.insertCell(2).textContent = event.count;
+        row.insertCell(3).textContent = new Date(event.latest).toLocaleString();
     });
 }
 
@@ -170,9 +170,9 @@ function drawData(wallet) {
             day: {hashrate: hashrate24h, units: hashrate1hResponse.units}
         });
         showWorkersTable(hashrate1hResponse.workers, hashrate24hResponse.workers);
-        showMyPayouts({hour: {amount: payouts1h}, day: {amount: payouts24h}}, currencyRate);
+        showMyPayouts({hour: {amount: payouts1h}, day: {amount: payouts24h}}, currencyRate.rate.value);
         showPayoutsTable(payouts24hResponse.payouts)
-        showMyBalance(myBalanceResponse, currencyRate);
+        showMyBalance(myBalanceResponse, currencyRate.rate.value);
         showEventsTable(myEventsResponse.events);
         showStats();
         enableButton();
@@ -238,19 +238,20 @@ function assignFormListener() {
 
 
 function switchTab(event, tabId) {
-	document.querySelectorAll('.tab').forEach(tab => {
-		tab.classList.remove('active')
-	})
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active')
+    })
 
-	document.querySelectorAll('.tab-links .button').forEach(tab => {
-		tab.classList.remove('button-outline')
-		tab.classList.add('button-clear')
-	})
+    document.querySelectorAll('.tab-links .button').forEach(tab => {
+        tab.classList.remove('button-outline')
+        tab.classList.add('button-clear')
+    })
 
-	document.getElementById(tabId).classList.add('active')
-	event.currentTarget.classList.add('button-outline')
-	event.currentTarget.classList.remove('button-clear')
+    document.getElementById(tabId).classList.add('active')
+    event.currentTarget.classList.add('button-outline')
+    event.currentTarget.classList.remove('button-clear')
 }
+
 function init() {
     assignFormListener();
 

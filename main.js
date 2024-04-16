@@ -84,7 +84,7 @@ function showPoolLatestBlockAt(date) {
 function init() {
   fetchPoolProfit().then(({ profit }) => {
     showPoolProfit(profit);
-    fetchCurrencyInfo().then(({ rate }) => showPoolProfitUSD(profit, rate));
+    fetchCurrencyInfo().then(({ rate: {value} }) => showPoolProfitUSD(profit, value));
   });
 
   fetchPoolHashRate().then(({ hashrate }) => {

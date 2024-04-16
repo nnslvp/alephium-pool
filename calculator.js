@@ -56,12 +56,12 @@ function generateTable(calculatorForm) {
     const currencyValue = "USD";
     const electricityCostsValue = calculatorForm.electricity_costs.value;
 
-    Promise.all([fetchRate(), fetchPoolProfit()]).then(function([object1, object2]) {
+    Promise.all([fetchRate(), fetchPoolProfit()]).then(function([{rate}, {profit}]) {
         let tbody = document.getElementsByTagName('tbody')[0];
         tbody.innerHTML = "";
 
-        let reward = object2.profit * hashrateValue;
-        let income = getPoolProfitUSD(object1.rate, reward);
+        let reward = profit * hashrateValue;
+        let income = getPoolProfitUSD(rate.value, reward);
 
         addRow(
             tbody,
