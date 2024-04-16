@@ -15,7 +15,7 @@ function fetchMyHashrate(wallet) {
 }
 
 function fetchCurrencyInfo() {
-    return statsApiCall(`/rate`)
+    return statsApiCall(`/rate?coin=alephium`)
 }
 
 function fetchMyPayouts(wallet) {
