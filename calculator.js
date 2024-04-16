@@ -6,11 +6,11 @@ function statsApiCall(action) {
 }
 
 function fetchPoolProfit() {
-    return statsApiCall('/profit');
+    return statsApiCall('/profit?coin=alephium');
 }
 
 function fetchRate() {
-    return statsApiCall(`/rate`)
+    return statsApiCall(`/rate?coin=alephium`)
 }
 
 function getPoolProfitUSD(rate, profit) {
@@ -59,7 +59,7 @@ function generateTable(calculatorForm) {
     Promise.all([fetchRate(), fetchPoolProfit()]).then(function([object1, object2]) {
         let tbody = document.getElementsByTagName('tbody')[0];
         tbody.innerHTML = "";
-    
+
         let reward = object2.profit * hashrateValue;
         let income = getPoolProfitUSD(object1.rate, reward);
 

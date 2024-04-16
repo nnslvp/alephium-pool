@@ -5,19 +5,19 @@ function statsApiCall(action) {
 }
 
 function fetchCurrencyInfo() {
-  return statsApiCall(`/rate`);
+  return statsApiCall(`/rate?coin=alephium`);
 }
 
 function fetchPoolProfit() {
-  return statsApiCall('/profit');
+  return statsApiCall('/profit?coin=alephium');
 }
 
 function fetchPoolHashRate() {
-  return statsApiCall('/hashrate');
+  return statsApiCall('/hashrate?coin=alephium');
 }
 
 function fetchPoolBlocks(period = 3600) {
-  return statsApiCall(`/blocks?period=${period}`);
+  return statsApiCall(`/blocks?coin=alephium&period=${period}`);
 }
 
 function shortenHm(hashRate, roundPlaces) {
@@ -86,7 +86,7 @@ function init() {
     showPoolProfit(profit);
     fetchCurrencyInfo().then(({ rate }) => showPoolProfitUSD(profit, rate));
   });
-  
+
   fetchPoolHashRate().then(({ hashrate }) => {
     showPoolHashrate(hashrate.hashrate);
   });

@@ -8,8 +8,8 @@ function statsApiCall(action) {
 function fetchMyHashrate(wallet) {
     return Promise.all(
         [
-            statsApiCall(`/workers?wallet=${wallet}&period=3600`),
-            statsApiCall(`/workers?wallet=${wallet}&period=86400`),
+            statsApiCall(`/workers?coin=alephium&wallet=${wallet}&period=3600`),
+            statsApiCall(`/workers?coin=alephium&wallet=${wallet}&period=86400`),
         ]
     )
 }
@@ -21,18 +21,18 @@ function fetchCurrencyInfo() {
 function fetchMyPayouts(wallet) {
     return Promise.all(
         [
-            statsApiCall(`/payouts?wallet=${wallet}&period=3600`),
-            statsApiCall(`/payouts?wallet=${wallet}&period=86400`),
+            statsApiCall(`/payouts?coin=alephium&wallet=${wallet}&period=3600`),
+            statsApiCall(`/payouts?coin=alephium&wallet=${wallet}&period=86400`),
         ]
     )
 }
 
 function fetchMyBalance(wallet) {
-    return statsApiCall(`/balance?wallet=${wallet}`)
+    return statsApiCall(`/balance?coin=alephium&wallet=${wallet}`)
 }
 
 function fetchMyEvents(wallet) {
-    return statsApiCall(`/events?wallet=${wallet}`)
+    return statsApiCall(`/events?coin=alephium&wallet=${wallet}`)
 }
 
 function shortenHm(hashRate, roundPlaces) {
@@ -122,7 +122,7 @@ function showPayoutsTable(payouts) {
 function showEventsTable(events) {
     const tableBody = document.getElementById('events-table').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
-    
+
     events.forEach((event) => {
       const row = tableBody.insertRow();
       row.insertCell(0).textContent = event.worker ?? 'N/A';
@@ -146,7 +146,7 @@ function drawData(wallet) {
         [
             [hashrate1hResponse, hashrate24hResponse],
             [payouts1hResponse, payouts24hResponse],
-            myBalanceResponse, myEventsResponse, currencyRate, 
+            myBalanceResponse, myEventsResponse, currencyRate,
         ]
     ) => {
         const hashrate1h = hashrate1hResponse.workers.reduce((accumulator, v) => {
