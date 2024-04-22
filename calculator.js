@@ -1,4 +1,4 @@
-const ApiUrl = 'https://api.alephium-pool.com';
+const ApiUrl = 'https://api.coinmore.io';
 
 function statsApiCall(action) {
     return fetch(`${ApiUrl}${action}`)
