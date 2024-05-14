@@ -84,7 +84,9 @@ function showPoolLatestBlockAt(date) {
 function init() {
   fetchPoolProfit().then(({ profit }) => {
     showPoolProfit(profit);
-    fetchCurrencyInfo().then(({ rate: {value} }) => showPoolProfitUSD(profit, value));
+    fetchCurrencyInfo().then(({ rate: { value } }) =>
+      showPoolProfitUSD(profit, value)
+    );
   });
 
   fetchPoolHashRate().then(({ hashrate }) => {
@@ -143,11 +145,8 @@ function showPings() {
           updatePing(server.name, timeTaken);
         })
         .then(() => new Promise((resolve) => setTimeout(resolve, 500)))
-        .catch(err => console.error(err));
-    }, Promise.resolve())
-    .then(() => {
-      renderAndStyleServerFaster(servers);
-    });
+      .catch((err) => console.error(err));
+  }, Promise.resolve());
 }
 
 function updatePing(serverName, pingValue) {
@@ -155,30 +154,29 @@ function updatePing(serverName, pingValue) {
     return;
   }
   const pingCell = document.getElementById(`ping-${serverName}`);
+  const tooltip = pingCell.closest('.ping').querySelector('.tooltip');
 
   if (pingCell) {
-    pingCell.textContent = `${pingValue} ms`;
+    let message;
+    let tooltipText;
+    if (pingValue < 50) {
+      message = `😎`;
+      tooltipText = '<= 50 ms';
+    } else if (pingValue >= 50 && pingValue < 100) {
+      message = `🙂`;
+      tooltipText = '50-99 ms';
+    } else if (pingValue >= 100 && pingValue < 200) {
+      message = `😐`;
+      tooltipText = '100-199 ms';
+    } else if (pingValue >= 200) {
+      message = `😟`;
+      tooltipText = '≥ 200 ms';
+    }
+
+    pingCell.textContent = message;
+    tooltip.textContent = tooltipText;
+    tooltip.classList.add('active');
     pingCell.classList.add('fade-in-animation');
-  }
-}
-
-function renderAndStyleServerFaster(servers) {
-  const isAllServersNotHavePing = servers.every(({ ping }) => !ping);
-
-  if (isAllServersNotHavePing) {
-    return;
-  }
-
-  const fasterServer = servers.reduce((prev, curr) => {
-    const prevValue = prev.ping ?? Infinity;
-    const currValue = curr.ping ?? Infinity;
-
-    return prevValue < currValue ? prev : curr;
-  });
-
-  const pingCell = document.getElementById(`ping-${fasterServer.name}`);
-  if (pingCell) {
-    pingCell.classList.add('faster');
   }
 }
 

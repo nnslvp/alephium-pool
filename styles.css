@@ -77,6 +77,25 @@
   opacity: 1;
 }
 
+.ping:hover > .tooltip.active {
+  cursor: help;
+  visibility: visible;
+  opacity: 1;
+  left: 0;
+  top: 0;
+  transform: translate(2px, -21px);
+  width: fit-content;
+  text-wrap: nowrap;
+}
+
+.ping:hover > .tooltip.active::after {
+  visibility: visible;
+  opacity: 1;
+  right: inherit;
+  left: 4px;
+  bottom: 0;
+}
+
 .tooltip::after {
   content: '';
   position: absolute;
@@ -249,6 +268,7 @@
 }
 
 .table-servers .ping {
+  position: relative;
   width: 100px;
 }
 

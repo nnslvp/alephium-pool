@@ -43,9 +43,7 @@ function showPings() {
         })
         .then(() => new Promise((resolve) => setTimeout(resolve, 500)));
     }, Promise.resolve())
-    .then(() => {
-      renderAndStyleServerFaster(servers);
-    });
+    .then(() => {});
 }
 
 function updatePing(serverName, pingValue) {
@@ -53,21 +51,30 @@ function updatePing(serverName, pingValue) {
     return;
   }
   const pingCell = document.getElementById(`ping-${serverName}`);
+  const tooltip = pingCell.closest('.ping').querySelector('.tooltip');
 
-  if (pingCell) {
-    pingCell.textContent = `${pingValue} ms`;
-    pingCell.classList.add('fade-in-animation');
-  }
-}
+    if (pingCell) {
+      let message;
+      let tooltipText;
+      if (pingValue < 50) {
+        message = `😎`;
+        tooltipText = '<= 50 ms';
+      } else if (pingValue >= 50 && pingValue < 100) {
+        message = `🙂`;
+        tooltipText = '50-99 ms';
+      } else if (pingValue >= 100 && pingValue < 200) {
+        message = `😐`;
+        tooltipText = '100-199 ms';
+      } else if (pingValue >= 200) {
+        message = `😟`;
+        tooltipText = '≥ 200 ms';
+      }
 
-function renderAndStyleServerFaster(servers) {
-  const fasterServer = servers.reduce((prev, curr) =>
-    prev.ping < curr.ping ? prev : curr
-  );
-  const pingCell = document.getElementById(`ping-${fasterServer.name}`);
-  if (pingCell) {
-    pingCell.classList.add('faster');
-  }
+      pingCell.textContent = message;
+      tooltip.textContent = tooltipText;
+      tooltip.classList.add('active');
+      pingCell.classList.add('fade-in-animation');
+    }
 }
 
 const copyButtonsInsideTableServers = document.querySelectorAll(
@@ -84,7 +91,7 @@ copyButtonsInsideTableServers.forEach((btn) => {
     const row = btn.closest('tr');
     const host = row.querySelector('.host').textContent;
     let port = '';
-    let protocol = ''
+    let protocol = '';
     const isCopyPortSSL = currentTarget.classList.contains(
       'button-copy-port-ssl'
     );
@@ -111,9 +118,8 @@ copyButtonsInsideTableServers.forEach((btn) => {
 copyButtonsInsideCodeWrapper.forEach((btn) => {
   btn.addEventListener('click', (event) => {
     const { currentTarget } = event;
-    const copyText = btn
-      .closest('.code-wrapper')
-      .querySelector('code').textContent;
+    const copyText = btn.closest('.code-wrapper').querySelector('code')
+      .textContent;
 
     try {
       navigator.clipboard.writeText(copyText);
