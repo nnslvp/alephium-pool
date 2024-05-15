@@ -58,10 +58,10 @@ function updatePing(serverName, pingValue) {
     if (pingValue <= 50) {
       message = `😎`;
       tooltipText = '<= 50 ms';
-    } else if (pingValue >= 50 && pingValue < 100) {
+    } else if (pingValue <= 100) {
       message = `🙂`;
-      tooltipText = '50-99 ms';
-    } else if (pingValue >= 100 && pingValue <= 200) {
+      tooltipText = '50-100 ms';
+    } else if (pingValue <= 200) {
       message = `😐`;
       tooltipText = '100-200 ms';
     } else {
