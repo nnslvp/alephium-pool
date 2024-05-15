@@ -159,7 +159,7 @@ function updatePing(serverName, pingValue) {
   if (pingCell) {
     let message;
     let tooltipText;
-    if (pingValue < 50) {
+    if (pingValue <= 50) {
       message = `😎`;
       tooltipText = '<= 50 ms';
     } else if (pingValue >= 50 && pingValue < 100) {
@@ -167,10 +167,10 @@ function updatePing(serverName, pingValue) {
       tooltipText = '50-99 ms';
     } else if (pingValue >= 100 && pingValue < 200) {
       message = `😐`;
-      tooltipText = '100-199 ms';
-    } else if (pingValue >= 200) {
+      tooltipText = '100-200 ms';
+    } else {
       message = `😟`;
-      tooltipText = '≥ 200 ms';
+      tooltipText = '> 200 ms';
     }
 
     pingCell.textContent = message;

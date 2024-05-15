@@ -42,8 +42,7 @@ function showPings() {
           updatePing(server.name, timeTaken);
         })
         .then(() => new Promise((resolve) => setTimeout(resolve, 500)));
-    }, Promise.resolve())
-    .then(() => {});
+  }, Promise.resolve());
 }
 
 function updatePing(serverName, pingValue) {
@@ -53,28 +52,28 @@ function updatePing(serverName, pingValue) {
   const pingCell = document.getElementById(`ping-${serverName}`);
   const tooltip = pingCell.closest('.ping').querySelector('.tooltip');
 
-    if (pingCell) {
-      let message;
-      let tooltipText;
-      if (pingValue < 50) {
-        message = `😎`;
-        tooltipText = '<= 50 ms';
-      } else if (pingValue >= 50 && pingValue < 100) {
-        message = `🙂`;
-        tooltipText = '50-99 ms';
-      } else if (pingValue >= 100 && pingValue < 200) {
-        message = `😐`;
-        tooltipText = '100-199 ms';
-      } else if (pingValue >= 200) {
-        message = `😟`;
-        tooltipText = '≥ 200 ms';
-      }
-
-      pingCell.textContent = message;
-      tooltip.textContent = tooltipText;
-      tooltip.classList.add('active');
-      pingCell.classList.add('fade-in-animation');
+  if (pingCell) {
+    let message;
+    let tooltipText;
+    if (pingValue <= 50) {
+      message = `😎`;
+      tooltipText = '<= 50 ms';
+    } else if (pingValue >= 50 && pingValue < 100) {
+      message = `🙂`;
+      tooltipText = '50-99 ms';
+    } else if (pingValue >= 100 && pingValue < 200) {
+      message = `😐`;
+      tooltipText = '100-200 ms';
+    } else {
+      message = `😟`;
+      tooltipText = '> 200 ms';
     }
+
+    pingCell.textContent = message;
+    tooltip.textContent = tooltipText;
+    tooltip.classList.add('active');
+    pingCell.classList.add('fade-in-animation');
+  }
 }
 
 const copyButtonsInsideTableServers = document.querySelectorAll(
