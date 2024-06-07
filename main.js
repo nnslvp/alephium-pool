@@ -130,10 +130,15 @@ function testServer(server) {
 
 function showPings() {
   const servers = [
-    { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3031 },
-    { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3031 },
-    { name: 'US', host: 'us1.alephium-pool.com', port: 3031 },
-    { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3031 },
+    // NOTE: The following servers are not working until DNS is not cloudflare, I cant handle SSL
+    // { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3031 },
+    // { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3031 },
+    // { name: 'US', host: 'us1.alephium-pool.com', port: 3031 },
+    // { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3031 },
+    { name: 'Europe', host: 'eu1.alephium.coinmore.io', port: 3031 },
+    { name: 'Russia', host: 'ru1.alephium.coinmore.io', port: 3031 },
+    { name: 'US', host: 'us1.alephium.coinmore.io', port: 3031 },
+    { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
   ];
 
   servers
