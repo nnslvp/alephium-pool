@@ -1,4 +1,12 @@
 const statsApiUrl = 'https://api.coinmore.io';
+const MODAL = document.querySelector('.modal');
+const OPEN_MODAL_BTNS = document.querySelectorAll('.open-modal-button');
+const CLOSE_MODAL_BTN = document.querySelector('.close-modal-btn');
+const FORM_MIN_PAYOUTS = MODAL.querySelector('#form-min-payouts');
+const INPUT_MIN_PAYOUTS = FORM_MIN_PAYOUTS.querySelector('#input-min-payouts');
+const STAT_MIN_PAYOUTS_VALUE = document.querySelector(
+  '#stat-min-payouts-value'
+);
 
 function statsApiCall(action) {
     return fetch(`${statsApiUrl}${action}`)
@@ -25,6 +33,31 @@ function fetchMyPayouts(wallet) {
             statsApiCall(`/payouts?coin=alephium&wallet=${wallet}&period=86400`),
         ]
     )
+}
+
+function statsApiPost(action) {
+  return fetch(`${statsApiUrl}${action}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
+function createUserValue(wallet, kind = 'min_payout', value = 0.1) {
+  return statsApiPost(
+    `/user_value?coin=alephium&wallet=${wallet}&kind=${kind}&value=${value}`
+  );
+}
+
+function fetchUserValue(wallet, kind = 'min_payout') {
+  return statsApiCall(
+    `/user_value?coin=alephium&wallet=${wallet}&kind=${kind}`
+  );
+}
+
+function fetchPoolValue(kind = 'min_payout') {
+  return statsApiCall(`/pool_value?coin=alephium&kind=${kind}`);
 }
 
 function fetchMyBalance(wallet) {
@@ -174,8 +207,26 @@ function drawData(wallet) {
         showPayoutsTable(payouts24hResponse.payouts)
         showMyBalance(myBalanceResponse, currencyRate.rate.value);
         showEventsTable(myEventsResponse.events);
-        showStats();
-        enableButton();
+        assignFormListenerMinPayoutsForm(wallet);
+        return wallet;
+      }
+    )
+    .then((wallet) => {
+      fetchUserValue(wallet)
+        .then(({ value }) => showMinPayouts(value))
+        .catch((error) => {
+          if (error.status === 404) {
+            fetchPoolValue().then((defaultValue) => {
+              showMinPayouts(defaultValue.value);
+            });
+          } else {
+            console.info('Error:', error);
+          }
+        })
+        .finally(() => {
+          showStats();
+          enableButton();
+        });
     });
 }
 
@@ -270,3 +321,44 @@ function init() {
 }
 
 init();
+
+function showMinPayouts(minPayoutsValue) {
+  STAT_MIN_PAYOUTS_VALUE.textContent = minPayoutsValue;
+}
+
+OPEN_MODAL_BTNS.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    MODAL.showModal();
+  });
+});
+
+CLOSE_MODAL_BTN.addEventListener('click', () => {
+  MODAL.close();
+});
+
+MODAL.addEventListener('click', (e) => {
+  const dialogDimensions = MODAL.getBoundingClientRect();
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    MODAL.close();
+  }
+});
+
+function assignFormListenerMinPayoutsForm(wallet) {
+  FORM_MIN_PAYOUTS.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const newValue = INPUT_MIN_PAYOUTS.value;
+    createUserValue(wallet, 'min_payout', newValue)
+      .then(() => {
+        showMinPayouts(newValue);
+        MODAL.close();
+      })
+      .catch((error) => {
+        console.info('Error submitting form:', error);
+      });
+  });
+}
