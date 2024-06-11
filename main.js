@@ -20,8 +20,8 @@ function fetchPoolBlocks(period = 3600) {
   return statsApiCall(`/blocks?coin=alephium&period=${period}`);
 }
 
-function fetchUserValue(coin, wallet, kind = 'min_payout') {
-  return statsApiCall(`/user_value?coin=${coin}&wallet=${wallet}&kind=${kind}`);
+function fetchPoolValue(kind = 'min_payout') {
+  return statsApiCall(`/pool_value?coin=alephium&kind=${kind}`);
 }
 
 function shortenHm(hashRate, roundPlaces) {
