@@ -324,6 +324,7 @@ init();
 
 function showMinPayouts(minPayoutsValue) {
   STAT_MIN_PAYOUTS_VALUE.textContent = minPayoutsValue;
+  INPUT_MIN_PAYOUTS.value = minPayoutsValue;
 }
 
 OPEN_MODAL_BTNS.forEach((btn) => {
@@ -347,6 +348,25 @@ MODAL.addEventListener('click', (e) => {
     MODAL.close();
   }
 });
+
+
+INPUT_MIN_PAYOUTS.addEventListener('input',  (event) => {
+  validateInput(event.target);
+});
+
+function validateInput(input) {
+  input.value = input.value.replace(/[^0-9.]/g, '');
+  let parts = input.value.split('.');
+  if (parts.length > 2) {
+    input.value = parts[0] + '.' + parts.slice(1).join('');
+  }
+  const regex = /^\d+(\.\d{0,})?$/;
+  if (!regex.test(input.value)) {
+    input.setCustomValidity('Please enter a valid number.');
+  } else {
+    input.setCustomValidity('');
+  }
+}
 
 function assignFormListenerMinPayoutsForm(wallet) {
   FORM_MIN_PAYOUTS.addEventListener('submit', (e) => {

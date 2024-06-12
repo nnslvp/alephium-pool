@@ -177,6 +177,11 @@
   align-items: center;
 }
 
+.payout-details li:first-child {
+  display: flex;
+  gap: .625rem;
+}
+
 .payout-details p {
   margin: 0;
 }

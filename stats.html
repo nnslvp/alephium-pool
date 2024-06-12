@@ -125,7 +125,7 @@
       <div class="input-container">
         <label class="label" for="min-payout">Minimum payouts</label>
         <input id="input-min-payouts" class="input" name="min-payout" placeholder="100"
-          type="number" value="0.1" step="any" >
+          type="text" inputmode="numeric"   pattern="^\d+(\.\d+)?$"  required>
       </div>
       <div class="form-action">
         <button type="button" class="button-outline close-modal-btn">Cancel</button>
@@ -135,6 +135,5 @@
   </div>
 </dialog>
 </body>
-
 <script src="stats.js"></script>
 </html>
