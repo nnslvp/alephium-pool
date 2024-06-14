@@ -33,6 +33,7 @@
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
+
   from,
   to {
     border-color: transparent;
@@ -77,7 +78,7 @@
   opacity: 1;
 }
 
-.ping:hover > .tooltip.active {
+.ping:hover>.tooltip.active {
   cursor: help;
   visibility: visible;
   opacity: 1;
@@ -88,7 +89,7 @@
   text-wrap: nowrap;
 }
 
-.ping:hover > .tooltip.active::after {
+.ping:hover>.tooltip.active::after {
   visibility: visible;
   opacity: 1;
   right: inherit;
@@ -190,6 +191,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -246,6 +248,28 @@ input[type='number'] {
   text-align: center;
 }
 
+.input[name='min-payout'] {
+  margin: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.input[name='min-payout']:invalid {
+  border-color: red;
+}
+
+.input[name='min-payout']:invalid+.error-message {
+  visibility: visible;
+  opacity: 1;
+}
+
+.error-message {
+  display: inline-block;
+  height: 1.1875rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
 .modal-dit-min-payouts .form__dit-min-payouts {
   display: flex;
   flex-direction: column;
@@ -274,6 +298,7 @@ input[type='number'] {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

@@ -3,6 +3,7 @@ const MODAL = document.querySelector('.modal');
 const OPEN_MODAL_BTNS = document.querySelectorAll('.open-modal-button');
 const CLOSE_MODAL_BTN = document.querySelector('.close-modal-btn');
 const FORM_MIN_PAYOUTS = MODAL.querySelector('#form-min-payouts');
+const FORM_SUBMIT_BTN = MODAL.querySelector('.submit-btn');
 const INPUT_MIN_PAYOUTS = FORM_MIN_PAYOUTS.querySelector('#input-min-payouts');
 const STAT_MIN_PAYOUTS_VALUE = document.querySelector(
   '#stat-min-payouts-value'
@@ -350,35 +351,44 @@ MODAL.addEventListener('click', (e) => {
 });
 
 
-INPUT_MIN_PAYOUTS.addEventListener('input',  (event) => {
+INPUT_MIN_PAYOUTS.addEventListener('blur', (event) => {
   validateInput(event.target);
 });
 
+
 function validateInput(input) {
-  input.value = input.value.replace(/[^0-9.]/g, '');
-  let parts = input.value.split('.');
-  if (parts.length > 2) {
-    input.value = parts[0] + '.' + parts.slice(1).join('');
-  }
-  const regex = /^\d+(\.\d{0,})?$/;
-  if (!regex.test(input.value)) {
-    input.setCustomValidity('Please enter a valid number.');
+  const errorMessageElement = document.getElementById('error-message');
+  const inputValue = input.value.trim();
+  console.log(inputValue);
+  if (!isValidNumber(inputValue)) {
+    input.setCustomValidity(' ');
+    errorMessageElement.textContent = 'Please enter a valid number.';
+    FORM_SUBMIT_BTN.disabled = true;
   } else {
     input.setCustomValidity('');
+    FORM_SUBMIT_BTN.disabled = false;
   }
+}
+
+function isValidNumber(value) {
+  const regex = /^\d+(\.\d+)?$/;
+  return regex.test(value);
 }
 
 function assignFormListenerMinPayoutsForm(wallet) {
   FORM_MIN_PAYOUTS.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const newValue = INPUT_MIN_PAYOUTS.value;
-    createUserValue(wallet, 'min_payout', newValue)
-      .then(() => {
-        showMinPayouts(newValue);
-        MODAL.close();
-      })
-      .catch((error) => {
-        console.info('Error submitting form:', error);
-      });
+    console.log(e.target.checkValidity());
+    if (e.target.reportValidity()) {
+      e.preventDefault();
+      const newValue = INPUT_MIN_PAYOUTS.value;
+      createUserValue(wallet, 'min_payout', newValue)
+        .then(() => {
+          showMinPayouts(newValue);
+          MODAL.close();
+        })
+        .catch((error) => {
+          console.info('Error submitting form:', error);
+        });
+    }
   });
 }
