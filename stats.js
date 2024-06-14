@@ -380,7 +380,7 @@ function assignFormListenerMinPayoutsForm(wallet) {
     console.log(e.target.checkValidity());
     if (e.target.reportValidity()) {
       e.preventDefault();
-      const newValue = INPUT_MIN_PAYOUTS.value;
+      const newValue = Number(INPUT_MIN_PAYOUTS.value);
       createUserValue(wallet, 'min_payout', newValue)
         .then(() => {
           showMinPayouts(newValue);
