@@ -359,7 +359,6 @@ INPUT_MIN_PAYOUTS.addEventListener('blur', (event) => {
 function validateInput(input) {
   const errorMessageElement = document.getElementById('error-message');
   const inputValue = input.value.trim();
-  console.log(inputValue);
   if (!isValidNumber(inputValue)) {
     input.setCustomValidity(' ');
     errorMessageElement.textContent = 'Please enter a valid number.';
