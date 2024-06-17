@@ -8,7 +8,7 @@ const INPUT_MIN_PAYOUTS = FORM_MIN_PAYOUTS.querySelector('#input-min-payouts');
 const STAT_MIN_PAYOUTS_VALUE = document.querySelector(
   '#stat-min-payouts-value'
 );
- const ERROR_MESSAGE_ELEMENT = document.getElementById('error-message');
+const ERROR_MESSAGE_ELEMENT = document.getElementById('error-message');
 
 function detectBrowserAndSetInputType() {
   const userAgent = navigator.userAgent;
@@ -65,6 +65,7 @@ function statsApiPost(action) {
     return response.json();
   });
 }
+
 function createUserValue(wallet, kind = 'min_payout', value = 0.1) {
   return statsApiPost(
     `/user_value?coin=alephium&wallet=${wallet}&kind=${kind}&value=${value}`
