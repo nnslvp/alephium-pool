@@ -341,8 +341,6 @@ function init() {
     }
 }
 
-init();
-
 function showMinPayouts(minPayoutsValue) {
   STAT_MIN_PAYOUTS_VALUE.textContent = minPayoutsValue;
   INPUT_MIN_PAYOUTS.value = minPayoutsValue;
@@ -425,5 +423,7 @@ function handleError(error) {
   INPUT_MIN_PAYOUTS.classList.add('invalid');
   ERROR_MESSAGE_ELEMENT.textContent = `Error: ${sanitizedMessage}`;
 }
+
+init();
 
 detectBrowserAndSetInputType();
