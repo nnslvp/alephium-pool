@@ -8,10 +8,24 @@ const INPUT_MIN_PAYOUTS = FORM_MIN_PAYOUTS.querySelector('#input-min-payouts');
 const STAT_MIN_PAYOUTS_VALUE = document.querySelector(
   '#stat-min-payouts-value'
 );
+ const ERROR_MESSAGE_ELEMENT = document.getElementById('error-message');
+
+function detectBrowserAndSetInputType() {
+  const userAgent = navigator.userAgent;
+  if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) {
+    INPUT_MIN_PAYOUTS.setAttribute('type', 'text');
+  } else {
+    INPUT_MIN_PAYOUTS.setAttribute('type', 'number');
+  }
+}
 
 function statsApiCall(action) {
-    return fetch(`${statsApiUrl}${action}`)
-        .then(response => response.json())
+  return fetch(`${statsApiUrl}${action}`).then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    return response.json();
+  });
 }
 
 function fetchMyHashrate(wallet) {
@@ -42,9 +56,15 @@ function statsApiPost(action) {
     headers: {
       'Content-Type': 'application/json',
     },
+  }).then((response) => {
+    if (!response.ok) {
+      return response.json().then((err) => {
+        throw new Error(err.errors[0]);
+      });
+    }
+    return response.json();
   });
 }
-
 function createUserValue(wallet, kind = 'min_payout', value = 0.1) {
   return statsApiPost(
     `/user_value?coin=alephium&wallet=${wallet}&kind=${kind}&value=${value}`
@@ -352,7 +372,7 @@ MODAL.addEventListener('click', (e) => {
 
 
 INPUT_MIN_PAYOUTS.addEventListener('blur', (event) => {
-  validateInput(event.target);
+  // validateInput(event.target);
 });
 
 
@@ -375,19 +395,54 @@ function isValidNumber(value) {
 }
 
 function assignFormListenerMinPayoutsForm(wallet) {
-  FORM_MIN_PAYOUTS.addEventListener('submit', (e) => {
-    console.log(e.target.checkValidity());
-    if (e.target.reportValidity()) {
-      e.preventDefault();
-      const newValue = Number(INPUT_MIN_PAYOUTS.value);
-      createUserValue(wallet, 'min_payout', newValue)
-        .then(() => {
-          showMinPayouts(newValue);
-          MODAL.close();
-        })
-        .catch((error) => {
-          console.info('Error submitting form:', error);
-        });
-    }
-  });
+  FORM_MIN_PAYOUTS.addEventListener('submit', handleSubmit.bind(null, wallet));
 }
+
+function handleSubmit(wallet, e) {
+  e.preventDefault();
+  const newValue = INPUT_MIN_PAYOUTS.value;
+
+  disableSubmitButton();
+
+  createUserValue(wallet, 'min_payout', newValue)
+    .then(handleSuccess)
+    .catch(handleError)
+    .finally(resetSubmitButton);
+}
+
+function disableSubmitButton() {
+  FORM_SUBMIT_BTN.disabled = true;
+  FORM_SUBMIT_BTN.classList.add('loading');
+  FORM_SUBMIT_BTN.textContent = 'Saving...';
+}
+
+function resetSubmitButton() {
+  FORM_SUBMIT_BTN.disabled = false;
+  FORM_SUBMIT_BTN.textContent = 'Save Changes';
+  FORM_SUBMIT_BTN.classList.remove('loading');
+}
+
+function handleSuccess(res) {
+  showMinPayouts(res.value)
+  ERROR_MESSAGE_ELEMENT.textContent = 'The minimum payout was successfully updated.';
+  INPUT_MIN_PAYOUTS.classList.remove('invalid');
+  INPUT_MIN_PAYOUTS.classList.add('success');
+  setTimeout(() => {
+    INPUT_MIN_PAYOUTS.classList.remove('success');
+    ERROR_MESSAGE_ELEMENT.textContent = ``;
+    MODAL.close()
+  }, 1000);
+  
+}
+
+function handleError(error) {
+  const errorMessage = error.message || error;
+  const sanitizedMessage = errorMessage.replace(
+    /because Kind is "min_payout".*/,
+    ''
+  );
+  INPUT_MIN_PAYOUTS.classList.add('invalid');
+  ERROR_MESSAGE_ELEMENT.textContent = `Error: ${sanitizedMessage}`;
+}
+
+detectBrowserAndSetInputType();

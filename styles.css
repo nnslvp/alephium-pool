@@ -253,22 +253,74 @@ input[type='number'] {
   transition: opacity 0.3s ease-in-out;
 }
 
-.input[name='min-payout']:invalid {
+.input[name='min-payout'].invalid {
   border-color: red;
 }
 
-.input[name='min-payout']:invalid+.error-message {
+.input[name='min-payout'].success {
+  border-color: #79ea86;
+}
+
+.input[name='min-payout'].invalid+.error-message {
+  color: red;
+}
+
+.input[name='min-payout'].success+.error-message {
+  color: #79ea86;
+}
+
+.input[name='min-payout'].success {
+  border-color: #79ea86;
+}
+
+.input[name='min-payout'].invalid+.error-message,
+.input[name='min-payout'].success+.error-message {
   visibility: visible;
   opacity: 1;
 }
 
 .error-message {
+  font-size: 14px;
   display: inline-block;
   height: 1.1875rem;
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
+
+
+.loading {
+  cursor: not-allowed;
+  opacity: 0.7;
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  right: 73%;
+  top: 24%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #9b4dca;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 
 .modal-dit-min-payouts .form__dit-min-payouts {
   display: flex;
