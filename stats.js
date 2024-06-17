@@ -370,25 +370,6 @@ MODAL.addEventListener('click', (e) => {
   }
 });
 
-
-INPUT_MIN_PAYOUTS.addEventListener('blur', (event) => {
-  // validateInput(event.target);
-});
-
-
-function validateInput(input) {
-  const errorMessageElement = document.getElementById('error-message');
-  const inputValue = input.value.trim();
-  if (!isValidNumber(inputValue)) {
-    input.setCustomValidity(' ');
-    errorMessageElement.textContent = 'Please enter a valid number.';
-    FORM_SUBMIT_BTN.disabled = true;
-  } else {
-    input.setCustomValidity('');
-    FORM_SUBMIT_BTN.disabled = false;
-  }
-}
-
 function isValidNumber(value) {
   const regex = /^\d+(\.\d+)?$/;
   return regex.test(value);
@@ -423,16 +404,16 @@ function resetSubmitButton() {
 }
 
 function handleSuccess(res) {
-  showMinPayouts(res.value)
-  ERROR_MESSAGE_ELEMENT.textContent = 'The minimum payout was successfully updated.';
+  showMinPayouts(res.value);
+  ERROR_MESSAGE_ELEMENT.textContent =
+    'The minimum payout was successfully updated.';
   INPUT_MIN_PAYOUTS.classList.remove('invalid');
   INPUT_MIN_PAYOUTS.classList.add('success');
   setTimeout(() => {
     INPUT_MIN_PAYOUTS.classList.remove('success');
     ERROR_MESSAGE_ELEMENT.textContent = ``;
-    MODAL.close()
+    MODAL.close();
   }, 1000);
-  
 }
 
 function handleError(error) {
