@@ -97,7 +97,6 @@ function init() {
     );
   });
 
-
   fetchPoolValue().then(minPayouts => showPoolMinPayout(minPayouts.value, 'pool_min_payouts', 'ALPH'));
 
   fetchPoolHashRate().then(({ hashrate }) => {
