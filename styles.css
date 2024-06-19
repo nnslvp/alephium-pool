@@ -33,6 +33,7 @@
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
+
   from,
   to {
     border-color: transparent;
@@ -253,7 +254,7 @@ input[type='number'] {
 }
 
 .input[name='min-payout'].invalid {
-  border-color: red;
+  border-color: #EB5757;
 }
 
 .input[name='min-payout'].success {
@@ -261,7 +262,7 @@ input[type='number'] {
 }
 
 .input[name='min-payout'].invalid+.error-message {
-  color: red;
+  color: #EB5757;
 }
 
 .input[name='min-payout'].success+.error-message {
