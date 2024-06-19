@@ -369,11 +369,6 @@ MODAL.addEventListener('click', (e) => {
   }
 });
 
-function isValidNumber(value) {
-  const regex = /^\d+(\.\d+)?$/;
-  return regex.test(value);
-}
-
 function assignFormListenerMinPayoutsForm(wallet) {
   FORM_MIN_PAYOUTS.addEventListener('submit', handleSubmit.bind(null, wallet));
 }
