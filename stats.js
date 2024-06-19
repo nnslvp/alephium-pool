@@ -71,7 +71,7 @@ function showMyHashrate({day, hour}) {
     document.getElementById('my_hashrate_24h_measure').textContent = shortDayHashRate.units
 }
 
-function showWorkersTable(workersDay, workersHour) {
+function showWorkersTable(workersHour, workersDay) {
     const tableBody = document.getElementById('workers-table').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
 
