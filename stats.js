@@ -189,21 +189,11 @@ function showEventsTable(events) {
 
 function drawData(wallet) {
     disableButton();
-    Promise.all(
-        [
-            fetchMyHashrate(wallet),
-            fetchMyPayouts(wallet),
-            fetchMyBalance(wallet),
-            fetchMyEvents(wallet),
-            fetchCurrencyInfo()
-        ]
-    ).then((
-        [
-            [hashrate1hResponse, hashrate24hResponse],
-            [payouts1hResponse, payouts24hResponse],
-            myBalanceResponse, myEventsResponse, currencyRate,
-        ]
-    ) => {
+    function handleFetchError(error) {
+        console.error('Error fetching data:', error);
+    }
+
+    fetchMyHashrate(wallet).then(([hashrate1hResponse, hashrate24hResponse]) => {
         const hashrate1h = hashrate1hResponse.workers.reduce((accumulator, v) => {
             return accumulator + parseFloat(v.hashrate)
         }, 0);
@@ -212,6 +202,14 @@ function drawData(wallet) {
             return accumulator + parseFloat(v.hashrate)
         }, 0);
 
+        showMyHashrate({
+            hour: {hashrate: hashrate1h, units: hashrate1hResponse.units},
+            day: {hashrate: hashrate24h, units: hashrate1hResponse.units}
+        });
+        showWorkersTable(hashrate1hResponse.workers, hashrate24hResponse.workers);
+    }).catch(handleFetchError);
+
+    fetchMyPayouts(wallet).then(([payouts1hResponse, payouts24hResponse]) => {
         const payouts1h = payouts1hResponse.payouts.reduce((accumulator, v) => {
             return accumulator + parseFloat(v.amount)
         }, 0);
@@ -220,35 +218,36 @@ function drawData(wallet) {
             return accumulator + parseFloat(v.amount)
         }, 0);
 
-        showMyHashrate({
-            hour: {hashrate: hashrate1h, units: hashrate1hResponse.units},
-            day: {hashrate: hashrate24h, units: hashrate1hResponse.units}
-        });
-        showWorkersTable(hashrate1hResponse.workers, hashrate24hResponse.workers);
-        showMyPayouts({hour: {amount: payouts1h}, day: {amount: payouts24h}}, currencyRate.rate.value);
-        showPayoutsTable(payouts24hResponse.payouts)
-        showMyBalance(myBalanceResponse, currencyRate.rate.value);
+        fetchCurrencyInfo().then((currencyRate) => {
+            showMyPayouts({hour: {amount: payouts1h}, day: {amount: payouts24h}}, currencyRate.rate.value);
+            showPayoutsTable(payouts24hResponse.payouts);
+        }).catch(handleFetchError);
+    }).catch(handleFetchError);
+
+    fetchMyBalance(wallet).then((myBalanceResponse) => {
+        fetchCurrencyInfo().then((currencyRate) => {
+            showMyBalance(myBalanceResponse, currencyRate.rate.value);
+        }).catch(handleFetchError);
+    }).catch(handleFetchError);
+
+    fetchMyEvents(wallet).then((myEventsResponse) => {
         showEventsTable(myEventsResponse.events);
-        assignFormListenerMinPayoutsForm(wallet);
-        return wallet;
-      }
-    )
-    .then((wallet) => {
-      fetchUserValue(wallet)
-        .then(({ value }) => showMinPayouts(value))
-        .catch((error) => {
-          if (error.message.includes('404')) {
+    }).catch(handleFetchError);
+
+    fetchUserValue(wallet).then(({value}) => {
+        showMinPayouts(value);
+    }).catch((error) => {
+        if (error.message.includes('404')) {
             fetchPoolValue().then((defaultValue) => {
-              showMinPayouts(defaultValue.value);
-            });
-          } else {
+                showMinPayouts(defaultValue.value);
+            }).catch(handleFetchError);
+        } else {
             console.info('Error:', error);
-          }
-        })
-        .finally(() => {
-          showStats();
-          enableButton();
-        });
+        }
+    }).finally(() => {
+        showStats();
+        enableButton();
+        assignFormListenerMinPayoutsForm(wallet);
     });
 }
 
@@ -377,20 +376,20 @@ function validationInput(value) {
     INPUT_MIN_PAYOUTS.classList.add('invalid');
     ERROR_MESSAGE_ELEMENT.textContent = "Value can't be blank";
     return false;
-  } 
+  }
 
   if (isNegativeNumeric(value)) {
     INPUT_MIN_PAYOUTS.classList.add('invalid');
     ERROR_MESSAGE_ELEMENT.textContent = 'Value should be positive number';
     return false
-  } 
-  
+  }
+
   if (!isNumeric(value)) {
     INPUT_MIN_PAYOUTS.classList.add('invalid');
     ERROR_MESSAGE_ELEMENT.textContent = 'Value should be number';
     return false;
-  } 
-  
+  }
+
   INPUT_MIN_PAYOUTS.classList.remove('invalid');
   ERROR_MESSAGE_ELEMENT.textContent = '';
   return true
