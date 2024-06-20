@@ -373,16 +373,16 @@ function validationInput(value) {
   const isNumeric = (num) => /^\d*\.?\d+$/.test(num);
   const isNegativeNumeric = (num) => /^-\d*\.?\d+$/.test(num);
 
-  if (isNegativeNumeric(value)) {
-    INPUT_MIN_PAYOUTS.classList.add('invalid');
-    ERROR_MESSAGE_ELEMENT.textContent = 'value should be positive number';
-    return false
-  } 
-  
   if (!value.trim().length) {
     INPUT_MIN_PAYOUTS.classList.add('invalid');
     ERROR_MESSAGE_ELEMENT.textContent = "value can't be blank";
     return false;
+  } 
+
+  if (isNegativeNumeric(value)) {
+    INPUT_MIN_PAYOUTS.classList.add('invalid');
+    ERROR_MESSAGE_ELEMENT.textContent = 'value should be positive number';
+    return false
   } 
   
   if (!isNumeric(value)) {
@@ -390,7 +390,9 @@ function validationInput(value) {
     ERROR_MESSAGE_ELEMENT.textContent = 'value should be number';
     return false;
   } 
-
+  
+  INPUT_MIN_PAYOUTS.classList.remove('invalid');
+  ERROR_MESSAGE_ELEMENT.textContent = '';
   return true
 }
 
