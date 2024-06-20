@@ -441,7 +441,7 @@ function handleError(error) {
     ''
   );
   INPUT_MIN_PAYOUTS.classList.add('invalid');
-  ERROR_MESSAGE_ELEMENT.textContent = `${sanitizedMessage}`;
+  ERROR_MESSAGE_ELEMENT.textContent = sanitizedMessage;
 }
 
 init();
