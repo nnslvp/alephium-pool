@@ -237,7 +237,6 @@ function drawData(wallet) {
       fetchUserValue(wallet)
         .then(({ value }) => showMinPayouts(value))
         .catch((error) => {
-          console.log(error);
           if (error.message.includes('404')) {
             fetchPoolValue().then((defaultValue) => {
               showMinPayouts(defaultValue.value);
