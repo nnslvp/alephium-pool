@@ -20,6 +20,10 @@ function fetchPoolBlocks(period = 3600) {
   return statsApiCall(`/blocks?coin=alephium&period=${period}`);
 }
 
+function fetchPoolValue(kind = 'min_payout') {
+  return statsApiCall(`/pool_value?coin=alephium&kind=${kind}`);
+}
+
 function shortenHm(hashRate, roundPlaces) {
   const denominator = [
     { d: 1000000000000, unit: 'TH' },
@@ -69,6 +73,10 @@ function showPoolProfitUSD(rate, profit) {
   document.getElementById('pool_profit_usd').textContent = `${profitUSD}`;
 }
 
+function showPoolMinPayout(minPayout, id = 'pool_min_payout', symbol) {
+  document.getElementById(id).textContent = `${minPayout}  ${symbol}`;
+}
+
 function showPool24hBlocks(blocksCount) {
   document.getElementById('24h_blocks').textContent = blocksCount;
 }
@@ -88,6 +96,8 @@ function init() {
       showPoolProfitUSD(profit, value)
     );
   });
+
+  fetchPoolValue().then(minPayouts => showPoolMinPayout(minPayouts.value, 'pool_min_payouts', 'ALPH'));
 
   fetchPoolHashRate().then(({ hashrate }) => {
     showPoolHashrate(hashrate.hashrate);

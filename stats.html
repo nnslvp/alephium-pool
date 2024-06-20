@@ -53,8 +53,18 @@
             <p>Your payouts 1h/24h: <b><span id="my_payouts_1h"></span></b> ~ <span id="my_payouts_1h_usd"></span> USD /
                 <b><span id="my_payouts_24h"></span></b> ~ <span id="my_payouts_24h_usd"></span> USD
             </p>
-            <p>Min payout: <b>0.1 coin</b>. Payouts every <b>30 minutes</b>. Pool fee: <b>0.5%</b></p>
-
+          <ul class="payout-details">
+            <li>
+              <p>Min payout: <b id="stat-min-payouts-value" class="highlight">0.1 coin</b> <b>ALPH</b></p>
+              <i class="icon edit-icon open-modal-button"></i>
+            </li>
+            <li>
+              <p>Payouts every <b class="highlight">1 hour</b></p>
+            </li>
+            <li>
+              <p>Pool fee: <b class="highlight">0.5%</b></p>
+            </li>
+          </ul>  
         <div class="tabs">
           <div class="tab-links">
             <button class="button button-outline" id="workers-tab">Workers</button>
@@ -108,7 +118,23 @@
         </div>
     </div>
 </div>
+<dialog class="modal modal-dit-min-payouts">
+  <div class="modal__inner">
+    <h2 class="heading-h2">Set my minimum payout</h2>
+    <form id="form-min-payouts" class="form__dit-min-payouts" action="" novalidate>
+      <div class="input-container">
+        <label class="label" for="min-payout">Minimum payout</label>
+        <input id="input-min-payouts" class="input" name="min-payout" placeholder="0.1"  type="number"  step="any"
+          inputmode="numeric">
+        <span id="error-message" class="error-message"></span>
+        </div>
+      <div class="form-action">
+        <button type="button" class="button-outline close-modal-btn">Cancel</button>
+        <button type="submit" class="submit-btn">Save changes</button>
+      </div>
+    </form>
+  </div>
+</dialog>
 </body>
-
 <script src="stats.js"></script>
 </html>
