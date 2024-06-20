@@ -400,6 +400,11 @@ function assignFormListenerMinPayoutsForm(wallet) {
   FORM_MIN_PAYOUTS.addEventListener('submit', handleSubmit.bind(null, wallet));
 }
 
+MODAL.addEventListener('close', () => {
+  INPUT_MIN_PAYOUTS.value = STAT_MIN_PAYOUTS_VALUE.textContent;
+  INPUT_MIN_PAYOUTS.classList.remove('invalid');
+});
+
 function handleSubmit(wallet, e) {
   e.preventDefault();
   const newValue = INPUT_MIN_PAYOUTS.value.trim();
