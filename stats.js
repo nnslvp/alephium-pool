@@ -22,7 +22,7 @@ function detectBrowserAndSetInputType() {
 function statsApiCall(action) {
   return fetch(`${statsApiUrl}${action}`).then((response) => {
     if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
+      throw new Error('Network response was not ok ' + response.statusText + ' status code: ' + response.status);
     }
     return response.json();
   });
@@ -237,7 +237,7 @@ function drawData(wallet) {
       fetchUserValue(wallet)
         .then(({ value }) => showMinPayouts(value))
         .catch((error) => {
-          if (error.status === 404) {
+          if (error.message.includes('404')) {
             fetchPoolValue().then((defaultValue) => {
               showMinPayouts(defaultValue.value);
             });
