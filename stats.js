@@ -369,20 +369,47 @@ MODAL.addEventListener('click', (e) => {
   }
 });
 
+function validationInput(value) {
+  const isNumeric = (num) => /^\d*\.?\d+$/.test(num);
+  const isNegativeNumeric = (num) => /^-\d*\.?\d+$/.test(num);
+
+  if (isNegativeNumeric(value)) {
+    INPUT_MIN_PAYOUTS.classList.add('invalid');
+    ERROR_MESSAGE_ELEMENT.textContent = 'Value should be positive number';
+    return false
+  } 
+  
+  if (!value.trim().length) {
+    INPUT_MIN_PAYOUTS.classList.add('invalid');
+    ERROR_MESSAGE_ELEMENT.textContent = "Value can't be blank";
+    return false;
+  } 
+  
+  if (!isNumeric(value)) {
+    INPUT_MIN_PAYOUTS.classList.add('invalid');
+    ERROR_MESSAGE_ELEMENT.textContent = 'Value should be number';
+    return false;
+  } 
+
+  return true
+}
+
 function assignFormListenerMinPayoutsForm(wallet) {
   FORM_MIN_PAYOUTS.addEventListener('submit', handleSubmit.bind(null, wallet));
 }
 
 function handleSubmit(wallet, e) {
   e.preventDefault();
-  const newValue = INPUT_MIN_PAYOUTS.value;
+  const newValue = INPUT_MIN_PAYOUTS.value.trim();
+  const validInput = validationInput(newValue);
+  if (validInput) {
+    disableSubmitButton();
 
-  disableSubmitButton();
-
-  createUserValue(wallet, 'min_payout', newValue)
-    .then(handleSuccess)
-    .catch(handleError)
-    .finally(resetSubmitButton);
+    createUserValue(wallet, 'min_payout', newValue)
+      .then(handleSuccess)
+      .catch(handleError)
+      .finally(resetSubmitButton);
+  }
 }
 
 function disableSubmitButton() {
@@ -402,12 +429,7 @@ function handleSuccess(res) {
   ERROR_MESSAGE_ELEMENT.textContent =
     'The minimum payout was successfully updated.';
   INPUT_MIN_PAYOUTS.classList.remove('invalid');
-  INPUT_MIN_PAYOUTS.classList.add('success');
-  setTimeout(() => {
-    INPUT_MIN_PAYOUTS.classList.remove('success');
-    ERROR_MESSAGE_ELEMENT.textContent = ``;
-    MODAL.close();
-  }, 1000);
+  MODAL.close()
 }
 
 function handleError(error) {

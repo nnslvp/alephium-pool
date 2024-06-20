@@ -246,6 +246,8 @@ input[type='number'] {
   font-weight: bold;
   line-height: 1.875rem;
   text-align: center;
+  letter-spacing: normal;
+  margin: 0;
 }
 
 .input[name='min-payout'] {
@@ -282,7 +284,7 @@ input[type='number'] {
 .error-message {
   font-size: 14px;
   display: inline-block;
-  height: 1.1875rem;
+  height: 1.5625rem;
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -322,7 +324,7 @@ input[type='number'] {
 .modal-dit-min-payouts .form__dit-min-payouts {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   margin: 0;
 }
 
