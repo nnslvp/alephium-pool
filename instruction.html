@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alephium Mining Pool - Instruction</title>
+  <title>How to mine Alephium?</title>
+  <meta name="description"
+        content="Instructions how to set alephium miners">
+  <meta name="keywords" content="alephium, mining pool, cryptocurrency, miner">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
@@ -55,29 +58,6 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>🌎 Region auto detection</td>
-                  <td class="host">detect-my-region.alephium-pool.com</td>
-                  <td>
-                    <span class="port">20032</span>
-                    <button class="button button-clear  button-copy">
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext">
-                        Copied!</span>
-                    </button>
-                  </td>
-                  <td>
-                    <span class="port-ssl">20033</span>
-                    <button class="button button-clear  button-copy button-copy-port-ssl">
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext">
-                        Copied!</span>
-                    </button>
-                  </td>
-                  <td class="ping">
-                    <span id="ping-RegionAutoDetection"></span>
-                  </td>
-                </tr>
                 <tr>
                   <td>🇪🇺 Europe</td>
                   <td class="host">eu1.alephium-pool.com</td>
@@ -231,7 +211,7 @@
                   and unzip files
                 </li>
                 <li>
-                  Update <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong>
+                  Update <strong>alph</strong> file, for example: <strong>mine_aleph</strong>
                   <div class="code-wrapper">
                     <button class="button button-clear  button-copy ">
                       <i class="icon icon-copy"></i>
@@ -240,13 +220,14 @@
                     </button>
                     <pre class="code-container">
                             <code>
-                              set "ALEPHPOOL=detect-my-region.alephium-pool.com:20032"
-                              set "ALEPHWALLET=your_wallet"</code>
+                              set "ALEPHPOOL=eu1.alephium-pool.com:20032"
+                              set "ALEPHWALLET=your_wallet"
+                            </code>
                           </pre>
                   </div>
                 </li>
                 <li>
-                  Run <strong>alph</strong> file, for example: <strong>dual_mine_eth_aleph.bat</strong>
+                  Run <strong>mine_aleph</strong>
                 </li>
                 <li>
                   <strong class="profit">PROFIT! 🚀</strong>
@@ -268,7 +249,9 @@
                         Copied!</span>
                     </button>
                     <pre class="code-container">
-                              <code>bzminer -a alph -w your_wallet_address -p stratum+tcp://detect-my-region.alephium-pool.com:20032</code>
+                              <code>
+                                bzminer -a alph -w your_wallet_address -p stratum+tcp://eu1.alephium-pool.com:20032
+                              </code>
                             </pre>
                   </div>
                 </li>
@@ -292,7 +275,7 @@
                         Copied!</span>
                     </button>
                     <pre class="code-container">
-                            <code>t-rex.exe -a blake3 -o stratum+tcp://detect-my-region.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0</code>
+                            <code>t-rex.exe -a blake3 -o stratum+tcp://eu1.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0</code>
                           </pre>
                   </div>
                 </li>
@@ -319,7 +302,7 @@
                         Copied!</span>
                     </button>
                     <pre class="code-container">
-                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool detect-my-region.alephium-pool.com:20032 --wallet your_wallet_address</code>
+                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool eu1.alephium-pool.com:20032 --wallet your_wallet_address</code>
                           </pre>
                   </div>
                 </li>
