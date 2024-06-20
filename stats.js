@@ -370,7 +370,7 @@ MODAL.addEventListener('click', (e) => {
 });
 
 function validationInput(value) {
-  const isNumeric = (num) => /^\d*\.?\d+$/.test(num);
+  const isNumeric = (num) => /^\d*[.,]?\d+$/.test(num);
   const isNegativeNumeric = (num) => /^-\d*\.?\d+$/.test(num);
 
   if (!value.trim().length) {
@@ -412,7 +412,7 @@ function handleSubmit(wallet, e) {
   if (validInput) {
     disableSubmitButton();
 
-    createUserValue(wallet, 'min_payout', newValue)
+    createUserValue(wallet, 'min_payout', newValue.replace(',','.'))
       .then(handleSuccess)
       .catch(handleError)
       .finally(resetSubmitButton);
