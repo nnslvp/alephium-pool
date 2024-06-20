@@ -343,7 +343,6 @@ input[type='number'] {
   flex: 1;
 }
 
-/* Добавляем анимацию fadein */
 @keyframes fadein {
   from {
     opacity: 0;
