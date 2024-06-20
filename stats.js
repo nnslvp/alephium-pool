@@ -375,19 +375,19 @@ function validationInput(value) {
 
   if (isNegativeNumeric(value)) {
     INPUT_MIN_PAYOUTS.classList.add('invalid');
-    ERROR_MESSAGE_ELEMENT.textContent = 'Value should be positive number';
+    ERROR_MESSAGE_ELEMENT.textContent = 'value should be positive number';
     return false
   } 
   
   if (!value.trim().length) {
     INPUT_MIN_PAYOUTS.classList.add('invalid');
-    ERROR_MESSAGE_ELEMENT.textContent = "Value can't be blank";
+    ERROR_MESSAGE_ELEMENT.textContent = "value can't be blank";
     return false;
   } 
   
   if (!isNumeric(value)) {
     INPUT_MIN_PAYOUTS.classList.add('invalid');
-    ERROR_MESSAGE_ELEMENT.textContent = 'Value should be number';
+    ERROR_MESSAGE_ELEMENT.textContent = 'value should be number';
     return false;
   } 
 
