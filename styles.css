@@ -504,7 +504,6 @@ input[type='number'] {
   }
 }
 
-
 .checkboxes-container :where(label, input[type='radio']) {
   margin: 0;
 }
