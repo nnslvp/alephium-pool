@@ -1,6 +1,6 @@
 const regionSelect = document.getElementById('region');
 const walletsAddress = document.querySelectorAll('.wallets-address')
-const endpoints = document.querySelectorAll('.host-example')
+const endpoints = document.querySelectorAll('.endpoint')
 const miningForm = document.querySelector('#miningForm')
 const walletsExampleCode = document.querySelectorAll('.wallet')
 
@@ -122,7 +122,7 @@ miningForm.addEventListener('submit', (event) => {
 
   let yourWalletAddress = wallet;
   const rigNameText = rigName ? `.${rigName}` : ''
-  
+
   if (paymentMethod === 'SOLO') {
     yourWalletAddress = `solo:${wallet}${rigNameText}`;
   } else {
