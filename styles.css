@@ -504,6 +504,18 @@ input[type='number'] {
   }
 }
 
+
+.checkboxes-container :where(label, input[type='checkbox']) {
+  margin: 0;
+}
+
+.checkboxes-container{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 1.5rem;
+}
+
 @media (max-width: 80rem) {
   .center_of_screen {
     width: 90%;

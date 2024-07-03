@@ -263,6 +263,93 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
+        </div>
+      </div>
+    </header>
+    <main>
+      <article>
+        <div class="container-instruction">
+          <h2>Quick Start</h2>
+          <p>
+            <strong>Start by downloading
+              <a href="https://github.com/alephium/alephium-wallet/releases">Alephium Wallet</a>
+            </strong>
+          </p>
+          <section>
+            <h3>Miners</h3>
+            <div class="miners-list">
+              <p>You can use:</p>
+              <ul>
+                <li>
+                  <a href="https://github.com/doktor83/SRBMiner-Multi/releases">SRBMiner</a>
+                </li>
+                <li>
+                  <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">lolMiner</a>
+                </li>
+                <li>
+                  <a href="https://github.com/bzminer/bzminer/releases">BzMiner</a>
+                </li>
+                <li>
+                  <a href="https://github.com/trexminer/T-Rex/releases">T-Rex</a>
+                </li>
+                <li>
+                  <a href="https://github.com/rigelminer/rigel/releases">Rigel</a>
+                </li>
+                <li>
+                  <a href="https://github.com/andru-kun/wildrig-multi/releases">WildRig Multi</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p>About other solutions you can ask in <a href="https://t.me/alephium_pool"> telegram community:</a></p>
+            </div>
+          </section>
+          <section>
+            <form id="miningForm" class="mining-form">
+              <label for="wallet">Wallet:</label>
+              <input type="text" id="wallet" name="wallet" required>
+              <label for="rigName">Rig name (optional):</label>
+              <input type="text" id="rigName" name="rigName">
+              <label for="region">Region:</label>
+              <select id="region" name="region">
+                <option value="">Detecting...</option>
+              </select>
+              <div class="checkboxes-container">
+                <label>Payment Method:</label>
+            
+                <label for="pplns">
+                  <input type="checkbox" id="pplns" name="paymentMethod" value="PPLNS">
+                  PPLNS
+                </label>
+          
+                <label for="solo"> 
+                  <input type="checkbox" id="solo" name="paymentMethod" value="SOLO">
+                  SOLO
+                </label>
+              </div>
+          
+              <button type="submit">Submit</button>
+            </form>
+      
+            <h3>Windows examples</h3>
+            <section>
+              <h3>lolMiner</h3>
+              <ol>
+                <li>
+                  Download
+                  <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">
+                    last release of lolMiner</a>
+                  and unzip files
+                </li>
+                <li>
+                  Update <strong>alph</strong> file, for example: <strong>mine_aleph</strong>
+                  <div class="code-wrapper">
+                    <button class="button button-clear  button-copy ">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                    <pre class="code-container">
                             <code>
                               set "ALEPHPOOL=eu1.alephium-pool.com:20032"
                               set "ALEPHWALLET=your_wallet"
