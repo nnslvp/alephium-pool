@@ -505,7 +505,7 @@ input[type='number'] {
 }
 
 
-.checkboxes-container :where(label, input[type='checkbox']) {
+.checkboxes-container :where(label, input[type='radio']) {
   margin: 0;
 }
 
@@ -514,6 +514,10 @@ input[type='number'] {
   align-items: center;
   gap: 20px;
   margin-bottom: 1.5rem;
+}
+
+.mining-form button[type='submit']{
+  width: 100%;
 }
 
 @media (max-width: 80rem) {

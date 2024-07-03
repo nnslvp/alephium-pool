@@ -75,7 +75,7 @@
               <tbody>
                 <tr>
                   <td>🇪🇺 Europe</td>
-                  <td class="host">eu1.alephium-pool.com</td>
+                  <td class="host"><span class="host-example">eu1</span>.alephium-pool.com</td>
                   <td>
                     <span class="port">20032</span>
                     <button class="button button-clear button-copy">
@@ -305,33 +305,36 @@
             </div>
           </section>
           <section>
+            <h3>Windows examples</h3>
             <form id="miningForm" class="mining-form">
               <label for="wallet">Wallet:</label>
               <input type="text" id="wallet" name="wallet" required>
               <label for="rigName">Rig name (optional):</label>
               <input type="text" id="rigName" name="rigName">
               <label for="region">Region:</label>
-              <select id="region" name="region">
-                <option value="">Detecting...</option>
+
+              <select id="region" name="region" required>
+                <option value="">Select your region</option>
+                <option value="Europe">Europe</option>
+                <option value="Russia">Russia</option>
+                <option value="US">US</option>
+                <option value="Asia">Asia</option>
               </select>
+
               <div class="checkboxes-container">
                 <label>Payment Method:</label>
-            
                 <label for="pplns">
-                  <input type="checkbox" id="pplns" name="paymentMethod" value="PPLNS">
+                  <input checked type="radio" id="pplns" name="paymentMethod" value="PPLNS">
                   PPLNS
                 </label>
-          
-                <label for="solo"> 
-                  <input type="checkbox" id="solo" name="paymentMethod" value="SOLO">
+                <label for="solo">
+                  <input type="radio" id="solo" name="paymentMethod" value="SOLO">
                   SOLO
                 </label>
               </div>
-          
-              <button type="submit">Submit</button>
+
+              <button type="submit" class="btn-submit">Submit</button>
             </form>
-      
-            <h3>Windows examples</h3>
             <section>
               <h3>lolMiner</h3>
               <ol>
@@ -351,8 +354,8 @@
                     </button>
                     <pre class="code-container">
                             <code>
-                              set "ALEPHPOOL=eu1.alephium-pool.com:20032"
-                              set "ALEPHWALLET=your_wallet"
+                              set "ALEPHPOOL=<span class="host-example">eu1.alephium-pool.com:20032</span>"
+                              set "ALEPHWALLET=<span class="wallet">your_wallet</span>"
                             </code>
                           </pre>
                     </div>
@@ -383,7 +386,7 @@
                       </button>
                       <pre class="code-container">
                               <code>
-                                bzminer -a alph -w your_wallet_address -p stratum+tcp://eu1.alephium-pool.com:20032
+                                bzminer -a alph -w <span class="wallets-address">your_wallet_address</span> -p stratum+tcp://<span class="host-example">eu1.alephium-pool.com:20032</span>
                               </code>
                             </pre>
                     </div>
@@ -393,25 +396,22 @@
                 </ol>
               </section>
 
-              <section>
-                <h3>T-Rex:</h3>
-                <ol>
-                  <li>
-                    Download
-                    <a href="https://github.com/trexminer/T-Rex/releases"
-                      >last release of T-Rex</a
-                    >
-                    and unzip files
-                  </li>
-                  <li>
-                    Update <strong>alph</strong> file to
-                    <div class="code-wrapper">
-                      <button class="button button-clear button-copy">
-                        <i class="icon icon-copy"></i>
-                        <span class="tooltiptext"> Copied!</span>
-                      </button>
-                      <pre class="code-container">
-                            <code>t-rex.exe -a blake3 -o stratum+tcp://eu1.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0</code>
+            <section>
+              <h3>T-Rex:</h3>
+              <ol>
+                <li>Download <a href="https://github.com/trexminer/T-Rex/releases">last release of T-Rex</a> and unzip
+                  files
+                </li>
+                <li>Update <strong>alph</strong> file
+                  to
+                  <div class="code-wrapper">
+                    <button class="button button-clear  button-copy">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                    <pre class="code-container">
+                            <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="host-example">eu1.alephium-pool.com:20032</span> -u <span class="wallets-address">your_wallet_address</span> -p x -w rig0</code>
                           </pre>
                     </div>
                   </li>
@@ -422,26 +422,23 @@
                 </ol>
               </section>
 
-              <section>
-                <h3>SRBMiner:</h3>
-                <ol>
-                  <li>
-                    Download
-                    <a
-                      href="https://github.com/doktor83/SRBMiner-Multi/releases"
-                      >last release of SRBMiner</a
-                    >
-                    and unzip files
-                  </li>
-                  <li>
-                    Update <strong>alph</strong> file to
-                    <div class="code-wrapper">
-                      <button class="button button-clear button-copy">
-                        <i class="icon icon-copy"></i>
-                        <span class="tooltiptext"> Copied!</span>
-                      </button>
-                      <pre class="code-container">
-                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool eu1.alephium-pool.com:20032 --wallet your_wallet_address</code>
+            <section>
+              <h3>SRBMiner:</h3>
+              <ol>
+                <li>Download <a href="https://github.com/doktor83/SRBMiner-Multi/releases">last release of SRBMiner</a>
+                  and
+                  unzip
+                  files</li>
+                <li>Update <strong>alph</strong> file
+                  to
+                  <div class="code-wrapper">
+                    <button class="button button-clear  button-copy">
+                      <i class="icon icon-copy"></i>
+                      <span class="tooltiptext">
+                        Copied!</span>
+                    </button>
+                    <pre class="code-container">
+                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="host-example">eu1.alephium-pool.com:20032</span> --wallet <span class="wallets-address">your_wallet_address</span> </code>
                           </pre>
                     </div>
                   </li>
