@@ -1,61 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
+    <script>
+      (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
-            'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
         });
         var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
-        j.src =
-            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-TT2FBGZQ');</script>
+      })(window, document, 'script', 'dataLayer', 'GTM-TT2FBGZQ');
+    </script>
     <!-- End Google Tag Manager -->
 
-    <meta charset="UTF-8">
-    <title>Alephium Wallet Address Statistics - Track Your Mining Performance</title>
-    <link rel="icon" href="/images/icon.ico">
-    <meta name="description"
-          content="View Alephium wallet address statistics and track your mining performance. Monitor earnings, hashrate, and more in real-time.">
-    <meta name="keywords" content="Alephium Wallet Address, Statistics, Mining Performance, Earnings, Hashrate">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"
-            integrity="sha512-Meww2sXqNHxI1+5Dyh/9KAtvI9RZSA4c1K2k5iL02oiPO/RH3Q30L3M1albtqMg50u4gRTYdV4EXOQqXEI336A=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
-<body class="stats-page">
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TT2FBGZQ"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
-<div class="container">
-    <div class="center_of_screen">
+    <meta charset="UTF-8" />
+    <title>
+      Alephium Wallet Address Statistics - Track Your Mining Performance
+    </title>
+    <link rel="icon" href="/images/icon.ico" />
+    <meta
+      name="description"
+      content="View Alephium wallet address statistics and track your mining performance. Monitor earnings, hashrate, and more in real-time."
+    />
+    <meta
+      name="keywords"
+      content="Alephium Wallet Address, Statistics, Mining Performance, Earnings, Hashrate"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"
+      integrity="sha512-Meww2sXqNHxI1+5Dyh/9KAtvI9RZSA4c1K2k5iL02oiPO/RH3Q30L3M1albtqMg50u4gRTYdV4EXOQqXEI336A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body class="stats-page">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT2FBGZQ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+      <div class="center_of_screen">
         <form id="wallet-form">
-            <input type="text" id="wallet-input" placeholder="Wallet">
-            <button type="submit" class="show_button" id="show">Show</button>
+          <input type="text" id="wallet-input" placeholder="Wallet" />
+          <button type="submit" class="show_button" id="show">Show</button>
         </form>
         <div id="stats" class="hidden">
-            <p>Your balance: <b><span id="balance">-</span></b> ~ <span id="balance_usd">-</span> USD</p>
-            <p>Your hashrate 1h/24h: <b><span id="my_hashrate_1h"></span></b> <span id="my_hashrate_1h_measure"></span>/s
-                / <b><span
-                        id="my_hashrate_24h"></span></b> <span id="my_hashrate_24h_measure"></span>/s</p>
-            <p>Your payouts 1h/24h: <b><span id="my_payouts_1h"></span></b> ~ <span id="my_payouts_1h_usd"></span> USD /
-                <b><span id="my_payouts_24h"></span></b> ~ <span id="my_payouts_24h_usd"></span> USD
-            </p>
+          <p>
+            Your balance: <b><span id="balance">-</span></b> ~
+            <span id="balance_usd">-</span> USD
+          </p>
+          <p>
+            Your hashrate 1h/24h: <b><span id="my_hashrate_1h"></span></b>
+            <span id="my_hashrate_1h_measure"></span>/s /
+            <b><span id="my_hashrate_24h"></span></b>
+            <span id="my_hashrate_24h_measure"></span>/s
+          </p>
+          <p>
+            Your payouts 1h/24h: <b><span id="my_payouts_1h"></span></b> ~
+            <span id="my_payouts_1h_usd"></span> USD /
+            <b><span id="my_payouts_24h"></span></b> ~
+            <span id="my_payouts_24h_usd"></span> USD
+          </p>
           <ul class="payout-details">
             <li>
-              <p>Min payout: <b id="stat-min-payouts-value" class="highlight">0.1</b> <b>ALPH</b></p>
+              <p>
+                Min payout:
+                <b id="stat-min-payouts-value" class="highlight">0.1</b>
+                <b>ALPH</b>
+              </p>
               <i class="icon edit-icon open-modal-button"></i>
             </li>
             <li>
@@ -65,76 +103,93 @@
               <p>Pool fee: <b class="highlight">0.5%</b></p>
             </li>
           </ul>
-        <div class="tabs">
-          <div class="tab-links">
-            <button class="button button-outline" id="workers-tab">Workers</button>
-            <button class="button button-clear" id="payouts-tab">Payouts 24h</button>
-            <button class="button button-clear" id="events-tab">Events</button>
-          </div>
-
-                <div class="tab-content">
-                    <div id="workers" class="tab active">
-                        <table id="workers-table">
-                            <thead>
-                            <tr>
-                                <th>Worker</th>
-                                <th>Hashrate 1h/24h</th>
-                                <th>Valid Shares 1h/24h</th>
-                                <th>Last Share At</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="payouts" class="tab">
-                        <table id="payouts-table">
-                            <thead>
-                            <tr>
-                                <th>Amount</th>
-                                <th>Timestamp</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="events" class="tab">
-                        <table id="events-table">
-                            <thead>
-                            <tr>
-                                <th>Worker</th>
-                                <th>Message</th>
-                                <th>Count</th>
-                                <th>Latest</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+          <div class="tabs">
+            <div class="tab-links">
+              <button class="button button-outline" id="workers-tab">
+                Workers
+              </button>
+              <button class="button button-clear" id="payouts-tab">
+                Payouts 24h
+              </button>
+              <button class="button button-clear" id="events-tab">
+                Events
+              </button>
             </div>
+
+            <div class="tab-content">
+              <div id="workers" class="tab active">
+                <table id="workers-table">
+                  <thead>
+                    <tr>
+                      <th>Worker</th>
+                      <th>Hashrate 1h/24h</th>
+                      <th>Valid Shares 1h/24h</th>
+                      <th>Last Share At</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div id="payouts" class="tab">
+                <table id="payouts-table">
+                  <thead>
+                    <tr>
+                      <th>Amount</th>
+                      <th>Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div id="events" class="tab">
+                <table id="events-table">
+                  <thead>
+                    <tr>
+                      <th>Worker</th>
+                      <th>Message</th>
+                      <th>Count</th>
+                      <th>Latest</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-<dialog class="modal modal-dit-min-payouts">
-  <div class="modal__inner">
-    <h2 class="heading-h2">Set my minimum payout</h2>
-    <form id="form-min-payouts" class="form__dit-min-payouts" action="" novalidate>
-      <div class="input-container">
-        <label class="label" for="min-payout">Minimum payout</label>
-        <input id="input-min-payouts" class="input" name="min-payout" placeholder="0.1"  type="number"  step="any"
-          inputmode="numeric">
-        <span id="error-message" class="error-message"></span>
-        </div>
-      <div class="form-action">
-        <button type="button" class="button-outline close-modal-btn">Cancel</button>
-        <button type="submit" class="submit-btn">Save changes</button>
       </div>
-    </form>
-  </div>
-</dialog>
-</body>
-<script src="stats.js"></script>
+    </div>
+    <dialog class="modal modal-dit-min-payouts">
+      <div class="modal__inner">
+        <h2 class="heading-h2">Set my minimum payout</h2>
+        <form
+          id="form-min-payouts"
+          class="form__dit-min-payouts"
+          action=""
+          novalidate
+        >
+          <div class="input-container">
+            <label class="label" for="min-payout">Minimum payout</label>
+            <input
+              id="input-min-payouts"
+              class="input"
+              name="min-payout"
+              placeholder="0.1"
+              type="number"
+              step="any"
+              inputmode="numeric"
+            />
+            <span id="error-message" class="error-message"></span>
+          </div>
+          <div class="form-action">
+            <button type="button" class="button-outline close-modal-btn">
+              Cancel
+            </button>
+            <button type="submit" class="submit-btn">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+  </body>
+  <script src="stats.js"></script>
 </html>

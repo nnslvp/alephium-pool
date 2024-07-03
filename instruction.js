@@ -38,15 +38,14 @@ function showPings() {
     { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
   ];
 
-  servers
-    .reduce((chain, server, i) => {
-      return chain
-        .then(() => testServer(server))
-        .then((timeTaken) => {
-          servers[i].ping = timeTaken;
-          updatePing(server.name, timeTaken);
-        })
-        .then(() => new Promise((resolve) => setTimeout(resolve, 500)));
+  servers.reduce((chain, server, i) => {
+    return chain
+      .then(() => testServer(server))
+      .then((timeTaken) => {
+        servers[i].ping = timeTaken;
+        updatePing(server.name, timeTaken);
+      })
+      .then(() => new Promise((resolve) => setTimeout(resolve, 500)));
   }, Promise.resolve());
 }
 
@@ -82,11 +81,11 @@ function updatePing(serverName, pingValue) {
 }
 
 const copyButtonsInsideTableServers = document.querySelectorAll(
-  '.table-servers .button-copy'
+  '.table-servers .button-copy',
 );
 
 const copyButtonsInsideCodeWrapper = document.querySelectorAll(
-  '.code-wrapper .button-copy'
+  '.code-wrapper .button-copy',
 );
 
 copyButtonsInsideTableServers.forEach((btn) => {
@@ -97,7 +96,7 @@ copyButtonsInsideTableServers.forEach((btn) => {
     let port = '';
     let protocol = '';
     const isCopyPortSSL = currentTarget.classList.contains(
-      'button-copy-port-ssl'
+      'button-copy-port-ssl',
     );
 
     if (isCopyPortSSL) {
@@ -122,8 +121,9 @@ copyButtonsInsideTableServers.forEach((btn) => {
 copyButtonsInsideCodeWrapper.forEach((btn) => {
   btn.addEventListener('click', (event) => {
     const { currentTarget } = event;
-    const copyText = btn.closest('.code-wrapper').querySelector('code')
-      .textContent;
+    const copyText = btn
+      .closest('.code-wrapper')
+      .querySelector('code').textContent;
 
     try {
       navigator.clipboard.writeText(copyText);
