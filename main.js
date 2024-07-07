@@ -38,11 +38,11 @@ function shortenHm(hashRate, roundPlaces) {
     const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0;
 
     const factor = denominator.find(
-      (el) => hashRateFactor - Math.log10(el.d) >= 0
+      (el) => hashRateFactor - Math.log10(el.d) >= 0,
     );
 
     const resultHashRateValue = Number(
-      (hashRate / factor.d).toFixed(roundPlaces)
+      (hashRate / factor.d).toFixed(roundPlaces),
     );
     const resultHashRateMeasure = factor.unit;
 
@@ -55,9 +55,8 @@ function shortenHm(hashRate, roundPlaces) {
 
 function showPoolHashrate(hashrate) {
   const shortPoolHashRate = shortenHm(hashrate, 2);
-  document.getElementById(
-    'pool_hashrate'
-  ).textContent = `${shortPoolHashRate.hashrate} ${shortPoolHashRate.units}/s`;
+  document.getElementById('pool_hashrate').textContent =
+    `${shortPoolHashRate.hashrate} ${shortPoolHashRate.units}/s`;
 }
 
 function showPoolProfit(profit) {
@@ -93,11 +92,13 @@ function init() {
   fetchPoolProfit().then(({ profit }) => {
     showPoolProfit(profit);
     fetchCurrencyInfo().then(({ rate: { value } }) =>
-      showPoolProfitUSD(profit, value)
+      showPoolProfitUSD(profit, value),
     );
   });
 
-  fetchPoolValue().then(minPayouts => showPoolMinPayout(minPayouts.value, 'pool_min_payouts', 'ALPH'));
+  fetchPoolValue().then((minPayouts) =>
+    showPoolMinPayout(minPayouts.value, 'pool_min_payouts', 'ALPH'),
+  );
 
   fetchPoolHashRate().then(({ hashrate }) => {
     showPoolHashrate(hashrate.hashrate);
@@ -151,15 +152,14 @@ function showPings() {
     { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
   ];
 
-  servers
-    .reduce((chain, server, i) => {
-      return chain
-        .then(() => testServer(server))
-        .then((timeTaken) => {
-          servers[i].ping = timeTaken;
-          updatePing(server.name, timeTaken);
-        })
-        .then(() => new Promise((resolve) => setTimeout(resolve, 500)))
+  servers.reduce((chain, server, i) => {
+    return chain
+      .then(() => testServer(server))
+      .then((timeTaken) => {
+        servers[i].ping = timeTaken;
+        updatePing(server.name, timeTaken);
+      })
+      .then(() => new Promise((resolve) => setTimeout(resolve, 500)))
       .catch((err) => console.error(err));
   }, Promise.resolve());
 }
@@ -205,7 +205,7 @@ copyButtons.forEach((btn) => {
     let port = '';
     let protocol = '';
     const isCopyPortSSL = currentTarget.classList.contains(
-      'button-copy-port-ssl'
+      'button-copy-port-ssl',
     );
 
     if (isCopyPortSSL) {

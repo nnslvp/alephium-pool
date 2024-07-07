@@ -1,89 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
+    <script>
+      (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
-            'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
         });
         var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
-        j.src =
-            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-TT2FBGZQ');</script>
+      })(window, document, 'script', 'dataLayer', 'GTM-TT2FBGZQ');
+    </script>
     <!-- End Google Tag Manager -->
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alephium(ALPH) Mining profit Calculator</title>
-    <link rel="icon" href="/images/icon.ico">
-    <meta name="description" content="Use the Alephium Mining Calculator to estimate your mining profit. Maximize your earnings with Alephium mining pool.">
-    <meta name="keywords" content="Alephium, Mining Calculator, Mining Profit, Estimate Earnings">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TT2FBGZQ"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <link rel="icon" href="/images/icon.ico" />
+    <meta
+      name="description"
+      content="Use the Alephium Mining Calculator to estimate your mining profit. Maximize your earnings with Alephium mining pool."
+    />
+    <meta
+      name="keywords"
+      content="Alephium, Mining Calculator, Mining Profit, Estimate Earnings"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT2FBGZQ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="container">
-        <div>
-            <p>
-              <a href="./instruction.html">
-                <b>How to mine</b> 📖
-              </a>
-            </p>
-            <form name="calculator_form">
-
-                <div class="row">
-                    <div class="column">
-                        <label for="hashrate_field">Hashrate (GH/s)</label>
-                        <input type="text" name="hashrate" id="hashrate_field" value="1">
-                    </div>
-                    <div class="column">
-                        <label for="power_consumption_field">Power consumption (W)</label>
-                        <input type="text" name="power_consumption" id="power_consumption_field" value="0">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <label for="electricity_costs_field">Electricity costs (USD/kWh)</label>
-                        <input type="text" name = "electricity_costs" id="electricity_costs_field" value="0.1">
-                    </div>
-                    <div class="column">
-                        <input class="calculator_button" id="calculator_button" type="submit" value="Calculate">
-                    </div>
-                </div>
-              </form>
-            <table class="calculator_table">
-                <thead>
-                    <tr>
-                        <th>PERIOD</th>
-                        <th>EST. REWARD</th>
-                        <th>EST. INCOME</th>
-                        <th>ELECTRICITY COSTS</th>
-                        <th>EST. PROFIT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+      <div>
+        <p>
+          <a href="./instruction.html"> <b>How to mine</b> 📖 </a>
+        </p>
+        <form name="calculator_form">
+          <div class="row">
+            <div class="column">
+              <label for="hashrate_field">Hashrate (GH/s)</label>
+              <input
+                type="text"
+                name="hashrate"
+                id="hashrate_field"
+                value="1"
+              />
+            </div>
+            <div class="column">
+              <label for="power_consumption_field">Power consumption (W)</label>
+              <input
+                type="text"
+                name="power_consumption"
+                id="power_consumption_field"
+                value="0"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <label for="electricity_costs_field"
+                >Electricity costs (USD/kWh)</label
+              >
+              <input
+                type="text"
+                name="electricity_costs"
+                id="electricity_costs_field"
+                value="0.1"
+              />
+            </div>
+            <div class="column">
+              <input
+                class="calculator_button"
+                id="calculator_button"
+                type="submit"
+                value="Calculate"
+              />
+            </div>
+          </div>
+        </form>
+        <table class="calculator_table">
+          <thead>
+            <tr>
+              <th>PERIOD</th>
+              <th>EST. REWARD</th>
+              <th>EST. INCOME</th>
+              <th>ELECTRICITY COSTS</th>
+              <th>EST. PROFIT</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
-
-
-</body>
+  </body>
 </html>
 
 <script src="calculator.js"></script>

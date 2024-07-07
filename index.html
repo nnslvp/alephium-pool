@@ -1,60 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
+    <script>
+      (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
-            'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
         });
         var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
-        j.src =
-            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-TT2FBGZQ');</script>
+      })(window, document, 'script', 'dataLayer', 'GTM-TT2FBGZQ');
+    </script>
     <!-- End Google Tag Manager -->
 
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Stable Alephium(ALPH) Mining Pool</title>
-    <link rel="icon" href="/images/icon.ico">
-    <meta name="description" content="Join Alephium Pool to maximize your mining profits. Offering low fees, high security, and reliable payouts.">
-    <meta name="keywords" content="Alephium, Mining Pool, Cryptocurrency, Profit, Low Fees, High Security">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TT2FBGZQ"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
-<div class="container">
-    <div>
+    <link rel="icon" href="/images/icon.ico" />
+    <meta
+      name="description"
+      content="Join Alephium Pool to maximize your mining profits. Offering low fees, high security, and reliable payouts."
+    />
+    <meta
+      name="keywords"
+      content="Alephium, Mining Pool, Cryptocurrency, Profit, Low Fees, High Security"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT2FBGZQ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+      <div>
         <div class="head_text">
-            <h1>Hi!, let's connect to Alephium pool!</h1>
+          <h1>Hi!, let's connect to Alephium pool!</h1>
         </div>
         <ul>
-            <li><b>Instant block unlocking</b> without 500-minute delay</li>
-            <li>Payouts every <b>30 minutes</b></li>
-            <li>Minimum payout - <b id="pool_min_payouts">0.1 ALPH</b> (Customizable)</li>
+          <li><b>Instant block unlocking</b> without 500-minute delay</li>
+          <li>Payouts every <b>30 minutes</b></li>
+          <li>
+            Minimum payout -
+            <b id="pool_min_payouts">0.1 ALPH</b> (Customizable)
+          </li>
         </ul>
 
-        <p><b><a href="https://t.me/alephium_pool">Telegram Community</a></b></p>
+        <p>
+          <b><a href="https://t.me/alephium_pool">Telegram Community</a></b>
+        </p>
 
-        <p>Pool hashrate: <b><span id="pool_hashrate">loading..</span></b></p>
-        <p>Profit per GH: <b><span id="pool_profit">loading..</span></b> ALPH ~ <b><span
-                id="pool_profit_usd">loading..</span></b> USD</p>
-        <p>24h Blocks: <b><span id="24h_blocks">loading..</span></b></p>
-        <p>Latest Block at:: <b><span id="latest_block_at">loading..</span></b></p>
+        <p>
+          Pool hashrate: <b><span id="pool_hashrate">loading..</span></b>
+        </p>
+        <p>
+          Profit per GH: <b><span id="pool_profit">loading..</span></b> ALPH ~
+          <b><span id="pool_profit_usd">loading..</span></b> USD
+        </p>
+        <p>
+          24h Blocks: <b><span id="24h_blocks">loading..</span></b>
+        </p>
+        <p>
+          Latest Block at:: <b><span id="latest_block_at">loading..</span></b>
+        </p>
         <h3>How to start?</h3>
-        <p><a href="./instruction.html"><b>Instruction</b></a></p>
+        <p>
+          <a href="./instruction.html"><b>Instruction</b></a>
+        </p>
         <p>Locations:</p>
         <table class="table-servers">
           <thead>
@@ -68,10 +104,8 @@
                   Ping
                   <icon class="icon icon-tooltip">
                     <span class="tooltip">
-                      This ping is approximate but accurate enough for comparing servers with each other. For obtaining the
-                      exact
-                      ping,
-                      use
+                      This ping is approximate but accurate enough for comparing
+                      servers with each other. For obtaining the exact ping, use
                       the ping command in your system.
                     </span>
                   </icon>
@@ -85,18 +119,18 @@
               <td class="host">eu1.alephium-pool.com</td>
               <td>
                 <span class="port">20032</span>
-                <button class="button button-clear  button-copy">
+                <button class="button button-clear button-copy">
                   <i class="icon icon-copy"></i>
-                  <span class="tooltiptext">
-                    Copied!</span>
+                  <span class="tooltiptext"> Copied!</span>
                 </button>
               </td>
               <td>
                 <span class="port-ssl">20033</span>
-                <button class="button button-clear  button-copy button-copy-port-ssl">
+                <button
+                  class="button button-clear button-copy button-copy-port-ssl"
+                >
                   <i class="icon icon-copy"></i>
-                  <span class="tooltiptext">
-                    Copied!</span>
+                  <span class="tooltiptext"> Copied!</span>
                 </button>
               </td>
               <td class="ping">
@@ -111,18 +145,18 @@
               </td>
               <td>
                 <span class="port">20032</span>
-                <button class="button button-clear  button-copy">
+                <button class="button button-clear button-copy">
                   <i class="icon icon-copy"></i>
-                  <span class="tooltiptext">
-                    Copied!</span>
+                  <span class="tooltiptext"> Copied!</span>
                 </button>
               </td>
               <td>
                 <span class="port-ssl">20033</span>
-                <button class="button button-clear  button-copy button-copy-port-ssl">
+                <button
+                  class="button button-clear button-copy button-copy-port-ssl"
+                >
                   <i class="icon icon-copy"></i>
-                  <span class="tooltiptext">
-                    Copied!</span>
+                  <span class="tooltiptext"> Copied!</span>
                 </button>
               </td>
               <td class="ping">
@@ -135,18 +169,18 @@
               <td class="host">us1.alephium-pool.com</td>
               <td>
                 <span class="port">20032</span>
-                <button class="button button-clear  button-copy">
+                <button class="button button-clear button-copy">
                   <i class="icon icon-copy"></i>
-                  <span class="tooltiptext">
-                    Copied!</span>
+                  <span class="tooltiptext"> Copied!</span>
                 </button>
               </td>
               <td>
                 <span class="port-ssl">20033</span>
-                <button class="button button-clear  button-copy button-copy-port-ssl">
+                <button
+                  class="button button-clear button-copy button-copy-port-ssl"
+                >
                   <i class="icon icon-copy"></i>
-                  <span class="tooltiptext">
-                    Copied!</span>
+                  <span class="tooltiptext"> Copied!</span>
                 </button>
               </td>
               <td class="ping">
@@ -159,18 +193,18 @@
               <td class="host">asia1.alephium-pool.com</td>
               <td>
                 <span class="port">20032</span>
-                <button class="button button-clear  button-copy">
+                <button class="button button-clear button-copy">
                   <i class="icon icon-copy"></i>
-                  <span class="tooltiptext">
-                    Copied!</span>
+                  <span class="tooltiptext"> Copied!</span>
                 </button>
               </td>
               <td>
                 <span class="port-ssl">20033</span>
-                <button class="button button-clear  button-copy button-copy-port-ssl">
+                <button
+                  class="button button-clear button-copy button-copy-port-ssl"
+                >
                   <i class="icon icon-copy"></i>
-                  <span class="tooltiptext">
-                    Copied!</span>
+                  <span class="tooltiptext"> Copied!</span>
                 </button>
               </td>
               <td class="ping">
@@ -180,14 +214,22 @@
             </tr>
           </tbody>
         </table>
-        <p><b>Solo mining</b> (optional): To mine in solo mode, include the prefix "<b>solo:</b>" before your wallet address in the mining configuration. Example: <b>solo:ADDRESS</b></p>
-        <p>Fee <b>0.5%</b></a></p>
-        <p>Mining statistic: <a href="stats.html"><b>Web</b></a> and <a href="https://t.me/alephium_pool_bot"><b>Telegram bot</b></a>
+        <p>
+          <b>Solo mining</b> (optional): To mine in solo mode, include the
+          prefix "<b>solo:</b>" before your wallet address in the mining
+          configuration. Example: <b>solo:ADDRESS</b>
         </p>
-        <p><a href="calculator.html"><b>Calculator</b></a></p>
+        <p>Fee <b>0.5%</b></p>
+        <p>
+          Mining statistic: <a href="stats.html"><b>Web</b></a> and
+          <a href="https://t.me/alephium_pool_bot"><b>Telegram bot</b></a>
+        </p>
+        <p>
+          <a href="calculator.html"><b>Calculator</b></a>
+        </p>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </html>
