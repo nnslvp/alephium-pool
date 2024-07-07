@@ -214,6 +214,10 @@ function showPayoutsTable(payouts) {
 }
 
 function showMyBlocksTable(payouts) {
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const tableBody = document
     .getElementById('my-blocks-table')
     .getElementsByTagName('tbody')[0];
@@ -224,8 +228,8 @@ function showMyBlocksTable(payouts) {
     row.insertCell(0).textContent = new Date(block.timestamp).toLocaleString();
     row.insertCell(1).innerHTML =
       `<a href="https://explorer.alephium.org/blocks/${block.block_hash}">${block.height}</a>`;
-    row.insertCell(2).textContent = block.status;
-    row.insertCell(3).textContent = block.method_kind;
+    row.insertCell(2).textContent = capitalizeFirstLetter(block.status);
+    row.insertCell(3).textContent = block.method_kind.toUpperCase();
     row.insertCell(4).textContent = `${parseFloat(block.amount).toFixed(8)} ALPH`;
   });
 }
