@@ -1,8 +1,8 @@
 const regionSelect = document.getElementById('region');
-const walletsAddress = document.querySelectorAll('.wallets-address')
-const endpoints = document.querySelectorAll('.endpoint')
-const miningForm = document.querySelector('#miningForm')
-const walletsExampleCode = document.querySelectorAll('.wallet')
+const walletsAddress = document.querySelectorAll('.wallets-address');
+const endpoints = document.querySelectorAll('.endpoint');
+const miningForm = document.querySelector('#miningForm');
+const walletsExampleCode = document.querySelectorAll('.wallet');
 
 const servers = [
   // NOTE: The following servers are not working until DNS is not cloudflare, I cant handle SSL
@@ -15,7 +15,6 @@ const servers = [
   { name: 'US', host: 'us1.alephium.coinmore.io', port: 3031 },
   { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
 ];
-
 
 function testServer(server) {
   return new Promise((resolve, reject) => {
@@ -57,7 +56,7 @@ function showPings() {
   });
 
   Promise.all(promises).then(() => {
-    if(!regionSelect.value){
+    if (!regionSelect.value) {
       selectedDefaultRegion(servers);
     }
   });
@@ -121,7 +120,7 @@ miningForm.addEventListener('submit', (event) => {
   const { host, port } = servers.find((s) => s.name === region);
 
   let yourWalletAddress = wallet;
-  const rigNameText = rigName ? `.${rigName}` : ''
+  const rigNameText = rigName ? `.${rigName}` : '';
 
   if (paymentMethod === 'SOLO') {
     yourWalletAddress = `solo:${wallet}${rigNameText}`;
@@ -140,14 +139,14 @@ miningForm.addEventListener('submit', (event) => {
   walletsExampleCode.forEach((walletEl) => {
     walletEl.textContent = `${wallet}${rigNameText}`;
   });
-})
+});
 
 const copyButtonsInsideTableServers = document.querySelectorAll(
-  '.table-servers .button-copy',
+  '.table-servers .button-copy'
 );
 
 const copyButtonsInsideCodeWrapper = document.querySelectorAll(
-  '.code-wrapper .button-copy',
+  '.code-wrapper .button-copy'
 );
 
 copyButtonsInsideTableServers.forEach((btn) => {
@@ -158,7 +157,7 @@ copyButtonsInsideTableServers.forEach((btn) => {
     let port = '';
     let protocol = '';
     const isCopyPortSSL = currentTarget.classList.contains(
-      'button-copy-port-ssl',
+      'button-copy-port-ssl'
     );
 
     if (isCopyPortSSL) {
@@ -183,9 +182,8 @@ copyButtonsInsideTableServers.forEach((btn) => {
 copyButtonsInsideCodeWrapper.forEach((btn) => {
   btn.addEventListener('click', (event) => {
     const { currentTarget } = event;
-    const copyText = btn
-      .closest('.code-wrapper')
-      .querySelector('code').textContent;
+    const copyText = btn.closest('.code-wrapper').querySelector('code')
+      .textContent;
 
     try {
       navigator.clipboard.writeText(copyText);

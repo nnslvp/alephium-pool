@@ -74,7 +74,7 @@ function generateTable(calculatorForm) {
       costsPerTime(powerConsumptionValue, electricityCostsValue),
       perHour(income) -
         costsPerTime(powerConsumptionValue, electricityCostsValue),
-      currencyValue,
+      currencyValue
     );
 
     addRow(
@@ -84,7 +84,7 @@ function generateTable(calculatorForm) {
       income,
       costsPerTime(powerConsumptionValue, electricityCostsValue, 24),
       income - costsPerTime(powerConsumptionValue, electricityCostsValue, 24),
-      currencyValue,
+      currencyValue
     );
 
     addRow(
@@ -95,7 +95,7 @@ function generateTable(calculatorForm) {
       costsPerTime(powerConsumptionValue, electricityCostsValue, 168),
       perWeek(income) -
         costsPerTime(powerConsumptionValue, electricityCostsValue, 168),
-      currencyValue,
+      currencyValue
     );
   });
   button.disabled = false;

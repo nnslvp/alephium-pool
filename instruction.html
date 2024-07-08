@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -75,7 +75,9 @@
               <tbody>
                 <tr>
                   <td>🇪🇺 Europe</td>
-                  <td class="host"><span class="endpoint">eu1</span>.alephium-pool.com</td>
+                  <td class="host">
+                    <span class="endpoint">eu1</span>.alephium-pool.com
+                  </td>
                   <td>
                     <span class="port">20032</span>
                     <button class="button button-clear button-copy">
@@ -181,93 +183,130 @@
           </div>
         </div>
       </header>
-    <main>
-      <article>
-        <div class="container-instruction">
-          <h2>Quick Start</h2>
-          <p>
-            <strong>Start by downloading
-              <a href="https://github.com/alephium/alephium-wallet/releases">Alephium Wallet</a>
-            </strong>
-          </p>
-          <section>
-            <h3>Miners</h3>
-            <div class="miners-list">
-              <p>You can use:</p>
-              <ul>
-                <li>
-                  <a href="https://github.com/doktor83/SRBMiner-Multi/releases">SRBMiner</a>
-                </li>
-                <li>
-                  <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">lolMiner</a>
-                </li>
-                <li>
-                  <a href="https://github.com/bzminer/bzminer/releases">BzMiner</a>
-                </li>
-                <li>
-                  <a href="https://github.com/trexminer/T-Rex/releases">T-Rex</a>
-                </li>
-                <li>
-                  <a href="https://github.com/rigelminer/rigel/releases">Rigel</a>
-                </li>
-                <li>
-                  <a href="https://github.com/andru-kun/wildrig-multi/releases">WildRig Multi</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p>About other solutions you can ask in <a href="https://t.me/alephium_pool"> telegram community:</a></p>
-            </div>
-          </section>
-          <section>
-            <h3>Windows examples</h3>
-            <form id="miningForm" class="mining-form">
-              <label for="wallet">Wallet:</label>
-              <input type="text" id="wallet" name="wallet" required>
-              <label for="rigName">Rig name (optional):</label>
-              <input type="text" id="rigName" name="rigName">
-              <label for="region">Region:</label>
-
-              <select id="region" name="region" required>
-                <option value="">Select your region</option>
-                <option value="Europe">Europe</option>
-                <option value="Russia">Russia</option>
-                <option value="US">US</option>
-                <option value="Asia">Asia</option>
-              </select>
-
-              <div class="checkboxes-container">
-                <label>Payment Method:</label>
-                <label for="pplns">
-                  <input checked type="radio" id="pplns" name="paymentMethod" value="PPLNS">
-                  PPLNS
-                </label>
-                <label for="solo">
-                  <input type="radio" id="solo" name="paymentMethod" value="SOLO">
-                  SOLO
-                </label>
-              </div>
-
-              <button type="submit" class="btn-submit">GENERATE EXAMPLES</button>
-            </form>
+      <main>
+        <article>
+          <div class="container-instruction">
+            <h2>Quick Start</h2>
+            <p>
+              <strong
+                >Start by downloading
+                <a href="https://github.com/alephium/alephium-wallet/releases"
+                  >Alephium Wallet</a
+                >
+              </strong>
+            </p>
             <section>
-              <h3>lolMiner</h3>
-              <ol>
-                <li>
-                  Download
-                  <a href="https://github.com/Lolliedieb/lolMiner-releases/releases">
-                    last release of lolMiner</a>
-                  and unzip files
-                </li>
-                <li>
-                  Update <strong>alph</strong> file, for example: <strong>mine_aleph</strong>
-                  <div class="code-wrapper">
-                    <button class="button button-clear  button-copy ">
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext">
-                        Copied!</span>
-                    </button>
-                    <pre class="code-container">
+              <h3>Miners</h3>
+              <div class="miners-list">
+                <p>You can use:</p>
+                <ul>
+                  <li>
+                    <a
+                      href="https://github.com/doktor83/SRBMiner-Multi/releases"
+                      >SRBMiner</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/Lolliedieb/lolMiner-releases/releases"
+                      >lolMiner</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://github.com/bzminer/bzminer/releases"
+                      >BzMiner</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://github.com/trexminer/T-Rex/releases"
+                      >T-Rex</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://github.com/rigelminer/rigel/releases"
+                      >Rigel</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/andru-kun/wildrig-multi/releases"
+                      >WildRig Multi</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p>
+                  About other solutions you can ask in
+                  <a href="https://t.me/alephium_pool"> telegram community:</a>
+                </p>
+              </div>
+            </section>
+            <section>
+              <h3>Windows examples</h3>
+              <form id="miningForm" class="mining-form">
+                <label for="wallet">Wallet:</label>
+                <input type="text" id="wallet" name="wallet" required />
+                <label for="rigName">Rig name (optional):</label>
+                <input type="text" id="rigName" name="rigName" />
+                <label for="region">Region:</label>
+
+                <select id="region" name="region" required>
+                  <option value="">Select your region</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Russia">Russia</option>
+                  <option value="US">US</option>
+                  <option value="Asia">Asia</option>
+                </select>
+
+                <div class="checkboxes-container">
+                  <label>Payment Method:</label>
+                  <label for="pplns">
+                    <input
+                      checked
+                      type="radio"
+                      id="pplns"
+                      name="paymentMethod"
+                      value="PPLNS"
+                    />
+                    PPLNS
+                  </label>
+                  <label for="solo">
+                    <input
+                      type="radio"
+                      id="solo"
+                      name="paymentMethod"
+                      value="SOLO"
+                    />
+                    SOLO
+                  </label>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                  GENERATE EXAMPLES
+                </button>
+              </form>
+              <section>
+                <h3>lolMiner</h3>
+                <ol>
+                  <li>
+                    Download
+                    <a
+                      href="https://github.com/Lolliedieb/lolMiner-releases/releases"
+                    >
+                      last release of lolMiner</a
+                    >
+                    and unzip files
+                  </li>
+                  <li>
+                    Update <strong>alph</strong> file, for example:
+                    <strong>mine_aleph</strong>
+                    <div class="code-wrapper">
+                      <button class="button button-clear button-copy">
+                        <i class="icon icon-copy"></i>
+                        <span class="tooltiptext"> Copied!</span>
+                      </button>
+                      <pre class="code-container">
                             <code>
                               set "ALEPHPOOL=<span class="endpoint">eu1.alephium-pool.com:20032</span>"
                               set "ALEPHWALLET=<span class="wallet">your_wallet</span>"
@@ -311,21 +350,24 @@
                 </ol>
               </section>
 
-            <section>
-              <h3>T-Rex:</h3>
-              <ol>
-                <li>Download <a href="https://github.com/trexminer/T-Rex/releases">last release of T-Rex</a> and unzip
-                  files
-                </li>
-                <li>Update <strong>alph</strong> file
-                  to
-                  <div class="code-wrapper">
-                    <button class="button button-clear  button-copy">
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext">
-                        Copied!</span>
-                    </button>
-                    <pre class="code-container">
+              <section>
+                <h3>T-Rex:</h3>
+                <ol>
+                  <li>
+                    Download
+                    <a href="https://github.com/trexminer/T-Rex/releases"
+                      >last release of T-Rex</a
+                    >
+                    and unzip files
+                  </li>
+                  <li>
+                    Update <strong>alph</strong> file to
+                    <div class="code-wrapper">
+                      <button class="button button-clear button-copy">
+                        <i class="icon icon-copy"></i>
+                        <span class="tooltiptext"> Copied!</span>
+                      </button>
+                      <pre class="code-container">
                             <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> -u <span class="wallets-address">your_wallet_address</span> -p x -w rig0</code>
                           </pre>
                     </div>
@@ -337,22 +379,25 @@
                 </ol>
               </section>
 
-            <section>
-              <h3>SRBMiner:</h3>
-              <ol>
-                <li>Download <a href="https://github.com/doktor83/SRBMiner-Multi/releases">last release of SRBMiner</a>
-                  and
-                  unzip
-                  files</li>
-                <li>Update <strong>alph</strong> file
-                  to
-                  <div class="code-wrapper">
-                    <button class="button button-clear  button-copy">
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext">
-                        Copied!</span>
-                    </button>
-                    <pre class="code-container">
+              <section>
+                <h3>SRBMiner:</h3>
+                <ol>
+                  <li>
+                    Download
+                    <a
+                      href="https://github.com/doktor83/SRBMiner-Multi/releases"
+                      >last release of SRBMiner</a
+                    >
+                    and unzip files
+                  </li>
+                  <li>
+                    Update <strong>alph</strong> file to
+                    <div class="code-wrapper">
+                      <button class="button button-clear button-copy">
+                        <i class="icon icon-copy"></i>
+                        <span class="tooltiptext"> Copied!</span>
+                      </button>
+                      <pre class="code-container">
                             <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="endpoint">eu1.alephium-pool.com:20032</span> --wallet <span class="wallets-address">your_wallet_address</span> </code>
                           </pre>
                     </div>
