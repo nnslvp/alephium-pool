@@ -137,7 +137,7 @@ miningForm.addEventListener('submit', (event) => {
   });
 
   walletsExampleCode.forEach((walletEl) => {
-    walletEl.textContent = yourWalletAddress
+    walletEl.textContent = yourWalletAddress;
   });
 });
 
