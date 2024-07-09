@@ -230,7 +230,8 @@ function showMyBlocksTable(payouts) {
       `<a href="https://explorer.alephium.org/blocks/${block.block_hash}">${block.height}</a>`;
     row.insertCell(2).textContent = capitalizeFirstLetter(block.status);
     row.insertCell(3).textContent = block.method_kind.toUpperCase();
-    row.insertCell(4).textContent = `${parseFloat(block.amount).toFixed(8)} ALPH`;
+    row.insertCell(4).textContent =
+      `${parseFloat(block.amount).toFixed(8)} ALPH`;
   });
 }
 
