@@ -241,7 +241,7 @@
               </div>
             </section>
             <section>
-              <h3>Windows examples</h3>
+              <h3>Examples:</h3>
               <form id="miningForm" class="mining-form">
                 <label for="wallet">Wallet:</label>
                 <input type="text" id="wallet" name="wallet" required />
@@ -307,7 +307,7 @@
                       <pre class="code-container">
                             <code>
                               set "ALEPHPOOL=<span class="endpoint">eu1.alephium-pool.com:20032</span>"
-                              set "ALEPHWALLET=<span class="wallet">your_wallet_address</span>"
+                              set "ALEPHWALLET=<span class="method"></span><span class="wallets-address">your_wallet_address</span><span class="worker-names"></span>"
                             </code>
                           </pre>
                     </div>
@@ -338,7 +338,7 @@
                       </button>
                       <pre class="code-container">
                               <code>
-                                bzminer -a alph -w <span class="wallets-address">your_wallet_address</span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span>
+                                bzminer -a alph -w <span class="method"></span><span class="wallets-address">your_wallet_address</span><span class="worker-names"></span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span>
                               </code>
                             </pre>
                     </div>
@@ -366,7 +366,7 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
-                            <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> -u <span class="wallets-address">your_wallet_address</span> -p x -w rig0</code>
+                            <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> -u <span class="method"></span><span class="wallets-address">your_wallet_address</span> -p x -w <span class="plain-worker-names"></span></code>
                           </pre>
                     </div>
                   </li>
@@ -396,7 +396,7 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
-                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="endpoint">eu1.alephium-pool.com:20032</span> --wallet <span class="wallets-address">your_wallet_address</span> </code>
+                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="endpoint">eu1.alephium-pool.com:20032</span> --wallet <span class="method"></span><span class="wallets-address">your_wallet_address</span><span class="worker-names"></span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> </code>
                           </pre>
                     </div>
                   </li>
