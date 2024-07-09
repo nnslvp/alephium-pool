@@ -504,6 +504,21 @@ input[type='number'] {
   }
 }
 
+.checkboxes-container :where(label, input[type='radio']) {
+  margin: 0;
+}
+
+.checkboxes-container {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.mining-form button[type='submit'] {
+  width: 100%;
+}
+
 @media (max-width: 80rem) {
   .center_of_screen {
     width: 90%;

@@ -156,8 +156,9 @@ function showWorkersTable(workersHour, workersDay) {
     row.insertCell(0).textContent = workerDay.worker || 'N/A';
     row.insertCell(1).textContent =
       `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
-    row.insertCell(2).textContent =
-      `${workerHour.shares_count || 'N/A'} / ${workerDay.shares_count || 'N/A'}`;
+    row.insertCell(2).textContent = `${workerHour.shares_count || 'N/A'} / ${
+      workerDay.shares_count || 'N/A'
+    }`;
     row.insertCell(3).textContent = workerDay.last_share_at
       ? new Date(workerDay.last_share_at).toLocaleString()
       : 'N/A';

@@ -242,6 +242,48 @@
             </section>
             <section>
               <h3>Windows examples</h3>
+              <form id="miningForm" class="mining-form">
+                <label for="wallet">Wallet:</label>
+                <input type="text" id="wallet" name="wallet" required />
+                <label for="rigName">Rig name (optional):</label>
+                <input type="text" id="rigName" name="rigName" />
+                <label for="region">Region:</label>
+
+                <select id="region" name="region" required>
+                  <option value="">Select your region</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Russia">Russia</option>
+                  <option value="US">US</option>
+                  <option value="Asia">Asia</option>
+                </select>
+
+                <div class="checkboxes-container">
+                  <label>Payment Method:</label>
+                  <label for="pplns">
+                    <input
+                      checked
+                      type="radio"
+                      id="pplns"
+                      name="paymentMethod"
+                      value="PPLNS"
+                    />
+                    PPLNS
+                  </label>
+                  <label for="solo">
+                    <input
+                      type="radio"
+                      id="solo"
+                      name="paymentMethod"
+                      value="SOLO"
+                    />
+                    SOLO
+                  </label>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                  GENERATE EXAMPLES
+                </button>
+              </form>
               <section>
                 <h3>lolMiner</h3>
                 <ol>
@@ -264,8 +306,8 @@
                       </button>
                       <pre class="code-container">
                             <code>
-                              set "ALEPHPOOL=eu1.alephium-pool.com:20032"
-                              set "ALEPHWALLET=your_wallet"
+                              set "ALEPHPOOL=<span class="endpoint">eu1.alephium-pool.com:20032</span>"
+                              set "ALEPHWALLET=<span class="wallet">your_wallet_address</span>"
                             </code>
                           </pre>
                     </div>
@@ -296,7 +338,7 @@
                       </button>
                       <pre class="code-container">
                               <code>
-                                bzminer -a alph -w your_wallet_address -p stratum+tcp://eu1.alephium-pool.com:20032
+                                bzminer -a alph -w <span class="wallets-address">your_wallet_address</span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span>
                               </code>
                             </pre>
                     </div>
@@ -324,7 +366,7 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
-                            <code>t-rex.exe -a blake3 -o stratum+tcp://eu1.alephium-pool.com:20032 -u your_wallet_address -p x -w rig0</code>
+                            <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> -u <span class="wallets-address">your_wallet_address</span> -p x -w rig0</code>
                           </pre>
                     </div>
                   </li>
@@ -354,7 +396,7 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
-                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool eu1.alephium-pool.com:20032 --wallet your_wallet_address</code>
+                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="endpoint">eu1.alephium-pool.com:20032</span> --wallet <span class="wallets-address">your_wallet_address</span> </code>
                           </pre>
                     </div>
                   </li>
