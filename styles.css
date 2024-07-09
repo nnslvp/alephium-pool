@@ -12,7 +12,9 @@
   border-right: 0.15em solid #9b4dca;
   white-space: nowrap;
   letter-spacing: 0.15em;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
   font-size: 4vw;
 }
 

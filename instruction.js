@@ -142,11 +142,11 @@ miningForm.addEventListener('submit', (event) => {
 });
 
 const copyButtonsInsideTableServers = document.querySelectorAll(
-  '.table-servers .button-copy'
+  '.table-servers .button-copy',
 );
 
 const copyButtonsInsideCodeWrapper = document.querySelectorAll(
-  '.code-wrapper .button-copy'
+  '.code-wrapper .button-copy',
 );
 
 copyButtonsInsideTableServers.forEach((btn) => {
@@ -157,7 +157,7 @@ copyButtonsInsideTableServers.forEach((btn) => {
     let port = '';
     let protocol = '';
     const isCopyPortSSL = currentTarget.classList.contains(
-      'button-copy-port-ssl'
+      'button-copy-port-ssl',
     );
 
     if (isCopyPortSSL) {
@@ -182,8 +182,9 @@ copyButtonsInsideTableServers.forEach((btn) => {
 copyButtonsInsideCodeWrapper.forEach((btn) => {
   btn.addEventListener('click', (event) => {
     const { currentTarget } = event;
-    const copyText = btn.closest('.code-wrapper').querySelector('code')
-      .textContent;
+    const copyText = btn
+      .closest('.code-wrapper')
+      .querySelector('code').textContent;
 
     try {
       navigator.clipboard.writeText(copyText);

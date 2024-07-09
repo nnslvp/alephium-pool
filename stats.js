@@ -6,7 +6,7 @@ const FORM_MIN_PAYOUTS = MODAL.querySelector('#form-min-payouts');
 const FORM_SUBMIT_BTN = MODAL.querySelector('.submit-btn');
 const INPUT_MIN_PAYOUTS = FORM_MIN_PAYOUTS.querySelector('#input-min-payouts');
 const STAT_MIN_PAYOUTS_VALUE = document.querySelector(
-  '#stat-min-payouts-value'
+  '#stat-min-payouts-value',
 );
 const ERROR_MESSAGE_ELEMENT = document.getElementById('error-message');
 
@@ -26,7 +26,7 @@ function statsApiCall(action) {
         'Network response was not ok ' +
           response.statusText +
           ' status code: ' +
-          response.status
+          response.status,
       );
     }
     return response.json();
@@ -69,13 +69,13 @@ function statsApiPost(action) {
 
 function createUserValue(wallet, kind = 'min_payout', value = 0.1) {
   return statsApiPost(
-    `/user_value?coin=alephium&wallet=${wallet}&kind=${kind}&value=${value}`
+    `/user_value?coin=alephium&wallet=${wallet}&kind=${kind}&value=${value}`,
   );
 }
 
 function fetchUserValue(wallet, kind = 'min_payout') {
   return statsApiCall(
-    `/user_value?coin=alephium&wallet=${wallet}&kind=${kind}`
+    `/user_value?coin=alephium&wallet=${wallet}&kind=${kind}`,
   );
 }
 
@@ -105,11 +105,11 @@ function shortenHm(hashRate, roundPlaces) {
     const hashRateFactor = Math.log10(hashRate) > 0 ? Math.log10(hashRate) : 0;
 
     const factor = denominator.find(
-      (el) => hashRateFactor - Math.log10(el.d) >= 0
+      (el) => hashRateFactor - Math.log10(el.d) >= 0,
     );
 
     const resultHashRateValue = Number(
-      (hashRate / factor.d).toFixed(roundPlaces)
+      (hashRate / factor.d).toFixed(roundPlaces),
     );
     const resultHashRateMeasure = factor.unit;
 
@@ -154,9 +154,8 @@ function showWorkersTable(workersHour, workersDay) {
       : { hashrate: 'N/A', units: '' };
 
     row.insertCell(0).textContent = workerDay.worker || 'N/A';
-    row.insertCell(
-      1
-    ).textContent = `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
+    row.insertCell(1).textContent =
+      `${shortHashRateHour.hashrate} ${shortHashRateHour.units} / ${shortHashRateDay.hashrate} ${shortHashRateDay.units}`;
     row.insertCell(2).textContent = `${workerHour.shares_count || 'N/A'} / ${
       workerDay.shares_count || 'N/A'
     }`;
@@ -172,29 +171,29 @@ function amountUSD(amountInAlph, currencyRate) {
 
 function showMyPayouts({ day, hour }, currencyRate) {
   document.getElementById('my_payouts_1h').textContent = parseFloat(
-    hour.amount
+    hour.amount,
   ).toFixed(8);
   document.getElementById('my_payouts_1h_usd').textContent = amountUSD(
     hour.amount,
-    currencyRate
+    currencyRate,
   );
 
   document.getElementById('my_payouts_24h').textContent = parseFloat(
-    day.amount
+    day.amount,
   ).toFixed(8);
   document.getElementById('my_payouts_24h_usd').textContent = amountUSD(
     day.amount,
-    currencyRate
+    currencyRate,
   );
 }
 
 function showMyBalance(myBalanceData, currencyRate) {
   document.getElementById('balance').textContent = parseFloat(
-    myBalanceData.amount
+    myBalanceData.amount,
   ).toFixed(8);
   document.getElementById('balance_usd').textContent = amountUSD(
     myBalanceData.amount,
-    currencyRate
+    currencyRate,
   );
 }
 
@@ -242,7 +241,7 @@ function drawData(wallet) {
         (accumulator, v) => {
           return accumulator + parseFloat(v.hashrate);
         },
-        0
+        0,
       );
 
       showMyHashrate({
@@ -267,7 +266,7 @@ function drawData(wallet) {
         .then((currencyRate) => {
           showMyPayouts(
             { hour: { amount: payouts1h }, day: { amount: payouts24h } },
-            currencyRate.rate.value
+            currencyRate.rate.value,
           );
           showPayoutsTable(payouts24hResponse.payouts);
         })
@@ -508,7 +507,7 @@ function handleError(error) {
   const errorMessage = error.message || error;
   const sanitizedMessage = errorMessage.replace(
     /because Kind is "min_payout".*/,
-    ''
+    '',
   );
   INPUT_MIN_PAYOUTS.classList.add('invalid');
   ERROR_MESSAGE_ELEMENT.textContent = sanitizedMessage;
