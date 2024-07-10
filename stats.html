@@ -99,9 +99,6 @@
             <li>
               <p>Payouts every <b class="highlight">1 hour</b></p>
             </li>
-            <li>
-              <p>Pool fee: <b class="highlight">0.5%</b></p>
-            </li>
           </ul>
           <div class="tabs">
             <div class="tab-links">
@@ -110,6 +107,9 @@
               </button>
               <button class="button button-clear" id="payouts-tab">
                 Payouts 24h
+              </button>
+              <button class="button button-clear" id="my-blocks-tab">
+                My Blocks 24h
               </button>
               <button class="button button-clear" id="events-tab">
                 Events
@@ -136,6 +136,20 @@
                     <tr>
                       <th>Amount</th>
                       <th>Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div id="my-blocks" class="tab">
+                <table id="my-blocks-table">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Height</th>
+                      <th>State</th>
+                      <th>Method</th>
+                      <th>Amount</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
@@ -169,7 +183,7 @@
           novalidate
         >
           <div class="input-container">
-            <label class="label" for="min-payout">Minimum payout</label>
+            <label class="label" for="input-min-payouts">Minimum payout</label>
             <input
               id="input-min-payouts"
               class="input"
