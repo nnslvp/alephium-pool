@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <sitemap>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
         <loc>https://alephium-pool.com/</loc>
         <lastmod>2024-07-02T00:00:00+00:00</lastmod>
-    </sitemap>
-    <sitemap>
+        <priority>1.0</priority>
+    </url>
+    <url>
         <loc>https://alephium-pool.com/instruction.html</loc>
         <lastmod>2024-07-02T00:00:00+00:00</lastmod>
-    </sitemap>
-    <sitemap>
+        <priority>1.0</priority>
+    </url>
+    <url>
         <loc>https://alephium-pool.com/calculator.html</loc>
         <lastmod>2024-07-02T00:00:00+00:00</lastmod>
-    </sitemap>
-</sitemapindex>
+        <priority>1.0</priority>
+    </url>
+</urlset>
