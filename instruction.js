@@ -1,8 +1,10 @@
 const regionSelect = document.getElementById('region');
 const walletsAddress = document.querySelectorAll('.wallets-address');
+const methods = document.querySelectorAll('.method');
+const workerNames = document.querySelectorAll('.worker-names');
+const plainWorkerNames = document.querySelectorAll('.plain-worker-names');
 const endpoints = document.querySelectorAll('.endpoint');
 const miningForm = document.querySelector('#miningForm');
-const walletsExampleCode = document.querySelectorAll('.wallet');
 
 const servers = [
   // NOTE: The following servers are not working until DNS is not cloudflare, I cant handle SSL
@@ -10,10 +12,30 @@ const servers = [
   // { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3031 },
   // { name: 'US', host: 'us1.alephium-pool.com', port: 3031 },
   // { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3031 },
-  { name: 'Europe', host: 'eu1.alephium.coinmore.io', port: 3031 },
-  { name: 'Russia', host: 'ru1.alephium.coinmore.io', port: 3031 },
-  { name: 'US', host: 'us1.alephium.coinmore.io', port: 3031 },
-  { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
+  {
+    name: 'Europe',
+    host: 'eu1.alephium.coinmore.io',
+    address: 'eu1.alephium-pool.com:20032',
+    port: 3031,
+  },
+  {
+    name: 'Russia',
+    host: 'ru1.alephium.coinmore.io',
+    address: 'ru1.alephium-pool.com:20032',
+    port: 3031,
+  },
+  {
+    name: 'US',
+    host: 'us1.alephium.coinmore.io',
+    address: 'us1.alephium-pool.com:20032',
+    port: 3031,
+  },
+  {
+    name: 'Asia',
+    host: 'asia1.alephium.coinmore.io',
+    address: 'asia1.alephium-pool.com:20032',
+    port: 3031,
+  },
 ];
 
 function testServer(server) {
@@ -117,27 +139,26 @@ miningForm.addEventListener('submit', (event) => {
   const rigName = formData.get('rigName');
   const region = formData.get('region');
   const paymentMethod = formData.get('paymentMethod');
-  const { host, port } = servers.find((s) => s.name === region);
-
-  let yourWalletAddress = wallet;
-  const rigNameText = rigName ? `.${rigName}` : '';
-
-  if (paymentMethod === 'SOLO') {
-    yourWalletAddress = `solo:${wallet}${rigNameText}`;
-  } else {
-    yourWalletAddress = `${wallet}${rigNameText}`;
-  }
+  const { address, port } = servers.find((s) => s.name === region);
 
   walletsAddress.forEach((addressEl) => {
-    addressEl.textContent = yourWalletAddress;
+    if (wallet) addressEl.textContent = wallet;
+  });
+
+  methods.forEach((addressEl) => {
+    if (paymentMethod === 'SOLO') addressEl.textContent = 'solo:';
+  });
+
+  workerNames.forEach((addressEl) => {
+    if (rigName) addressEl.textContent = `.${rigName}`;
+  });
+
+  plainWorkerNames.forEach((addressEl) => {
+    if (rigName) addressEl.textContent = rigName;
   });
 
   endpoints.forEach((endpointEl) => {
-    endpointEl.textContent = `${host}:${port}`;
-  });
-
-  walletsExampleCode.forEach((walletEl) => {
-    walletEl.textContent = yourWalletAddress;
+    endpointEl.textContent = address;
   });
 });
 

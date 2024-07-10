@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to mine Alephium(ALPH)?</title>
+    <title>How to mine Alephium(ALPH)? .bat/.sh/AL BOX configurator</title>
     <meta
       name="description"
-      content="Instructions how to set alephium miners"
+      content="Instructions how to set alephium miners on Windows, Linux AL BOX and ASICs."
     />
     <meta
       name="keywords"
-      content="alephium, mining pool, cryptocurrency, miner"
+      content="alephium, mining pool, cryptocurrency, miner, windows, linux, albox, asic"
     />
     <link
       rel="stylesheet"
@@ -31,7 +31,7 @@
     <div class="wrapper">
       <header class="header-instruction">
         <div class="container-instruction">
-          <h1>Instruction</h1>
+          <h1>Alephium mining instruction</h1>
           <div>
             <ul>
               <li>
@@ -241,7 +241,7 @@
               </div>
             </section>
             <section>
-              <h3>Windows examples</h3>
+              <h3>Examples:</h3>
               <form id="miningForm" class="mining-form">
                 <label for="wallet">Wallet:</label>
                 <input type="text" id="wallet" name="wallet" required />
@@ -284,6 +284,49 @@
                   GENERATE EXAMPLES
                 </button>
               </form>
+
+              <hr />
+
+              <section>
+                <h3>AL BOX</h3>
+                <ol>
+                  <li>
+                    Setup AL BOX instruction:
+                    <a
+                      href="https://www.cryptominerbros.com/blog/how-to-setup-goldshell-al-box/"
+                      >on Cryptominerbros.com</a
+                    >
+                  </li>
+                  <li>
+                    Use this values for connetion:
+                    <ul>
+                      <li>
+                        URL:
+                        <code
+                          ><span class="endpoint"
+                            >eu1.alephium-pool.com:20032</span
+                          ></code
+                        >
+                      </li>
+                      <li>
+                        Miner name:
+                        <code
+                          ><span class="method"></span
+                          ><span class="wallets-address"
+                            >your_wallet_address</span
+                          ><span class="worker-names"></span
+                        ></code>
+                      </li>
+                      <li>Password:</li>
+                    </ul>
+                  </li>
+                  <li>Start mining</li>
+                  <li>
+                    <strong class="profit">PROFIT! 🚀</strong>
+                  </li>
+                </ol>
+              </section>
+
               <section>
                 <h3>lolMiner</h3>
                 <ol>
@@ -307,7 +350,7 @@
                       <pre class="code-container">
                             <code>
                               set "ALEPHPOOL=<span class="endpoint">eu1.alephium-pool.com:20032</span>"
-                              set "ALEPHWALLET=<span class="wallet">your_wallet_address</span>"
+                              set "ALEPHWALLET=<span class="method"></span><span class="wallets-address">your_wallet_address</span><span class="worker-names"></span>"
                             </code>
                           </pre>
                     </div>
@@ -338,7 +381,7 @@
                       </button>
                       <pre class="code-container">
                               <code>
-                                bzminer -a alph -w <span class="wallets-address">your_wallet_address</span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span>
+                                bzminer -a alph -w <span class="method"></span><span class="wallets-address">your_wallet_address</span><span class="worker-names"></span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span>
                               </code>
                             </pre>
                     </div>
@@ -366,7 +409,7 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
-                            <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> -u <span class="wallets-address">your_wallet_address</span> -p x -w rig0</code>
+                            <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> -u <span class="method"></span><span class="wallets-address">your_wallet_address</span> -p x -w <span class="plain-worker-names"></span></code>
                           </pre>
                     </div>
                   </li>
@@ -396,7 +439,7 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
-                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="endpoint">eu1.alephium-pool.com:20032</span> --wallet <span class="wallets-address">your_wallet_address</span> </code>
+                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="endpoint">eu1.alephium-pool.com:20032</span> --wallet <span class="method"></span><span class="wallets-address">your_wallet_address</span><span class="worker-names"></span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> </code>
                           </pre>
                     </div>
                   </li>
