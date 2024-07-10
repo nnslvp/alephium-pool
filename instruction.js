@@ -15,25 +15,25 @@ const servers = [
   {
     name: 'Europe',
     host: 'eu1.alephium.coinmore.io',
-    address: 'eu1.alephium-pool.com',
+    address: 'eu1.alephium-pool.com:20032',
     port: 3031,
   },
   {
     name: 'Russia',
     host: 'ru1.alephium.coinmore.io',
-    address: 'ru1.alephium-pool.com',
+    address: 'ru1.alephium-pool.com:20032',
     port: 3031,
   },
   {
     name: 'US',
     host: 'us1.alephium.coinmore.io',
-    address: 'us1.alephium-pool.com',
+    address: 'us1.alephium-pool.com:20032',
     port: 3031,
   },
   {
     name: 'Asia',
     host: 'asia1.alephium.coinmore.io',
-    address: 'asia1.alephium-pool.com',
+    address: 'asia1.alephium-pool.com:20032',
     port: 3031,
   },
 ];
@@ -158,7 +158,7 @@ miningForm.addEventListener('submit', (event) => {
   });
 
   endpoints.forEach((endpointEl) => {
-    endpointEl.textContent = `${address}:${port}`;
+    endpointEl.textContent = address;
   });
 });
 
