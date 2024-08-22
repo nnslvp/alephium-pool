@@ -2,7 +2,7 @@
 
 Site: https://alephium-pool.com
 
-Telegram community: https://t.me/alephium_pool
+Telegram community: https://t.me/+EwunWBmx5idjZWVi
 
 Telegram bot with current balance: https://t.me/alephium_pool_bot
 
@@ -29,4 +29,4 @@ You can use:
 - [T-Rex](https://github.com/trexminer/T-Rex/releases)
 - [Rigel](https://github.com/rigelminer/rigel/releases)
 - [WildRig Multi](https://github.com/andru-kun/wildrig-multi/releases)
-- About other solutions you can ask in telegram community: https://t.me/alephium_pool
+- About other solutions you can ask in telegram community: https://t.me/+EwunWBmx5idjZWVi
