@@ -76,30 +76,6 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>🇪🇺 Europe</td>
-                  <td class="host">eu1.alephium-pool.com</td>
-                  <td>
-                    <span class="port">20032</span>
-                    <button class="button button-clear button-copy">
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext"> Copied!</span>
-                    </button>
-                  </td>
-                  <td>
-                    <span class="port-ssl">20033</span>
-                    <button
-                      class="button button-clear button-copy button-copy-port-ssl"
-                    >
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext"> Copied!</span>
-                    </button>
-                  </td>
-                  <td class="ping">
-                    <span id="ping-Europe"></span>
-                    <span class="tooltip"></span>
-                  </td>
-                </tr>
-                <tr>
                   <td>🇷🇺 Russia</td>
                   <td>
                     <span class="host">ru1.alephium-pool.com</span>
@@ -127,7 +103,7 @@
                 </tr>
                 <tr>
                   <td>🇺🇸 US</td>
-                  <td class="host">us1.alephium-pool.com</td>
+                  <td class="host">us-west.alephium-pool.com</td>
                   <td>
                     <span class="port">20032</span>
                     <button class="button button-clear button-copy">
@@ -146,30 +122,6 @@
                   </td>
                   <td class="ping">
                     <span id="ping-US"></span>
-                    <span class="tooltip"></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>🇸🇬 Asia</td>
-                  <td class="host">asia1.alephium-pool.com</td>
-                  <td>
-                    <span class="port">20032</span>
-                    <button class="button button-clear button-copy">
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext"> Copied!</span>
-                    </button>
-                  </td>
-                  <td>
-                    <span class="port-ssl">20033</span>
-                    <button
-                      class="button button-clear button-copy button-copy-port-ssl"
-                    >
-                      <i class="icon icon-copy"></i>
-                      <span class="tooltiptext"> Copied!</span>
-                    </button>
-                  </td>
-                  <td class="ping">
-                    <span id="ping-Asia"></span>
                     <span class="tooltip"></span>
                   </td>
                 </tr>
@@ -413,7 +365,7 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
-                            <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> -u <span class="method"></span><span class="wallets-address">your_wallet_address</span> -p x -w <span class="plain-worker-names"></span></code>
+                            <code>t-rex.exe -a blake3 -o stratum+tcp://<span class="endpoint">us-west.alephium-pool.com:20032</span> -u <span class="method"></span><span class="wallets-address">your_wallet_address</span> -p x -w <span class="plain-worker-names"></span></code>
                           </pre>
                     </div>
                   </li>
@@ -443,7 +395,7 @@
                         <span class="tooltiptext"> Copied!</span>
                       </button>
                       <pre class="code-container">
-                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="endpoint">eu1.alephium-pool.com:20032</span> --wallet <span class="method"></span><span class="wallets-address">your_wallet_address</span><span class="worker-names"></span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> </code>
+                            <code>SRBMiner-MULTI.exe --disable-cpu --algorithm blake3_alephium --pool <span class="endpoint">us-west.alephium-pool.com:20032</span> --wallet <span class="method"></span><span class="wallets-address">your_wallet_address</span><span class="worker-names"></span> -p stratum+tcp://<span class="endpoint">eu1.alephium-pool.com:20032</span> </code>
                           </pre>
                     </div>
                   </li>

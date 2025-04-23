@@ -146,10 +146,10 @@ function showPings() {
     // { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3031 },
     // { name: 'US', host: 'us1.alephium-pool.com', port: 3031 },
     // { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3031 },
-    { name: 'Europe', host: 'eu1.alephium.coinmore.io', port: 3031 },
+    // { name: 'Europe', host: 'eu1.alephium.coinmore.io', port: 3031 },
     { name: 'Russia', host: 'ru1.alephium.coinmore.io', port: 3031 },
-    { name: 'US', host: 'us1.alephium.coinmore.io', port: 3031 },
-    { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
+    { name: 'US', host: 'us-west.alephium.coinmore.io', port: 3031 },
+    // { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
   ];
 
   servers.reduce((chain, server, i) => {
