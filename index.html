@@ -90,7 +90,7 @@
           Pool hashrate: <b><span id="pool_hashrate">loading..</span></b>
         </p>
         <p>
-          Profit per GH: <b><span id="pool_profit">loading..</span></b> ALPH ~
+          Profit per 100 GH: <b><span id="pool_profit">loading..</span></b> ALPH ~
           <b><span id="pool_profit_usd">loading..</span></b> USD
         </p>
         <p>
@@ -111,18 +111,18 @@
               <th>Address</th>
               <th>Port</th>
               <th>SSL Port</th>
-              <!--              <th>-->
-              <!--                <div class="th-ping">-->
-              <!--                  Ping-->
-              <!--                  <icon class="icon icon-tooltip">-->
-              <!--                    <span class="tooltip">-->
-              <!--                      This ping is approximate but accurate enough for comparing-->
-              <!--                      servers with each other. For obtaining the exact ping, use-->
-              <!--                      the ping command in your system.-->
-              <!--                    </span>-->
-              <!--                  </icon>-->
-              <!--                </div>-->
-              <!--              </th>-->
+              <th>
+                <div class="th-ping">
+                  Ping
+                  <icon class="icon icon-tooltip">
+                    <span class="tooltip">
+                      This ping is approximate but accurate enough for comparing
+                      servers with each other. For obtaining the exact ping, use
+                      the ping command in your system.
+                    </span>
+                  </icon>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -173,6 +173,30 @@
               </td>
               <td class="ping">
                 <span id="ping-US"></span>
+                <span class="tooltip"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>🇭🇰 Hong Kong</td>
+              <td class="host">hk.alephium-pool.com</td>
+              <td>
+                <span class="port">20032</span>
+                <button class="button button-clear button-copy">
+                  <i class="icon icon-copy"></i>
+                  <span class="tooltiptext"> Copied!</span>
+                </button>
+              </td>
+              <td>
+                <span class="port-ssl">20033</span>
+                <button
+                  class="button button-clear button-copy button-copy-port-ssl"
+                >
+                  <i class="icon icon-copy"></i>
+                  <span class="tooltiptext"> Copied!</span>
+                </button>
+              </td>
+              <td class="ping">
+                <span id="ping-Asia"></span>
                 <span class="tooltip"></span>
               </td>
             </tr>

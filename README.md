@@ -10,7 +10,6 @@ Web statistics: https://alephium-pool.com/stats.html
 
 ### Pool servers:
 
-- Europe: **eu1.alephium-pool.com:20032** (SSL: **20033**)
 - Russia: **ru1.alephium-pool.com:20032** (SSL: **20033**)
 - US: **us1.alephium-pool.com:20032**
 - Asia: **asia1.alephium-pool.com:20032**

@@ -60,12 +60,12 @@ function showPoolHashrate(hashrate) {
 }
 
 function showPoolProfit(profit) {
-  const roundProfit = parseFloat(profit).toFixed(4);
+  const roundProfit = (parseFloat(profit) * 100).toFixed(4);
   document.getElementById('pool_profit').textContent = `${roundProfit}`;
 }
 
 function showPoolProfitUSD(rate, profit) {
-  const floatProfit = parseFloat(profit);
+  const floatProfit = parseFloat(profit) * 100;
   const floatRate = parseFloat(rate);
   const profitUSD = (floatProfit * floatRate).toFixed(4);
 
@@ -141,15 +141,9 @@ function testServer(server) {
 
 function showPings() {
   const servers = [
-    // NOTE: The following servers are not working until DNS is not cloudflare, I cant handle SSL
-    // { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3031 },
-    // { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3031 },
-    // { name: 'US', host: 'us1.alephium-pool.com', port: 3031 },
-    // { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3031 },
-    // { name: 'Europe', host: 'eu1.alephium.coinmore.io', port: 3031 },
     { name: 'Russia', host: 'ru1.alephium.coinmore.io', port: 3031 },
     { name: 'US', host: 'us-west.alephium.coinmore.io', port: 3031 },
-    // { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
+    { name: 'Asia', host: 'asia1.alephium.coinmore.io', port: 3031 },
   ];
 
   servers.reduce((chain, server, i) => {

@@ -7,17 +7,6 @@ const endpoints = document.querySelectorAll('.endpoint');
 const miningForm = document.querySelector('#miningForm');
 
 const servers = [
-  // NOTE: The following servers are not working until DNS is not cloudflare, I cant handle SSL
-  // { name: 'Europe', host: 'eu1.alephium-pool.com', port: 3031 },
-  // { name: 'Russia', host: 'ru1.alephium-pool.com', port: 3031 },
-  // { name: 'US', host: 'us1.alephium-pool.com', port: 3031 },
-  // { name: 'Asia', host: 'asia1.alephium-pool.com', port: 3031 },
-  {
-    name: 'Europe',
-    host: 'eu1.alephium.coinmore.io',
-    address: 'eu1.alephium-pool.com:20032',
-    port: 3031,
-  },
   {
     name: 'Russia',
     host: 'ru1.alephium.coinmore.io',
