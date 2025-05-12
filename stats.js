@@ -254,7 +254,7 @@ function showEventsTable(events) {
 function updateCsvDownloadLink(wallet) {
   const csvDownloadLink = document.getElementById('csv-download-link');
   if (!csvDownloadLink) return;
-  
+
   if (wallet) {
     const csvUrl = `${statsApiUrl}/payouts_csv?coin=alephium&wallet=${wallet}`;
     csvDownloadLink.setAttribute('href', csvUrl);
@@ -265,10 +265,10 @@ function updateCsvDownloadLink(wallet) {
 
 function drawData(wallet) {
   disableButton();
-  
+
   // Обновляем CSV ссылку сразу
   updateCsvDownloadLink(wallet);
-  
+
   function handleFetchError(error) {
     console.error('Error fetching data:', error);
   }
