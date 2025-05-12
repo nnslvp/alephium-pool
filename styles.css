@@ -596,3 +596,16 @@ input[type='number'] {
     padding: 0rem 2rem;
   }
 }
+
+/* Tax CSV Feature Highlight */
+.tax-csv-feature {
+  margin: 15px 0;
+  padding: 10px 15px;
+  border-left: 3px solid #9b4dca;
+  background-color: rgba(155, 77, 202, 0.05);
+  border-radius: 0 4px 4px 0;
+}
+
+.tax-csv-feature p {
+  margin-bottom: 0;
+}
