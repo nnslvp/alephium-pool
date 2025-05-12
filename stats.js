@@ -251,8 +251,24 @@ function showEventsTable(events) {
   });
 }
 
+function updateCsvDownloadLink(wallet) {
+  const csvDownloadLink = document.getElementById('csv-download-link');
+  if (!csvDownloadLink) return;
+  
+  if (wallet) {
+    const csvUrl = `${statsApiUrl}/payouts_csv?coin=alephium&wallet=${wallet}`;
+    csvDownloadLink.setAttribute('href', csvUrl);
+  } else {
+    csvDownloadLink.setAttribute('href', '#');
+  }
+}
+
 function drawData(wallet) {
   disableButton();
+  
+  // Обновляем CSV ссылку сразу
+  updateCsvDownloadLink(wallet);
+  
   function handleFetchError(error) {
     console.error('Error fetching data:', error);
   }
@@ -437,6 +453,9 @@ function init() {
     const walletFromCookies = Cookies.get('wallet');
     if (walletFromCookies) {
       setWalletParam(walletFromCookies);
+    } else {
+      // Даже если нет кошелька, инициализируем ссылку на CSV
+      updateCsvDownloadLink(null);
     }
   }
 }
